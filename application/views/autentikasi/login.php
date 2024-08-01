@@ -8,7 +8,7 @@
         <meta content="alathiefpermana@gmail.com" name="author" />
         <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/images/logos/favicon.png'); ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/styles.css'); ?>" />
-        <title>Login</title>
+        <title>Warung Abdi</title>
     </head>
     <body>
         <?php if($this->session->flashdata('error')){ ?>
