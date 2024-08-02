@@ -14,41 +14,111 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Home</span>
+                    <span class="hide-menu">Sistem</span>
                 </li>
-
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="<?= base_url('dashboard'); ?>" aria-expanded="false">
                         <span><i class="ti ti-aperture"></i></span>
-                        <span class="hide-menu">Modern</span>
+                        <span class="hide-menu">Dasbor</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<?= base_url('penjualan'); ?>" aria-expanded="false">
+                        <span><i class="ti ti-shopping-bag"></i></span>
+                        <span class="hide-menu">Penjualan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<?= base_url('barang_masuk'); ?>" aria-expanded="false">
+                        <span><i class="ti ti-package-import"></i></span>
+                        <span class="hide-menu">Barang Masuk</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="d-flex">
-                            <i class="ti ti-chart-donut-3"></i>
+                            <i class="ti ti-building-warehouse"></i>
                         </span>
-                        <span class="hide-menu">Blog</span>
+                        <span class="hide-menu">Gudang</span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
+                            <a href="<?= base_url('gudang') ?>" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
-                                <span class="hide-menu">Posts</span>
+                                <span class="hide-menu">Stok</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
+                            <a href="<?= base_url('gudang/stock_opname'); ?>" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
-                                <span class="hide-menu">Details</span>
+                                <span class="hide-menu"><i>Stock Opname</i></span>
                             </a>
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<?= base_url('produk'); ?>" aria-expanded="false">
+                        <span><i class="ti ti-package"></i></span>
+                        <span class="hide-menu">Produk</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="ti ti-table-alias"></i>
+                        </span>
+                        <span class="hide-menu">Data</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('penjualan/data') ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Data Penjualan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('barang_masuk/data'); ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Data Barang Masuk</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="ti ti-report"></i>
+                        </span>
+                        <span class="hide-menu">Laporan</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('laporan/penjualan') ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Laporan Penjualan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('laporan/barang_masuk'); ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Laporan Barang Masuk</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
 
             </ul>
         </nav>
