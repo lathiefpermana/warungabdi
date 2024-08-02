@@ -5,6 +5,10 @@ class autentikasi extends CI_Controller {
 
     public function index()
     {
+        $status = $this->session->userdata('status');
+        if(!empty($status)){
+            redirect(base_url('dashboard'));
+        }
         $this->load->view('autentikasi/login');
     }
 
@@ -28,6 +32,12 @@ class autentikasi extends CI_Controller {
             $this->session->set_flashdata('error','akun atau sandi salah!');
             redirect(base_url());
         }
+    }
+
+    function logout()
+    {   
+        $this->session->sess_destroy();
+        redirect(base_url());
     }
 
 }
