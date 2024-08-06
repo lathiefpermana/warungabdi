@@ -9,4 +9,5 @@
 
 <script src="<?= base_url('assets/libs/owl.carousel/dist/owl.carousel.min.js'); ?>"></script>
 <script src="<?= base_url('assets/libs/apexcharts/dist/apexcharts.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/apex-chart/apex.line.init.js'); ?>"></script>
 <script src="<?= base_url('assets/js/dashboards/dashboard.js'); ?>"></script>

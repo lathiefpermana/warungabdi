@@ -186,30 +186,34 @@ $(function () {
     // Zoomable Line Chart -------> LINE CHART
     var options_zoomable = {
         series: [{
-            name: "XYZ MOTORS",
+            name: "Penjualan",
             data: [{
-                x: "02-10-2017 GMT",
-                y: 34,
+                x: "02-01-2017 GMT",
+                y: 125000,
             },
             {
-                x: "02-11-2017 GMT",
-                y: 43,
+                x: "02-02-2017 GMT",
+                y: 345000,
             },
             {
-                x: "02-12-2017 GMT",
-                y: 31,
+                x: "02-03-2017 GMT",
+                y: 87000,
             },
             {
-                x: "02-13-2017 GMT",
-                y: 43,
+                x: "02-04-2017 GMT",
+                y: 20000,
             },
             {
-                x: "02-14-2017 GMT",
-                y: 33,
+                x: "02-05-2017 GMT",
+                y: 480000,
             },
             {
-                x: "02-15-2017 GMT",
-                y: 52,
+                x: "02-06-2017 GMT",
+                y: 0,
+            },
+            {
+                x: "02-07-2017 GMT",
+                y: 110000,
             },
             ],
         },],
@@ -251,7 +255,8 @@ $(function () {
         yaxis: {
             labels: {
                 formatter: function (val) {
-                    return (val / 1000000).toFixed(0);
+                    // return (val / 1000000).toFixed(0);
+                    return (val).toFixed(0);
                 },
                 style: {
                     colors: [
@@ -284,7 +289,8 @@ $(function () {
             shared: false,
             y: {
                 formatter: function (val) {
-                    return (val / 1000000).toFixed(0);
+                    // return (val / 1000000).toFixed(0);
+                    return (val).toFixed(0);
                 },
             },
             theme: "dark",
