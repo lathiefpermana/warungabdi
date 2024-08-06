@@ -7,7 +7,7 @@ class autentikasi extends CI_Controller {
     {
         $status = $this->session->userdata('status');
         if(!empty($status)){
-            redirect(base_url('dashboard'));
+            redirect(base_url('dasbor'));
         }
         $this->load->view('autentikasi/login');
     }
@@ -26,7 +26,7 @@ class autentikasi extends CI_Controller {
             );
 
             $this->session->set_userdata($array);
-            redirect(base_url('dashboard'));
+            redirect(base_url('dasbor'));
             
         }else{
             $this->session->set_flashdata('error','akun atau sandi salah!');
