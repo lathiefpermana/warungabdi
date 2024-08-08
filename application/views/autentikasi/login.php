@@ -36,7 +36,7 @@
                                         <img src="<?= base_url('assets/images/logos/dark-logo.svg'); ?>" class="dark-logo" alt="Logo-Dark" />
                                         <img src="<?= base_url('assets/images/logos/light-logo.svg'); ?>" class="light-logo" alt="Logo-light" />
                                     </a>
-                                    <form method="post" action="<?= base_url('autentikasi/login'); ?>">
+                                    <form method="post" action="<?= base_url('autentikasi/login'); ?>" enctype="multipart/form-data">
                                         <div class="mb-3">
                                             <label class="form-label">Akun</label>
                                             <input type="text" name="akun" class="form-control" placeholder="Nama Akun" autofocus>
@@ -44,6 +44,10 @@
                                         <div class="mb-4">
                                             <label class="form-label">Sandi</label>
                                             <input type="password" name="sandi" class="form-control" placeholder="Sandi Akun">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Lisensi</label>
+                                            <input type="file" name="lisensi" class="form-control" placeholder="Sandi Akun" required>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
                                             <a class="text-primary fw-medium" href="<?= base_url('autentikasi/lupa_sandi'); ?>">Lupa Sandi ?</a>

@@ -129,8 +129,8 @@
                     <img src="<?= base_url('assets/images/profile/user-1.jpg'); ?>" class="rounded-circle" width="40" height="40" alt="" />
                 </div>
                 <div class="john-title">
-                    <h6 class="mb-0 fs-4 fw-semibold"><?= $this->session->userdata('akun'); ?></h6>
-                    <span class="fs-2">Designer</span>
+                    <h6 class="mb-0 fs-2 fw-semibold"><?= $this->session->userdata('warung'); ?></h6>
+                    <span class="fs-1"><?= $this->session->userdata('akun_level'); ?></span>
                 </div>
                 <a href="<?= base_url('autentikasi/logout'); ?>" class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
                     <i class="ti ti-power fs-6"></i>
