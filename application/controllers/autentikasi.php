@@ -12,7 +12,16 @@ class autentikasi extends CI_Controller {
             if(!empty($status)){
                 redirect(base_url('dasbor'));
             }else{
-                $this->load->view('autentikasi/login_lisensi');
+                $lisensi = $this->input->cookie('lisensi-warung-abdi');
+                $akun = $this->model_main->data_result('akun',array('lisensi'=>$lisensi),null);
+                $akuns  = $akun->row();
+                $tanggal_kadaluarsa = $akuns->tanggal_kadaluarsa;
+                if(date('Y-m-d') > $tanggal_kadaluarsa){
+                    $this->model_main->update_data($akuns->id, 'akun', array('status_aktif'=>'non aktif'));
+                }
+
+                $data['akun'] = $akun->row_array();
+                $this->load->view('autentikasi/login_lisensi',$data);
             }
         }else{
             $this->load->view('autentikasi/login');

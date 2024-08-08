@@ -70,7 +70,7 @@
                                             </a>
                                         </div>
                                         <div class="d-grid py-4 px-7 pt-8">
-                                            <a href="../main/authentication-login.html" class="btn btn-outline-primary">Log Out</a>
+                                            <a href="<?= base_url('autentikasi/logout'); ?>" class="btn btn-outline-primary">Log Out</a>
                                         </div>
                                     </div>
                                 </div>
