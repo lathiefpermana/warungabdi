@@ -17,7 +17,7 @@
                     <span class="hide-menu">Sistem</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?= base_url('dashboard'); ?>" aria-expanded="false">
+                    <a class="sidebar-link" href="<?= base_url('dasbor'); ?>" aria-expanded="false">
                         <span><i class="ti ti-aperture"></i></span>
                         <span class="hide-menu">Dasbor</span>
                     </a>

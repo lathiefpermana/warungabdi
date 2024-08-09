@@ -38,6 +38,10 @@
                                     </a>
                                     <form method="post" action="<?= base_url('autentikasi/login_lisensi'); ?>" enctype="multipart/form-data">
                                         <div class="mb-3" hidden>
+                                            <label class="form-label">Lisensi</label>
+                                            <input type="text" name="lisensi" class="form-control" value="<?= $akun['lisensi']; ?>" readonly>
+                                        </div>
+                                        <div class="mb-3" hidden>
                                             <label class="form-label">Akun</label>
                                             <input type="text" name="akun" class="form-control" value="<?= $akun['akun']; ?>" readonly>
                                         </div>
@@ -58,7 +62,9 @@
                                             <p><?= 'Status '.$akun['status_aktif']; ?></p>
                                         </div>
                                         <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</button>
-                                        <a href="<?= base_url('autentikasi/delete_cookie'); ?>">bukan kamu?</a>
+                                        <div class="mb3 text-center">
+                                            <a href="<?= base_url('autentikasi/delete_cookie'); ?>">bukan kamu?</a>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
