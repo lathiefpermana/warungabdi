@@ -29,6 +29,30 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="<?= base_url('produk/daftar_harga'); ?>" aria-expanded="false">
+                        <span><i class="ti ti-tag"></i></span>
+                        <span class="hide-menu">Daftar Harga</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="ti ti-package"></i>
+                        </span>
+                        <span class="hide-menu">Produk</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('produk') ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Produk</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="<?= base_url('barang_masuk'); ?>" aria-expanded="false">
                         <span><i class="ti ti-package-import"></i></span>
                         <span class="hide-menu">Barang Masuk</span>
@@ -59,12 +83,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?= base_url('produk'); ?>" aria-expanded="false">
-                        <span><i class="ti ti-package"></i></span>
-                        <span class="hide-menu">Produk</span>
-                    </a>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
