@@ -7,4 +7,36 @@
     <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/images/logos/favicon.png'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css'); ?>" />
     <title>Warung Abdi</title>
+
+    <link rel="stylesheet" href="<?= base_url('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css'); ?>" />
+
+    <style>
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: grey;
+            }
+
+            .container:hover .overlay {
+            opacity: 0.8;
+            }
+
+            .text {
+            color: white;
+            font-size: 36px;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+            }
+    </style>
 </head>
