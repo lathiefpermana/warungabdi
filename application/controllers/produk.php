@@ -8,4 +8,10 @@ class produk extends CI_Controller {
         $data['content'] = 'produk/index';
         $this->load->view('layout',$data);
     }
+
+    function tambah()
+    {
+        $data['content'] = 'produk/tambah';
+        $this->load->view('layout',$data);
+    }
 }

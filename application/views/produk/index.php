@@ -29,15 +29,19 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
-                                <h5 class="mb-0">Data Produk</h5>
+                                <h5 class="card-title">
+                                    Daftar Produk
+                                </h5>
                             </div>
                             <p class="card-subtitle mb-3">
-                                <code>Klik tombol tambah untuk membuat master produk yang baru.</code>.
+                                Produk - produk yang ada pada database warung. Jika pengguna ingin menambahkan produk baru, klik tombol tambah produk.
                             </p>
-                            <div class="mb-3 mb-0 text-start">
-                                <button type="submit" class="btn btn-primary rounded-pill px-4 me-6">Tambah</button>
-                            </div>
-                            <div class="table-responsive">
+                            <a href="<?= base_url('produk/tambah') ?>" class="btn btn-primary me-1">
+                                <i class="ti ti-plus"></i>
+                                Tambah Produk
+                            </a>
+
+                            <div class="table-responsive mt-3">
                                 <table id="alt_pagination" class="table border table-striped table-bordered display text-nowrap">
                                     <thead>
                                         <tr>
@@ -60,8 +64,9 @@
                                             <td>61</td>
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
-                                            <td><a href="">Edit</a></td>
-                                            <td><a href="">Hapus</a></td>
+                                            <td>$320,800</td>
+                                            <td><a href="" class="btn btn-secondary"><span class="ti ti-pencil"></span></a></td>
+                                            <td><a href="" class="btn btn-danger"><span class="ti ti-trash"></span></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
