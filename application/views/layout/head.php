@@ -5,11 +5,11 @@
     <meta content="Warung Abdi" name="description" />
     <meta content="alathiefpermana@gmail.com" name="author" />
     <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/images/logos/favicon.png'); ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css'); ?>" />
-    <title>Warung Abdi</title>
 
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css'); ?>" />    
     <link rel="stylesheet" href="<?= base_url('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css'); ?>" />
-
+    
+    <title>Warung Abdi</title>
     <style>
         .overlay {
             position: absolute;
