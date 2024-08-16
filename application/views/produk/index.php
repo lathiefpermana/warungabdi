@@ -29,46 +29,38 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
-                                <h5 class="card-title">
-                                    Daftar Produk
-                                </h5>
+                                <h5 class="mb-0">Data Produk</h5>
                             </div>
-                            <p class="card-subtitle mb-3">
-                                Produk - produk yang ada pada database warung. Jika pengguna ingin menambahkan produk baru, klik tombol tambah produk.
-                            </p>
-                            <a href="<?= base_url('produk/tambah') ?>" class="btn btn-primary me-1">
-                                <i class="ti ti-plus"></i>
-                                Tambah Produk
-                            </a>
-
-                            <div class="table-responsive mt-3">
-                                <table id="alt_pagination" class="table border table-striped table-bordered display text-nowrap">
+                            <p class="card-subtitle mb-3">Data produk <i>available</i>, jika produk belum ada, pengguna dapat menambahkan di tombol <mark><code>+ Produk</code></mark>.</p>
+                            <div class="mb-3">
+                                <a href="<?= base_url('produk/tambah'); ?>" class="btn btn-primary"><i class="ti ti-plus"></i> Produk</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatables-produk" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
                                     <thead>
                                         <tr>
-                                            <th>Nomor</th>
-                                            <th>Barcode</th>
-                                            <th>Nama Produk</th>
+                                            <th>#</th>
                                             <th>Kategori</th>
-                                            <th>Tanggal input</th>
-                                            <th>Tanggal update</th>
-                                            <th>Diinput oleh</th>
-                                            <th>Edit</th>
+                                            <th>Barcode</th>
+                                            <th>Nama</th>
+                                            <th>Dibuat oleh</th></th>
+                                            <th>Waktu dibuat</th>
+                                            <th>Sunting</th>
                                             <th>Hapus</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tfoot>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>$320,800</td>
-                                            <td><a href="" class="btn btn-secondary"><span class="ti ti-pencil"></span></a></td>
-                                            <td><a href="" class="btn btn-danger"><span class="ti ti-trash"></span></a></td>
+                                            <th>#</th>
+                                            <th>Kategori</th>
+                                            <th>Barcode</th>
+                                            <th>Nama</th>
+                                            <th>Dibuat oleh</th></th>
+                                            <th>Waktu dibuat</th>
+                                            <th>Sunting</th>
+                                            <th>Hapus</th>
                                         </tr>
-                                    </tbody>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -76,8 +68,5 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </div>

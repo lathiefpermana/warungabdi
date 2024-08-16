@@ -39,5 +39,9 @@
             -ms-transform: translate(-50%, -50%);
             text-align: center;
             }
+
+            .select2-selection__arrow b{
+                display:none !important;
+            }
     </style>
 </head>

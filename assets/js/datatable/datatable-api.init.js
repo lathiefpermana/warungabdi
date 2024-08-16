@@ -198,3 +198,5 @@ $("#sing_row_del tbody").on("click", "tr", function () {
 $("#delete-row").click(function () {
   table3.row(".selected").remove().draw(false);
 });
+
+
