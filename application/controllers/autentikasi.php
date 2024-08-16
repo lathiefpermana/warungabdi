@@ -54,6 +54,7 @@ class autentikasi extends CI_Controller {
 
                     $array_sess = array(
                         'warung' => $akun->warung,
+                        'id_akun'=> $akun->id,
                         'akun_level'=> $akun->akun_level,
                         'akun'=> $akun->akun,
                         'lisensi'=>  $akun->lisensi,
@@ -102,6 +103,7 @@ class autentikasi extends CI_Controller {
             $akun = $cek->row();
             $array_sess = array(
                 'warung' => $akun->warung,
+                'id_akun'=> $akun->id,
                 'akun_level'=> $akun->akun_level,
                 'akun'=> $akun->akun,
                 'lisensi'=>  $akun->lisensi,

@@ -12,6 +12,12 @@
 <script src="<?= base_url('assets/libs/datatables.net/js/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/datatable/datatable-basic.init.js'); ?>"></script>
 
+<script src="<?= base_url('assets/libs/select2/dist/js/select2.full.min.js'); ?>"></script>
+<script src="<?= base_url('assets/libs/select2/dist/js/select2.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/forms/select2.init.js'); ?>"></script>
+
+<script src="<?= base_url('assets/js/plugins/bootstrap-validation-init.js'); ?>"></script>
+
 <!-- <script src="<?= base_url('assets/libs/apexcharts/dist/apexcharts.min.js'); ?>"></script> -->
 <!-- <script src="<?= base_url('assets/js/apex-chart/apex.line.init.js'); ?>"></script> -->
 <!-- <script src="<?= base_url('assets/js/dashboards/dashboard.js'); ?>"></script> -->

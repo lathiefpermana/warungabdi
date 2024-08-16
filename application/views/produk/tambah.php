@@ -10,7 +10,10 @@
                                 <li class="breadcrumb-item">
                                     <a class="text-muted text-decoration-none" href="<?= base_url(); ?>">Dasbor</a>
                                 </li>
-                                <li class="breadcrumb-item" aria-current="page">Produk</li>
+                                <li class="breadcrumb-item">
+                                    <a class="text-muted text-decoration-none" href="<?= base_url('produk'); ?>">Produk</a>
+                                </li>
+                                <li class="text-muted breadcrumb-item" aria-current="page">Tambah Produk</li>
                             </ol>
                         </nav>
                     </div>
@@ -37,7 +40,32 @@
                                 Barcode dapat diisikan atau dikosongkan.
                             </p>
 
-                            
+                            <form class="was-validated" method="post" action="<?= base_url('produk/simpan'); ?>" novalidate>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Kategori Produk</label>
+                                            <select class="select2 form-select custom-select" name="kategori_produk" required>
+                                                <?php foreach($kategori as $key): ?>
+                                                    <option value="<?= $key->id ?>"><?= $key->nama ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                            <div class="invalid-feedback">Harus diisi</div>
+                                        </div>
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Barcode</label>
+                                            <input type="text" class="form-control" id="validationCustom01" name="barcode" placeholder="boleh kosong">
+                                            <div class="invalid-feedback">Harus diisi</div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="form-label" for="validationCustom01">Nama Produk</label>
+                                            <input type="text" class="form-control" id="validationCustom01" name="nama" required>
+                                            <div class="invalid-feedback">Harus diisi</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary rounded-pill px-4 mt-3" type="submit">Simpan</button>
+                            </form>
                         </div>
                     </div>
                 </div>
