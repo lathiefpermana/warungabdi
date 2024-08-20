@@ -46,6 +46,7 @@
                     </div>
                 <?php } ?>
         </div>
+        <div class="dark-transparent sidebartoggler"></div>
         <?php $this->load->view('layout/javascript'); ?>
     </body>
 </html>
