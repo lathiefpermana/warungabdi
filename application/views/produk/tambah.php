@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="form-group  mb-3">
                                             <label class="form-label" for="validationCustom01">Barcode</label>
-                                            <input type="text" class="form-control" id="validationCustom01" name="barcode" placeholder="boleh kosong">
+                                            <input type="text" class="form-control" id="validationCustom01" name="barcode">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="validationCustom01">Nama Produk</label>
