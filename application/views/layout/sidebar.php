@@ -47,6 +47,12 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="<?= base_url('pemasok'); ?>" aria-expanded="false">
+                        <span><i class="ti ti-users"></i></span>
+                        <span class="hide-menu">Pemasok</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="d-flex">
                             <i class="ti ti-building-warehouse"></i>

@@ -22,6 +22,10 @@
 
 <script src="<?= base_url('assets/js/plugins/bootstrap-validation-init.js'); ?>"></script>
 
+<script src="<?= base_url('assets/libs/jquery.repeater/jquery.repeater.min.js') ?>"></script>
+<script src="<?= base_url('assets/libs/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/forms/repeater-init.js'); ?>"></script>
+
 <!-- <script src="<?= base_url('assets/libs/apexcharts/dist/apexcharts.min.js'); ?>"></script> -->
 <!-- <script src="<?= base_url('assets/js/apex-chart/apex.line.init.js'); ?>"></script> -->
 <!-- <script src="<?= base_url('assets/js/dashboards/dashboard.js'); ?>"></script> -->
