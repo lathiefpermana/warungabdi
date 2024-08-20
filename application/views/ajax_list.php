@@ -6,7 +6,7 @@ $(function(){
         "responsive": true,
         "serverSide": true,
         "ordering": true, // Set true agar bisa di sorting
-        "order": [[ 0, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
+        "order": [[ 6, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
         "pageLength": 5,
         "displayLength": 10,
         "pagingType": "full_numbers",
@@ -28,6 +28,7 @@ $(function(){
             { "data": "nama_produk" },
             { "data": "created_by" },
             { "data": "created_at" },
+            { "data": "log" },
             { "data": "id",  "sClass": "text-center",
                 "render": 
                 function( data, type, row, meta ) {

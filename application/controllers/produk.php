@@ -9,6 +9,16 @@ class produk extends CI_Controller {
         $this->load->view('layout',$data);
     }
 
+    function ajax_list()
+    {
+        $query  = "SELECT * FROM view_produk";
+        $search = array('kategori_produk','barcode','nama_produk','created_by','created_at');
+        $where = null;
+        $isWhere = 'delete_by IS NULL';
+        header('Content-Type: application/json');
+        echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
+    }
+
     function tambah()
     {
         $kategori = $this->model_main->data_result('kategori_produk',null,null);
@@ -41,16 +51,6 @@ class produk extends CI_Controller {
         redirect(base_url('produk'));
     }
 
-    function ajax_list()
-    {
-        $query  = "SELECT * FROM view_produk";
-        $search = array('kategori_produk','barcode','nama_produk','created_by','created_at');
-        $where = null;
-        $isWhere = null;
-        header('Content-Type: application/json');
-        echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
-    }
-
     function sunting()
     {
         $id = $this->uri->segment(3);
@@ -79,5 +79,18 @@ class produk extends CI_Controller {
         $this->model_main->update_data($id,'produk',$array);
         $this->session->set_flashdata('success','Data diperbarui!');
         redirect(base_url('produk'));
+    }
+
+    function hapus()
+    {
+        $id = $this->uri->segment(3);
+        $array = array(
+            'delete_by' => $this->session->userdata('id_akun'),
+            'delete_at' => date('Y-m-d H:i:s')
+        );
+
+        $this->model_main->update_data($id,'produk',$array);
+        $this->session->set_flashdata('success','Data dihapus!');
+        redirect((base_url('produk')));
     }
 }

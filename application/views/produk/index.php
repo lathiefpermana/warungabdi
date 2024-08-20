@@ -45,6 +45,7 @@
                                             <th>Nama</th>
                                             <th>Dibuat oleh</th></th>
                                             <th>Waktu dibuat</th>
+                                            <th>Log</th>
                                             <th>Sunting</th>
                                             <th>Hapus</th>
                                         </tr>
@@ -57,6 +58,7 @@
                                             <th>Nama</th>
                                             <th>Dibuat oleh</th></th>
                                             <th>Waktu dibuat</th>
+                                            <th>Log</th>
                                             <th>Sunting</th>
                                             <th>Hapus</th>
                                         </tr>
