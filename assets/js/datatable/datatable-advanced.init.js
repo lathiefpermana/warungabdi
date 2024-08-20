@@ -103,6 +103,11 @@ $("#file_export").DataTable({
   $("#multi_control").DataTable({
     dom: '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
   });
+
+  $("#multi_control-custom").DataTable({
+    dom: '<"top"iflp<"clear">>',
+  });
+  
   
   //=============================================//
   //    DOM/jquery events                        //

@@ -4,16 +4,16 @@
             <div class="card-body px-4 py-3">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h4 class="fw-semibold mb-8">Produk</h4>
+                        <h4 class="fw-semibold mb-8">Barang Masuk</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a class="text-muted text-decoration-none" href="<?= base_url(); ?>">Dasbor</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a class="text-muted text-decoration-none" href="<?= base_url('produk'); ?>">Produk</a>
+                                    <a class="text-muted text-decoration-none" href="<?= base_url('barang_masuk'); ?>">Barang Masuk</a>
                                 </li>
-                                <li class="text-muted breadcrumb-item" aria-current="page">Tambah Produk</li>
+                                <li class="text-muted breadcrumb-item" aria-current="page">Tambah Barang Masuk</li>
                             </ol>
                         </nav>
                     </div>
@@ -40,7 +40,7 @@
                                 Tambah barang masuk merupakan proses untuk input data belanja dengan qty dan harga beli. Sehingga belanja modal dapat tercatat dan stok produk bertambah.
                             </p>
 
-                            <form class="was-validated" method="post" action="<?= base_url('barang_masuk/simpan'); ?>" novalidate>
+                            <form class="was-validated" method="post" action="<?= base_url('barang_masuk/simpan'); ?>">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group  mb-3">
@@ -69,7 +69,7 @@
                                     <h6 class="mt-3">Item Barang</h6>
                                 </div>
                                 <button class="btn btn-primary rounded-pill px-4 mt-3 me-2" type="submit">Simpan</button>
-                                <a href="<?= base_url('produk')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>
+                                <a href="<?= base_url('barang_masuk')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>
                             </form>
                         </div>
                     </div>

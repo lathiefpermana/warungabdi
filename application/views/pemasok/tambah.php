@@ -4,16 +4,16 @@
             <div class="card-body px-4 py-3">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h4 class="fw-semibold mb-8">Produk</h4>
+                        <h4 class="fw-semibold mb-8">Pemasok</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a class="text-muted text-decoration-none" href="<?= base_url(); ?>">Dasbor</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a class="text-muted text-decoration-none" href="<?= base_url('produk'); ?>">Produk</a>
+                                    <a class="text-muted text-decoration-none" href="<?= base_url('pemasok'); ?>">Pemasok</a>
                                 </li>
-                                <li class="text-muted breadcrumb-item" aria-current="page">Tambah Produk</li>
+                                <li class="text-muted breadcrumb-item" aria-current="page">Tambah Pemasok</li>
                             </ol>
                         </nav>
                     </div>
@@ -33,38 +33,44 @@
                         <div class="card-body">
                             <div class="mb-2">
                                 <h5 class="card-title">
-                                    Tambah Produk
+                                    Tambah Pemasok
                                 </h5>
                             </div>
                             <p class="card-subtitle mb-3">
-                                Tambah produk merupakan proses untuk membuat data produk baru yang belum ada pada data produk.
+                                Tambah pemasok merupakan daftar tempat warung anda belanja produk. Pemasok dapat berupa offline dan online.
                             </p>
 
-                            <form class="was-validated" method="post" action="<?= base_url('produk/simpan'); ?>">
+                            <form class="was-validated" method="post" action="<?= base_url('pemasok/simpan'); ?>">
                                 <div class="row">
                                     <div class="col-md-4">
+
                                         <div class="form-group  mb-3">
-                                            <label class="form-label" for="validationCustom01">Kategori Produk</label>
-                                            <select class="form-control select2" name="kategori_produk" required>
-                                                <?php foreach($kategori as $key): ?>
-                                                    <option value="<?= $key->id ?>"><?= $key->nama ?></option>
-                                                <?php endforeach ?>
-                                            </select>
+                                            <label class="form-label" for="validationCustom01">Nama</label>
+                                            <input type="text" class="form-control" id="validationCustom01" name="nama" required="">
+                                            <div class="invalid-feedback">Harus diisi</div>
+                                        </div>
+
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Kontak</label>
+                                            <input type="text" class="form-control" id="validationCustom01" name="kontak" required="">
+                                            <div class="invalid-feedback">Harus diisi</div>
+                                        </div>
+
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Nomor Telepon</label>
+                                            <input type="text" class="form-control" id="validationCustom01" name="nomor_telepon" required="">
                                             <div class="invalid-feedback">Harus diisi</div>
                                         </div>
                                         <div class="form-group  mb-3">
-                                            <label class="form-label" for="validationCustom01">Barcode</label>
-                                            <input type="text" class="form-control" id="validationCustom01" name="barcode">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label class="form-label" for="validationCustom01">Nama Produk</label>
-                                            <input type="text" class="form-control" id="validationCustom01" name="nama" required>
+                                            <label class="form-label" for="validationCustom01">Alamat</label>
+                                            <textarea class="form-control" name="alamat" required=""></textarea>
                                             <div class="invalid-feedback">Harus diisi</div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <button class="btn btn-primary rounded-pill px-4 mt-3 me-2" type="submit">Simpan</button>
-                                <a href="<?= base_url('produk')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>
+                                <a href="<?= base_url('pemasok')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>
                             </form>
                         </div>
                     </div>

@@ -62,8 +62,8 @@
                                             <th>Sunting</th>
                                             <th>Hapus</th>
                                         </tr>
-                                    </tfoot> -->
-                                </table>
+                                    </tfoot>
+                                </table> -->
                             </div>
                         </div>
                     </div>
