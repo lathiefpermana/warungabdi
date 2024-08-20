@@ -1,4 +1,6 @@
 <script src="<?= base_url('assets/libs/jquery/dist/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/libs/jquery/dist/jquery-3.7.1.min.js'); ?>"></script>
+<script src="<?= base_url('assets/libs/jquery-ui-1.14.0/jquery-ui.js'); ?>"></script>
 <script src="<?= base_url('assets/js/app.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/app.init.js'); ?>"></script>
 <script src="<?= base_url('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js'); ?>"></script>
@@ -37,5 +39,13 @@
 	            e.preventDefault();
 	        }
 	    });
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+			$( "#nama_produk" ).autocomplete({
+			source: "<?php echo site_url('barang_masuk/get_autocomplete/?');?>"
+		});
 	});
 </script>

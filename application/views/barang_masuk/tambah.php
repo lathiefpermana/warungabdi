@@ -53,7 +53,9 @@
                                         <div class="form-group  mb-3">
                                             <label class="form-label" for="validationCustom01">Pemasok</label>
                                             <select class="form-control select2" name="pemasok" required>
-                                                <option>-</option>
+                                                <?php foreach($pemasok as $key): ?>
+                                                    <option value="<?= $key->id; ?>"><?= $key->nama; ?></option>
+                                                <?php endforeach ?>
                                             </select>
                                             <div class="invalid-feedback">Harus diisi</div>
                                         </div>
@@ -66,7 +68,32 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <h6 class="mt-3">Item Barang</h6>
+                                    <div class="mb-2">
+                                        <h5 class="card-title">
+                                            Item Barang
+                                        </h5>
+                                    </div>
+                                   
+                                    <div class="form-repeater mb-3">
+                                        <div data-repeater-list="repeater-group">
+                                            <div data-repeater-item class="row mb-3">
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="nama_produk" class="form-control" name="nama" placeholder="Search produk">
+                                                </div>
+                                                <div class="col-md-2 mt-3 mt-md-0">
+                                                    <button data-repeater-delete="" class="btn btn-danger" type="button">
+                                                        <i class="ti ti-circle-x fs-5 d-flex"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" data-repeater-create="" class="btn btn-success">
+                                            <div class="d-flex align-items-center">
+                                                Add <i class="ti ti-circle-plus ms-1 fs-5"></i>
+                                            </div>
+                                        </button>
+                                    </div>
+
                                 </div>
                                 <button class="btn btn-primary rounded-pill px-4 mt-3 me-2" type="submit">Simpan</button>
                                 <a href="<?= base_url('barang_masuk')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>

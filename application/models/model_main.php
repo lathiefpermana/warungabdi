@@ -21,4 +21,15 @@ class model_main extends CI_Model{
         }
         return $this->db->get($table);
     }
+
+    function produk_autocomplete($nama){
+        $this->db->select('produk.nama as nama, kategori_produk.nama as kategori_produk');
+        $this->db->join('kategori_produk','kategori_produk.id = produk.kategori_produk');
+        $this->db->like('produk.nama', $nama, 'both');
+        $this->db->or_like('kategori_produk.nama', $nama, 'both');
+        $this->db->where('produk.delete_by IS NULL');
+        $this->db->order_by('produk.nama','ASC');
+        $this->db->limit(10);
+        return $this->db->get('produk')->result();
+    }
 }

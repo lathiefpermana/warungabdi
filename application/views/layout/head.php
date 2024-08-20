@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css'); ?>" />    
     <link rel="stylesheet" href="<?= base_url('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/libs/select2/dist/css/select2.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/libs/jquery-ui-1.14.0/jquery-ui.css'); ?>">
     
     <title>Warung Abdi</title>
     <style>
