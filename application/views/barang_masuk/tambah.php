@@ -37,7 +37,7 @@
                                 </h5>
                             </div>
                             <p class="card-subtitle mb-3">
-                                Tambah barang masuk merupakan proses untuk input data belanja dengan qty dan harga beli. Sehingga belanja modal dapat tercatat dan stok produk bertambah.
+                                <mark>Step 1</mark>. Isi form faktur pembelian.
                             </p>
 
                             <form class="was-validated" method="post" action="<?= base_url('barang_masuk/simpan'); ?>">
@@ -67,35 +67,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="mb-2">
-                                        <h5 class="card-title">
-                                            Item Barang
-                                        </h5>
-                                    </div>
-                                   
-                                    <div class="form-repeater mb-3">
-                                        <div data-repeater-list="repeater-group">
-                                            <div data-repeater-item class="row mb-3">
-                                                <div class="col-sm-3">
-                                                    <input type="text" id="nama_produk" class="form-control" name="nama" placeholder="Search produk">
-                                                </div>
-                                                <div class="col-md-2 mt-3 mt-md-0">
-                                                    <button data-repeater-delete="" class="btn btn-danger" type="button">
-                                                        <i class="ti ti-circle-x fs-5 d-flex"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" data-repeater-create="" class="btn btn-success">
-                                            <div class="d-flex align-items-center">
-                                                Add <i class="ti ti-circle-plus ms-1 fs-5"></i>
-                                            </div>
-                                        </button>
-                                    </div>
-
-                                </div>
-                                <button class="btn btn-primary rounded-pill px-4 mt-3 me-2" type="submit">Simpan</button>
+                                
+                                <button class="btn btn-primary rounded-pill px-4 mt-3 me-2" type="submit">Lanjut</button>
                                 <a href="<?= base_url('barang_masuk')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>
                             </form>
                         </div>

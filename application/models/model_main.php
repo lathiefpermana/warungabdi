@@ -22,14 +22,15 @@ class model_main extends CI_Model{
         return $this->db->get($table);
     }
 
+    function last_data($table){
+        $this->db->order_by(('id DESC'));
+        $this->db->limit(1);
+        return $this->db->get($table);
+    }
+
     function produk_autocomplete($nama){
-        $this->db->select('produk.nama as nama, kategori_produk.nama as kategori_produk');
-        $this->db->join('kategori_produk','kategori_produk.id = produk.kategori_produk');
-        $this->db->like('produk.nama', $nama, 'both');
-        $this->db->or_like('kategori_produk.nama', $nama, 'both');
-        $this->db->where('produk.delete_by IS NULL');
-        $this->db->order_by('produk.nama','ASC');
+        $this->db->like('detail_produk',$nama,'both');
         $this->db->limit(10);
-        return $this->db->get('produk')->result();
+        return $this->db->get('view_produk')->result();
     }
 }
