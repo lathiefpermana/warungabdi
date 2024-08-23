@@ -36,34 +36,48 @@
                                 <a href="<?= base_url('barang_masuk/tambah'); ?>" class="btn btn-primary"><i class="ti ti-plus"></i> Barang Masuk</a>
                             </div>
                             <div class="table-responsive">
-                                <!-- <table id="datatables-barang-masuk" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
+                                <table id="multi_control-custom" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kategori</th>
-                                            <th>Barcode</th>
-                                            <th>Nama</th>
-                                            <th>Dibuat oleh</th></th>
-                                            <th>Waktu dibuat</th>
+                                            <th>Tanggal</th>
+                                            <th>Pemasok</th>
+                                            <th>No Faktur</th>
                                             <th>Log</th>
-                                            <th>Sunting</th>
-                                            <th>Hapus</th>
+                                            <th class="text-center">Sunting</th>
+                                            <th class="text-center">Hapus</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <?php $no=1; ?>
+                                        <?php foreach($barang_masuk as $key): ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $key->tanggal; ?></td>
+                                                <td><?= $key->pemasok; ?></td>
+                                                <td><?= $key->nomor_faktur; ?></td>
+                                                <td><?= $key->log; ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('barang_masuk/sunting/'.$key->id); ?>" class="btn btn-secondary btn-sm"><i class="ti ti-pencil fs-3"></i></a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('barang_masuk/hapus/'.$key->id); ?>" class="btn btn-danger btn-sm confirm"><i class="ti ti-trash fs-3"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kategori</th>
-                                            <th>Barcode</th>
-                                            <th>Nama</th>
-                                            <th>Dibuat oleh</th></th>
-                                            <th>Waktu dibuat</th>
+                                            <th>Tanggal</th>
+                                            <th>Pemasok</th>
+                                            <th>No Faktur</th>
                                             <th>Log</th>
-                                            <th>Sunting</th>
-                                            <th>Hapus</th>
+                                            <th class="text-center">Sunting</th>
+                                            <th class="text-center">Hapus</th>
                                         </tr>
                                     </tfoot>
-                                </table> -->
+                                </table>
                             </div>
                         </div>
                     </div>

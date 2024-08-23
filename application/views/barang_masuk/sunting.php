@@ -13,7 +13,7 @@
                                 <li class="breadcrumb-item">
                                     <a class="text-muted text-decoration-none" href="<?= base_url('barang_masuk'); ?>">Barang Masuk</a>
                                 </li>
-                                <li class="text-muted breadcrumb-item" aria-current="page">Tambah Barang Masuk</li>
+                                <li class="text-muted breadcrumb-item" aria-current="page">Sunting Barang Masuk</li>
                             </ol>
                         </nav>
                     </div>
@@ -33,34 +33,46 @@
                         <div class="card-body">
                             <div class="mb-2">
                                 <h5 class="card-title">
-                                    Tambah Barang Masuk
+                                    Sunting Barang Masuk
                                 </h5>
                             </div>
                             <p class="card-subtitle mb-3">
-                                <mark>Step 2</mark>. Tambah item - item yang akan dimasukan sesuai dengan faktur yang sudah dibuat. Beras 1L = 0.753KG, Minyak 1L = 0.933KG
+                                <mark>Sunting</mark>. Pengguna dapat merubah detail barang masuk atau menambahkan dan menghapus produk yang ada.
                             </p>
-                                                        
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group  mb-3">
-                                        <label class="form-label" for="validationCustom01">Tanggal</label>
-                                        <p class="form-control-static"><?= $barang_masuk['tanggal']; ?></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group  mb-3">
-                                        <label class="form-label" for="validationCustom01">Pemasok</label>
-                                        <p class="form-control-static"><?= $barang_masuk['pemasok']; ?></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group mb-3">
-                                        <label class="form-label" for="validationCustom01">Nomor Faktur</label>
-                                        <p class="form-control-static"><?= $barang_masuk['nomor_faktur']; ?></p>
-                                    </div>
-                                </div>
-                            </div>
 
+                            <form class="was-validated" method="post" action="<?= base_url('barang_masuk/pembaruan'); ?>">
+                                <div class="row">
+                                    <div class="col-md-3" hidden>
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Tanggal</label>
+                                            <input type="text" class="form-control" name="id" value="<?= $barang_masuk['id']; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Tanggal</label>
+                                            <input type="date" class="form-control" name="tanggal" value="<?= $barang_masuk['tanggal']; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Pemasok</label>
+                                            <select name="pemasok" class="form-control select2">
+                                                <?php foreach($pemasok as $key): ?>
+                                                    <option value="<?= $key->id ?>" <?php if($key->id == $barang_masuk['pemasok']){ echo "selected"; } ?> ><?= $key->nama; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-3">
+                                            <label class="form-label" for="validationCustom01">Nomor Faktur</label>
+                                            <input type="text" class="form-control" name="nomor_faktur" value="<?= $barang_masuk['nomor_faktur']; ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary rounded-pill px-4 me-2" type="submit">Pembaruan</button>
+                            </form>
                             <div class="mb-2 mt-3">
                                 <h5 class="card-title">
                                     Tambah Produk

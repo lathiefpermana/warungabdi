@@ -26,11 +26,6 @@
 
 <script src="<?= base_url('assets/libs/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
 
-
-<!-- <script src="<?= base_url('assets/libs/apexcharts/dist/apexcharts.min.js'); ?>"></script> -->
-<!-- <script src="<?= base_url('assets/js/apex-chart/apex.line.init.js'); ?>"></script> -->
-<!-- <script src="<?= base_url('assets/js/dashboards/dashboard.js'); ?>"></script> -->
-
 <script type="text/javascript">
 	jQuery(function($){
 	    $(document).on('click', 'a.confirm', function(e) {

@@ -14,6 +14,17 @@
                 </div>
             </div>
         <?php } ?>
+        <?php if($this->session->flashdata('info')){ ?>
+            <div class="toast toast-onload align-items-center toast-info border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body hstack align-items-start gap-6">
+                    <i class="ti ti-alert-circle fs-6"></i>
+                    <div>
+                        <h5 class="text-white fs-3 mb-1"><?= $this->session->flashdata('info'); ?></h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white fs-2 m-0 ms-auto shadow-none" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php } ?>
         <?php if($this->session->flashdata('error')){ ?>
             <div class="toast toast-onload align-items-center toast-error border-0" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-body hstack align-items-start gap-6">
