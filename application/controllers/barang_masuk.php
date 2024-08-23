@@ -196,4 +196,42 @@ class barang_masuk extends CI_Controller {
         redirect(base_url('barang_masuk/sunting/'.$id));
     }
 
+    function hapus()
+    {
+        $id = $this->uri->segment(3);
+        $item = $this->model_main->data_result('barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
+        foreach($item->result() as $key):
+            $id_barang_masuk_item = $key->id;
+            $status_stok = $key->status_stok;
+            $produk = $key->produk;
+            $jumlah_stok = $key->jumlah_stok;
+            if($status_stok == 'sudah') //potong stok
+            {
+                $stok = $this->model_main->data_result('stok',array('produk'=>$produk),null)->row();
+                $jumlah = $stok->jumlah - $jumlah_stok;
+                $this->model_main->update_data($stok->id,'stok',array('jumlah'=>$jumlah));
+                $array1 = array(
+                    'status_stok' => 'hapus stok',
+                    'delete_by'=> $this->session->userdata('id_akun'),
+                    'delete_at'=> date('Y-m-d H:i:s'),
+                );
+                $this->model_main->update_data($id_barang_masuk_item,'barang_masuk_item',$array1);
+            }elseif($status_stok == 'belum'){
+                $array2 = array(
+                    'status_stok' => 'tidak hapus stok',
+                    'delete_by'=> $this->session->userdata('id_akun'),
+                    'delete_at'=> date('Y-m-d H:i:s'),
+                );
+                $this->model_main->update_data($id_barang_masuk_item,'barang_masuk_item',$array2);
+            }else{}
+        endforeach;
+        $array4 = array(
+            'delete_by'=> $this->session->userdata('id_akun'),
+            'delete_at'=> date('Y-m-d H:i:s'),
+        );
+        $this->model_main->update_data($id,'barang_masuk',$array4);
+        $this->session->set_flashdata('success','Data dihapus!');
+        redirect(base_url('barang_masuk'));
+    }
+
 }
