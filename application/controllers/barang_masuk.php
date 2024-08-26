@@ -185,9 +185,11 @@ class barang_masuk extends CI_Controller {
         $barang_masuk = $this->model_main->data_result('barang_masuk',array('id'=>$id),null);
         $barang_masuk_item = $this->model_main->data_result('barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
         $pemasok = $this->model_main->data_result('pemasok',null,'delete_by IS NULL');
+        $satuan = $this->model_main->data_result('satuan',null,'delete_by IS NULL');
         $data['barang_masuk'] = $barang_masuk->row_array();
         $data['daftar_produk'] = $barang_masuk_item->result();
         $data['pemasok'] = $pemasok->result();
+        $data['satuan'] = $satuan->result();
         $data['content'] = 'barang_masuk/sunting';
         $this->load->view('layout',$data);
     }
