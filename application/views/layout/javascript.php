@@ -44,3 +44,31 @@
 		});
 	});
 </script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+			$( "#nama_produk_stok" ).autocomplete({
+			autoFocus: true,
+			source: "<?php echo site_url('daftar_harga/get_autocomplete/?');?>"
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function(){
+		$('#nama_produk_stok').change(function(){
+		var produk = $(this).val();
+
+			$.ajax({
+				type : 'POST',
+				url : '<?= site_url('daftar_harga/getsatuanstok');?>',
+				data : 'produk='+produk,
+				success: function(respone){
+				$('#satuanstok').html(respone);
+			}
+
+			})
+		})
+
+	});
+</script>

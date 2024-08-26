@@ -66,10 +66,10 @@ class barang_masuk extends CI_Controller {
         $data = $this->session_data();
         $id = $this->uri->segment(3);
         $barang_masuk = $this->model_main->data_result('view_barang_masuk',array('id'=>$id),'delete_by IS NULL');
-        $data['barang_masuk'] = $barang_masuk->row_array();
         $satuan = $this->model_main->data_result('satuan',null,'delete_by IS NULL');
-        $data['satuan'] = $satuan->result();
         $daftar_produk = $this->model_main->data_result('view_barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
+        $data['barang_masuk'] = $barang_masuk->row_array();
+        $data['satuan'] = $satuan->result();
         $data['daftar_produk'] = $daftar_produk->result();
         $data['content'] = 'barang_masuk/tambah_item';
         $this->load->view('layout',$data);

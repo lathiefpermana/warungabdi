@@ -33,4 +33,10 @@ class model_main extends CI_Model{
         $this->db->limit(10);
         return $this->db->get('view_produk')->result();
     }
+
+    function stok_autocomplete($nama){
+        $this->db->like('produk', $nama, 'both');
+        $this->db->limit(10);
+        return $this->db->get('view_stok')->result();
+    }
 }
