@@ -3,8 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class produk extends CI_Controller {
 
+    public function session_data()
+    {
+        $lisensi = $this->input->cookie('lisensi-warung-abdi');
+        $status_login = $this->session->userdata('status_login');
+        if(empty($status_login)){
+            redirect(base_url('autentikasi/login'));
+        }
+    }
+
     public function index()
     {
+        $data = $this->session_data();
         $data['content'] = 'produk/index';
         $this->load->view('layout',$data);
     }
@@ -21,6 +31,7 @@ class produk extends CI_Controller {
 
     function tambah()
     {
+        $data = $this->session_data();
         $kategori = $this->model_main->data_result('kategori_produk',null,null);
         $data['kategori'] = $kategori->result();
         $data['content'] = 'produk/tambah';
@@ -53,6 +64,7 @@ class produk extends CI_Controller {
 
     function sunting()
     {
+        $data = $this->session_data();
         $id = $this->uri->segment(3);
         $produk = $this->model_main->data_result('produk',array('id'=>$id),null);
         $kategori = $this->model_main->data_result('kategori_produk',null,null);

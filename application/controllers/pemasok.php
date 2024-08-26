@@ -3,8 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class pemasok extends CI_Controller {
 
+    public function session_data()
+    {
+        $lisensi = $this->input->cookie('lisensi-warung-abdi');
+        $status_login = $this->session->userdata('status_login');
+        if(empty($status_login)){
+            redirect(base_url('autentikasi/login'));
+        }
+    }
+
     public function index()
     {
+        $data = $this->session_data();
         $data['content'] = 'pemasok/index';
         $data['pemasok'] = $this->model_main->data_result('view_pemasok',null,'delete_by IS NULL')->result();
         $this->load->view('layout',$data);
@@ -12,6 +22,7 @@ class pemasok extends CI_Controller {
 
     function tambah()
     {
+        $data = $this->session_data();
         $data['content'] = 'pemasok/tambah';
         $this->load->view('layout', $data);
     }
@@ -44,6 +55,7 @@ class pemasok extends CI_Controller {
     
     function sunting()
     {
+        $data = $this->session_data();
         $id = $this->uri->segment(3);
         $pemasok = $this->model_main->data_result('pemasok',array('id'=>$id),'delete_by IS NULL');
         $data['pemasok'] = $pemasok->row_array();

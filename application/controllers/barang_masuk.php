@@ -3,8 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class barang_masuk extends CI_Controller {
 
+    public function session_data()
+    {
+        $lisensi = $this->input->cookie('lisensi-warung-abdi');
+        $status_login = $this->session->userdata('status_login');
+        if(empty($status_login)){
+            redirect(base_url('autentikasi/login'));
+        }
+    }
+
     public function index()
     {
+        $data = $this->session_data();
         $barang_masuk = $this->model_main->data_result('view_barang_masuk',null,'delete_by IS NULL');
         $data['barang_masuk'] = $barang_masuk->result();
         $data['content'] = 'barang_masuk/index';
@@ -25,6 +35,7 @@ class barang_masuk extends CI_Controller {
 
     function tambah()
     {
+        $data = $this->session_data();
         $pemasok = $this->model_main->data_result('view_pemasok',null,'delete_by IS NULL');
         $data['pemasok'] = $pemasok->result();
         $data['content'] = 'barang_masuk/tambah';
@@ -52,6 +63,7 @@ class barang_masuk extends CI_Controller {
 
     function tambah_item()
     {
+        $data = $this->session_data();
         $id = $this->uri->segment(3);
         $barang_masuk = $this->model_main->data_result('view_barang_masuk',array('id'=>$id),'delete_by IS NULL');
         $data['barang_masuk'] = $barang_masuk->row_array();
@@ -168,6 +180,7 @@ class barang_masuk extends CI_Controller {
 
     function sunting()
     {
+        $data = $this->session_data();
         $id = $this->uri->segment(3);
         $barang_masuk = $this->model_main->data_result('barang_masuk',array('id'=>$id),null);
         $barang_masuk_item = $this->model_main->data_result('barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
