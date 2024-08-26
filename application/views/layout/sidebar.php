@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?= base_url('produk/daftar_harga'); ?>" aria-expanded="false">
+                    <a class="sidebar-link" href="<?= base_url('daftar_harga'); ?>" aria-expanded="false">
                         <span><i class="ti ti-tag"></i></span>
                         <span class="hide-menu">Daftar Harga</span>
                     </a>
