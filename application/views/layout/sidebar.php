@@ -55,7 +55,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="<?= base_url('gudang') ?>" class="sidebar-link">
+                            <a href="<?= base_url('stok') ?>" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -63,7 +63,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= base_url('gudang/stock_opname'); ?>" class="sidebar-link">
+                            <a href="<?= base_url('stok_opname'); ?>" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
