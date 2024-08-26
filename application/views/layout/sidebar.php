@@ -2,8 +2,8 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="<?= base_url(); ?>" class="text-nowrap logo-img">
-                <img src="<?= base_url('assets/images/logos/dark-logo.svg'); ?>" class="dark-logo" alt="Logo-Dark"/>
-                <img src="<?= base_url('assets/images/logos/light-logo.svg'); ?>" class="light-logo" alt="Logo-light"/>
+                <img src="<?= base_url('assets/images/logos/dark-logo.png'); ?>" class="dark-logo" alt="Logo-Dark"/>
+                <img src="<?= base_url('assets/images/logos/light-logo.png'); ?>" class="light-logo" alt="Logo-light"/>
             </a>
             <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none" >
                 <i class="ti ti-x"></i>
@@ -47,12 +47,6 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?= base_url('pemasok'); ?>" aria-expanded="false">
-                        <span><i class="ti ti-users"></i></span>
-                        <span class="hide-menu">Pemasok</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="d-flex">
                             <i class="ti ti-building-warehouse"></i>
@@ -74,6 +68,32 @@
                                     <i class="ti ti-circle"></i>
                                 </div>
                                 <span class="hide-menu"><i>Stock Opname</i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="ti ti-database"></i>
+                        </span>
+                        <span class="hide-menu">Data Induk</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('pemasok') ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Pemasok</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('satuan') ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Satuan</span>
                             </a>
                         </li>
                     </ul>

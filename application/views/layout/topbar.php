@@ -11,8 +11,8 @@
 
                 <div class="d-block d-lg-none">
                     <a href="#" class="text-nowrap logo-img">
-                        <img src="<?= base_url('assets/images/logos/dark-logo.svg'); ?>" class="dark-logo" alt="Logo-Dark"/>
-                        <img src="<?= base_url('assets/images/logos/light-logo.svg'); ?>" class="light-logo" alt="Logo-light"/>
+                        <img src="<?= base_url('assets/images/logos/dark-logo.png'); ?>" class="dark-logo" alt="Logo-Dark"/>
+                        <img src="<?= base_url('assets/images/logos/light-logo.png'); ?>" class="light-logo" alt="Logo-light"/>
                     </a>
                 </div>
                 <a class="navbar-toggler nav-icon-hover p-0 border-0" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
