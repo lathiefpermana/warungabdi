@@ -42,8 +42,8 @@
                                             <th>#</th>
                                             <th>Produk</th>
                                             <th>Nama</th>
-                                            <th>Harga Jual</th>
                                             <th>Jumlah Jual</th>
+                                            <th>Harga Jual</th>
                                             <th>Satuan</th>
                                             <th>Log</th>
                                             <th class="text-center">Sunting</th>
@@ -55,8 +55,8 @@
                                             <th>#</th>
                                             <th>Produk</th>
                                             <th>Nama</th>
-                                            <th>Harga Jual</th>
                                             <th>Jumlah Jual</th>
+                                            <th>Harga Jual</th>
                                             <th>Satuan</th>
                                             <th>Log</th>
                                             <th class="text-center">Sunting</th>
