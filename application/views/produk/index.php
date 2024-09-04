@@ -43,6 +43,7 @@
                                             <th>Kategori</th>
                                             <th>Barcode</th>
                                             <th>Nama</th>
+                                            <th>Satuan Jual</th>
                                             <th>Dibuat oleh</th></th>
                                             <th>Waktu dibuat</th>
                                             <th>Log</th>
@@ -56,6 +57,7 @@
                                             <th>Kategori</th>
                                             <th>Barcode</th>
                                             <th>Nama</th>
+                                            <th>Satuan Jual</th>
                                             <th>Dibuat oleh</th></th>
                                             <th>Waktu dibuat</th>
                                             <th>Log</th>

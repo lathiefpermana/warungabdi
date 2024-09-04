@@ -22,7 +22,7 @@ class produk extends CI_Controller {
     function ajax_list()
     {
         $query  = "SELECT * FROM view_produk";
-        $search = array('kategori_produk','barcode','nama_produk','created_by','created_at');
+        $search = array('kategori_produk','barcode','nama_produk','satuan','created_by','created_at');
         $where = null;
         $isWhere = 'delete_by IS NULL';
         header('Content-Type: application/json');
@@ -33,7 +33,9 @@ class produk extends CI_Controller {
     {
         $data = $this->session_data();
         $kategori = $this->model_main->data_result('kategori_produk',null,null);
+        $satuan = $this->model_main->data_result('satuan',null,null);
         $data['kategori'] = $kategori->result();
+        $data['satuan'] = $satuan->result();
         $data['content'] = 'produk/tambah';
         $this->load->view('layout',$data);
     }
@@ -43,6 +45,7 @@ class produk extends CI_Controller {
         $kategori_produk = $this->input->post('kategori_produk');
         $barcode = $this->input->post('barcode');
         $nama = $this->input->post('nama');
+        $satuan = $this->input->post('satuan');
 
         $check = $this->model_main->data_result('produk',array('nama'=>$nama),null);
         if($check->num_rows() > 0)
@@ -54,6 +57,7 @@ class produk extends CI_Controller {
             'kategori_produk' => $kategori_produk,
             'barcode' => $barcode,
             'nama' => strtoupper($nama),
+            'satuan' => $satuan,
             'created_by' => $this->session->userdata('id_akun'),
             'created_at' => date('Y-m-d H:i:s')
         );
@@ -68,8 +72,10 @@ class produk extends CI_Controller {
         $id = $this->uri->segment(3);
         $produk = $this->model_main->data_result('produk',array('id'=>$id),null);
         $kategori = $this->model_main->data_result('kategori_produk',null,null);
+        $satuan = $this->model_main->data_result('satuan',null,null);
         $data['produk'] = $produk->row_array();
         $data['kategori'] = $kategori->result();
+        $data['satuan'] = $satuan->result();
         $data['content'] = 'produk/sunting';
         $this->load->view('layout',$data);
     }
@@ -80,10 +86,12 @@ class produk extends CI_Controller {
         $kategori_produk = $this->input->post('kategori_produk');
         $barcode = $this->input->post('barcode');
         $nama = $this->input->post('nama');
+        $satuan = $this->input->post('satuan');
         $array = array(
             'kategori_produk' => $kategori_produk,
             'barcode' => $barcode,
             'nama' => $nama,
+            'satuan' => $satuan,
             'update_by' => $this->session->userdata('id_akun'),
             'update_at' => date('Y-m-d H:i:s')
         );

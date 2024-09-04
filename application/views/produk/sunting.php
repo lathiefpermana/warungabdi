@@ -65,6 +65,15 @@
                                             <input type="text" class="form-control" id="validationCustom01" name="nama" value="<?= $produk['nama']; ?>" required>
                                             <div class="invalid-feedback">Harus diisi</div>
                                         </div>
+                                        <div class="form-group mb-3">
+                                            <label class="form-label" for="validationCustom01">Satuan Jual</label>
+                                            <select class="form-control select2" name="satuan" id="validationCustom01" required>
+                                                <?php foreach($satuan as $key): ?>
+                                                    <option value="<?= $key->id; ?>" <?php if($key->id == $produk['satuan']){ echo 'selected'; } ?>><?= $key->nama; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <div class="invalid-feedback">Harus diisi</div>
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="btn btn-secondary rounded-pill px-4 mt-3 me-2" type="submit">Pembaruan</button>
