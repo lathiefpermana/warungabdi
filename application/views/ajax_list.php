@@ -25,7 +25,7 @@ $(function(){
             },
             { "data": "kategori_produk" },
             { "data": "barcode" },
-            { "data": "nama_produk" },
+            { "data": "produk" },
             { "data": "satuan" },
             { "data": "created_by" },
             { "data": "created_at" },

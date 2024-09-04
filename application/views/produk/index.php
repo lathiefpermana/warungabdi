@@ -42,7 +42,7 @@
                                             <th>#</th>
                                             <th>Kategori</th>
                                             <th>Barcode</th>
-                                            <th>Nama</th>
+                                            <th>Produk</th>
                                             <th>Satuan Jual</th>
                                             <th>Dibuat oleh</th></th>
                                             <th>Waktu dibuat</th>
@@ -56,7 +56,7 @@
                                             <th>#</th>
                                             <th>Kategori</th>
                                             <th>Barcode</th>
-                                            <th>Nama</th>
+                                            <th>Produk</th>
                                             <th>Satuan Jual</th>
                                             <th>Dibuat oleh</th></th>
                                             <th>Waktu dibuat</th>

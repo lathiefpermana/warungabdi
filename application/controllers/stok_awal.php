@@ -21,4 +21,13 @@ class stok_awal extends CI_Controller {
         $this->load->view('layout',$data);
     }
 
+    function tambah()
+    {
+        $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['content'] = 'stok_awal/tambah';
+        $this->load->view('layout',$data);
+    }
+
 }

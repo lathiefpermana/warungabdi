@@ -22,7 +22,7 @@ class produk extends CI_Controller {
     function ajax_list()
     {
         $query  = "SELECT * FROM view_produk";
-        $search = array('kategori_produk','barcode','nama_produk','satuan','created_by','created_at');
+        $search = array('kategori_produk','barcode','produk','satuan','created_by','created_at');
         $where = null;
         $isWhere = 'delete_by IS NULL';
         header('Content-Type: application/json');
