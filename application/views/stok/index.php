@@ -47,21 +47,6 @@
                                             <th>Log</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php $no=1; foreach($stok as $key): ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>

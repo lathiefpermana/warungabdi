@@ -15,8 +15,6 @@ class stok extends CI_Controller {
     public function index()
     {
         $data = $this->session_data();
-        $stok = $this->model_main->data_result('view_stok',null,null);
-        $data['stok'] = $stok->result();
         $data['bulan'] = date('m');
         $data['tahun'] = date('Y');
         $data['content'] = 'stok/index';
