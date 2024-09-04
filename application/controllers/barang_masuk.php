@@ -113,7 +113,7 @@ class barang_masuk extends CI_Controller {
             'delete_by'=> $this->session->userdata('id_akun'),
             'delete_at'=> date('Y-m-d H:i:s')
         );
-        $this->model_main->update_data($id,'barang_masuk_item',$array1);
+        $this->model_main->update_data($id,'barang_masuk_item',$array);
         $this->session->set_flashdata('success','Data dihapus!');
         redirect((base_url('barang_masuk/tambah_item/'.$barang_masuk)));
     }
