@@ -17,7 +17,7 @@ class stok extends CI_Controller {
         // $test = $this->model_main->data_result('view_stok',null,null)->result();
         $query  = "SELECT * FROM view_stok";
         $search = array('kategori_produk','produk');
-        $where = null;
+        $where = array('bulan'=>date('m'),'tahun'=>date('Y'));
         $isWhere = null;
         header('Content-Type: application/json');
         echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
@@ -30,8 +30,6 @@ class stok extends CI_Controller {
         $tahun = date('Y');
         $data['bulan'] = $bulan;
         $data['tahun'] = $tahun;
-        $stok = $this->model_main->data_result('view_stok',array('bulan'=>$bulan,'tahun'=>$tahun),null);
-        $data['stok'] = $stok->result();
         $data['content'] = 'stok/index';
         $this->load->view('layout',$data);
     }
@@ -55,12 +53,22 @@ class stok extends CI_Controller {
             if($check->num_rows() > 0){
                 // no action
             }else{
+                // get stok awal
+                if($bulan == 1){ $bulan_lalu = 12; $tahun_lalu = $tahun - 1; }else{ $bulan_lalu = $bulan - 1; $tahun_lalu = $tahun; }
+                $stok_awal = $this->model_main->data_result('view_stok',array('bulan'=>$bulan_lalu,'tahun'=>$tahun_lalu,'id_produk'=>$key->id),null);
+                if($stok_awal->num_rows() > 0){
+                    $awal = $stok_awal->row();
+                    $stok_awal = $awal->stok_balance;
+                }else{
+                    $stok_awal = 0;
+                }
+                //end get stok awal
                 $array = array(
                     'bulan' => $bulan,
                     'tahun' => $tahun,
                     'produk' => $key->id,
                     'satuan' => $key->satuan,
-                    'stok_awal' => 0,
+                    'stok_awal' => $stok_awal,
                     'stok_masuk' => 0,
                     'stok_keluar' => 0,
                     'stok_opname' => 0

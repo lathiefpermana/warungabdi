@@ -118,7 +118,7 @@ $(function(){
             },
             { "data": 'bulan',
                 render: function (data) {
-                    return '<?= strtoupper(namabulan('+data+')); ?>';
+                    return '<?= namabulan('+data+'); ?>';
                 }  
             },
             { "data": "tahun" },

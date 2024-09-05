@@ -37,7 +37,7 @@
                                 </h5>
                             </div>
                             <p class="card-subtitle mb-3">
-                                Stok <i>Generate</i> adalah untuk membuat data stok / tempat data stok sesuai dengan periode yang dipilih. Terutama setelah mendaftarkan produk baru, stok harus di <i>generate</i>.
+                                Stok <i>Generate</i> adalah untuk membuat data stok sebagai tempat penambahan dan pengurangan stok berdasarkan aktifitas.
                             </p>
 
                             <form class="was-validated" method="post" action="<?= base_url('stok/generate_stok'); ?>">
