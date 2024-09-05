@@ -31,7 +31,7 @@
                             <div class="mb-2">
                                 <h5 class="mb-0">Data Stok Awal</h5>
                             </div>
-                            <p class="card-subtitle mb-3">Data stok awal adalah data stok akhir bulan ini yang akan di pakai pada stok awal bulan depan. Di buat setiap akhir bulan.</p>
+                            <p class="card-subtitle mb-3">Data stok awal adalah data stok yang diambil dari stok <i>balance</i> bulan lalu dan disimpan untuk stok awal bulan dipilih.</p>
                             <div class="mb-3">
                                 <a href="<?= base_url('stok_awal/tambah'); ?>" class="btn btn-primary"><i class="ti ti-plus"></i> Stok Awal</a>
                             </div>

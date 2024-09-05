@@ -31,33 +31,45 @@
                             <div class="mb-2">
                                 <h5 class="mb-0">Data Stok</h5>
                             </div>
-                            <p class="card-subtitle mb-3">Data stok merupakan jumlah stok produk yang ada diwarung.</p>
+                            <p class="card-subtitle mb-3">Data stok produk. Data stok harus digenerate setiap user ganti bulan.</p>
+                            <div class="mb-3">
+                                <a href="<?= base_url('stok/generate'); ?>" class="btn btn-primary"><i class="ti ti-plus"></i> Generate</a>
+                            </div>
+                            <div class="title">
+                                <h3 class="text-center"><?= strtoupper(namabulan(($bulan)).' '.$tahun); ?></h3>
+                            </div>
                             <div class="table-responsive">
-                                <table id="multi_control-custom" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
+                                <table id="datatables-stok" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Bulan</th>
+                                            <th>Tahun</th>
                                             <th>Kategori</th>
                                             <th>Produk</th>
                                             <th>Satuan</th>
                                             <th>Stok Awal</th>
                                             <th>Stok Masuk</th>
                                             <th>Stok Keluar</th>
+                                            <th>Stok Opname</th>
                                             <th>Stok Balance</th>
-                                            <th>Log</th>
+                                            <th>Stok Log</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
+                                            <th>Bulan</th>
+                                            <th>Tahun</th>
                                             <th>Kategori</th>
                                             <th>Produk</th>
                                             <th>Satuan</th>
                                             <th>Stok Awal</th>
                                             <th>Stok Masuk</th>
                                             <th>Stok Keluar</th>
+                                            <th>Stok Opname</th>
                                             <th>Stok Balance</th>
-                                            <th>Log</th>
+                                            <th>Stok Log</th>
                                         </tr>
                                     </tfoot>
                                 </table>

@@ -4,16 +4,16 @@
             <div class="card-body px-4 py-3">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h4 class="fw-semibold mb-8">Stok Awal</h4>
+                        <h4 class="fw-semibold mb-8">Stok <i>Generate</i></h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a class="text-muted text-decoration-none" href="<?= base_url(); ?>">Dasbor</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a class="text-muted text-decoration-none" href="<?= base_url('stok_awal'); ?>">Stok Awal</a>
+                                    <a class="text-muted text-decoration-none" href="<?= base_url('stok_awal'); ?>">Stok <i>Generate</i></a>
                                 </li>
-                                <li class="text-muted breadcrumb-item" aria-current="page">Tambah Stok Awal</li>
+                                <li class="text-muted breadcrumb-item" aria-current="page">Buat Stok</li>
                             </ol>
                         </nav>
                     </div>
@@ -33,14 +33,14 @@
                         <div class="card-body">
                             <div class="mb-2">
                                 <h5 class="card-title">
-                                    Tambah Stok Awal
+                                    Buat Stok
                                 </h5>
                             </div>
                             <p class="card-subtitle mb-3">
-                                <mark>Stok harus sudah digenerate</mark>. Pilih bulan yang akan dibuat stok awal (bulan sekarang). Biasa dilakukan pada tanggal 1 setelah stok di <i>generate</i>.
+                                Stok <i>Generate</i> adalah untuk membuat data stok / tempat data stok sesuai dengan periode yang dipilih. Terutama setelah mendaftarkan produk baru, stok harus di <i>generate</i>.
                             </p>
 
-                            <form class="was-validated" method="post" action="<?= base_url('stok_awal/simpan'); ?>">
+                            <form class="was-validated" method="post" action="<?= base_url('stok/generate_stok'); ?>">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group  mb-3">
@@ -65,15 +65,12 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-primary rounded-pill px-4 mt-3 me-2" type="submit">Simpan</button>
-                                <a href="<?= base_url('stok_awal')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>
+                                <a href="<?= base_url('stok')?>" class="btn btn-outline-danger rounded-pill px-4 mt-3" >Batal</a>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </div>
