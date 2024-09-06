@@ -88,6 +88,12 @@ class barang_masuk extends CI_Controller {
         $satuan_stok = $this->input->post('satuan_stok');
         $kadaluarsa = $this->input->post('kadaluarsa');
         if(empty($kadaluarsa)){ $kadaluarsa = null;}
+
+        $cek_stok = $this->model_main->data_result('stok',array( 'bulan'=>date('m'), 'tahun'=>date('Y'),'produk'=>$produk ),null);
+        if($cek_stok->num_rows() <= 0){
+            $this->session->set_flashdata('error','Stok belum generate!');
+            redirect((base_url('barang_masuk/tambah_item/'.$barang_masuk)));
+        }
         $array = array(
             'barang_masuk'=>$barang_masuk,
             'produk'=>$produk,
@@ -102,7 +108,7 @@ class barang_masuk extends CI_Controller {
         );
         $this->model_main->insert_data('barang_masuk_item',$array);
         $this->session->set_flashdata('success','Data disimpan!');
-        redirect((base_url('barang_masuk/tambah_item/'.$barang_masuk)));        
+        redirect((base_url('barang_masuk/tambah_item/'.$barang_masuk)));
     }
 
     function hapus_item()
@@ -117,49 +123,6 @@ class barang_masuk extends CI_Controller {
         $this->session->set_flashdata('success','Data dihapus!');
         redirect((base_url('barang_masuk/tambah_item/'.$barang_masuk)));
     }
-
-    // function simpan_stok()
-    // {
-    //     $id = $this->uri->segment(3); //barang masuk
-    //     $item = $this->model_main->data_result('barang_masuk_item',array('barang_masuk'=>$id,'status_stok'=>'belum'),'delete_by IS NULL');
-    //     if($item->num_rows() > 0)
-    //     {        
-    //         foreach($item->result() as $key):
-    //             $id_barang_masuk_item = $key->id; //id barang masuk item
-    //             $produk = $key->produk;
-    //             $jumlah_stok = $key->jumlah_stok;
-    //             $satuan = $key->satuan_stok;
-
-    //             $check_stok = $this->model_main->data_result('stok',array('produk'=>$produk),null);
-    //             if($check_stok->num_rows() > 0){
-    //                 $stok = $check_stok->row();
-    //                 $id_stok = $stok->id;
-    //                 $jumlah = $stok->jumlah +  $jumlah_stok;
-
-    //                 $array = array(
-    //                     'jumlah'=> $jumlah
-    //                 );
-    //                 $this->model_main->update_data($id_stok,'stok',$array);
-    //             }else{
-    //                 $array1 = array(
-    //                     'produk' => $produk,
-    //                     'jumlah' => $jumlah_stok,
-    //                     'satuan' => $satuan
-    //                 );
-    //                 $this->model_main->insert_data('stok',$array1);
-    //             }
-    //             $array2 = array(
-    //                 'status_stok' => 'sudah'
-    //             );
-    //             $this->model_main->update_data($id_barang_masuk_item,'barang_masuk_item',$array2);
-    //         endforeach;
-    //         $this->session->set_flashdata('success','Data stok disimpan!');
-    //         redirect(base_url('barang_masuk'));
-    //     }else{
-    //         $this->session->set_flashdata('info','Selesai! Tidak ada stok diperbarui!');
-    //         redirect(base_url('barang_masuk'));
-    //     }   
-    // }
 
     // function sunting()
     // {
@@ -194,42 +157,27 @@ class barang_masuk extends CI_Controller {
     //     redirect(base_url('barang_masuk/sunting/'.$id));
     // }
 
-    // function hapus()
-    // {
-    //     $id = $this->uri->segment(3);
-    //     $item = $this->model_main->data_result('barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
-    //     foreach($item->result() as $key):
-    //         $id_barang_masuk_item = $key->id;
-    //         $status_stok = $key->status_stok;
-    //         $produk = $key->produk;
-    //         $jumlah_stok = $key->jumlah_stok;
-    //         if($status_stok == 'sudah') //potong stok
-    //         {
-    //             $stok = $this->model_main->data_result('stok',array('produk'=>$produk),null)->row();
-    //             $jumlah = $stok->jumlah - $jumlah_stok;
-    //             $this->model_main->update_data($stok->id,'stok',array('jumlah'=>$jumlah));
-    //             $array1 = array(
-    //                 'status_stok' => 'hapus stok',
-    //                 'delete_by'=> $this->session->userdata('id_akun'),
-    //                 'delete_at'=> date('Y-m-d H:i:s'),
-    //             );
-    //             $this->model_main->update_data($id_barang_masuk_item,'barang_masuk_item',$array1);
-    //         }elseif($status_stok == 'belum'){
-    //             $array2 = array(
-    //                 'status_stok' => 'tidak hapus stok',
-    //                 'delete_by'=> $this->session->userdata('id_akun'),
-    //                 'delete_at'=> date('Y-m-d H:i:s'),
-    //             );
-    //             $this->model_main->update_data($id_barang_masuk_item,'barang_masuk_item',$array2);
-    //         }else{}
-    //     endforeach;
-    //     $array4 = array(
-    //         'delete_by'=> $this->session->userdata('id_akun'),
-    //         'delete_at'=> date('Y-m-d H:i:s'),
-    //     );
-    //     $this->model_main->update_data($id,'barang_masuk',$array4);
-    //     $this->session->set_flashdata('success','Data dihapus!');
-    //     redirect(base_url('barang_masuk'));
-    // }
+    function hapus()
+    {
+        $id = $this->uri->segment(3);
+        $item = $this->model_main->data_result('barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
+        foreach($item->result() as $key):
+            $array = array(
+                'delete_by' => $this->session->userdata('id_akun'),
+                'delete_at' => date('Y-m-d H:i:s')
+            );
+
+            $this->model_main->update_data($key->id,'barang_masuk_item',$array);
+        endforeach;
+
+        $array = array(
+            'delete_by' => $this->session->userdata('id_akun'),
+            'delete_at' => date('Y-m-d H:i:s')
+        );
+
+        $this->model_main->update_data($id, 'barang_masuk', $array);
+        $this->session->set_flashdata('success','Data dihapus!');
+        redirect(base_url('barang_masuk'));
+    }
 
 }

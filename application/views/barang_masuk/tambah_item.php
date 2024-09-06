@@ -159,7 +159,7 @@
                                 </tfoot>
                             </table>
 
-                            <a href="<?= base_url('barang_masuk/simpan_stok/'.$barang_masuk['id']); ?>" class="btn btn-primary rounded-pill px-4 mt-3 me-2">Simpan Stok / Selesai</a>
+                            <a href="<?= base_url('barang_masuk'); ?>" class="btn btn-primary rounded-pill px-4 mt-3 me-2">Selesai</a>
                         </div>
                     </div>
                 </div>
