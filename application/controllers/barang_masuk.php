@@ -61,6 +61,26 @@ class barang_masuk extends CI_Controller {
         redirect(base_url('barang_masuk/tambah_item/'.$id));
     }
 
+    function update()
+    {
+        $id = $this->input->post('id');
+        $tanggal = $this->input->post('tanggal');
+        $pemasok = $this->input->post('pemasok');
+        $nomor_faktur = $this->input->post('nomor_faktur');
+
+        $array = array(
+            'tanggal' => $tanggal,
+            'pemasok' => $pemasok,
+            'nomor_faktur' => $nomor_faktur,
+            'update_by' => $this->session->userdata('id_akun'),
+            'update_at' => date('Y-m-d H:i:s')
+        );
+
+        $this->model_main->update_data($id,'barang_masuk',$array);
+        $this->session->set_flashdata('success','Data disimpan!');
+        redirect(base_url('barang_masuk/tambah_item/'.$id));
+    }
+
     function tambah_item()
     {
         $data = $this->session_data();

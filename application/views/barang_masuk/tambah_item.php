@@ -39,18 +39,24 @@
                             <p class="card-subtitle mb-3">
                                 <mark>Step 2</mark>. Tambah item - item yang akan dimasukan sesuai dengan faktur yang sudah dibuat. Beras 1L = 0.753KG, Minyak 1L = 0.933KG
                             </p>
-                            <form method="post" action="<?= base_url('barang_masuk/update_barang_masuk'); ?>">
+                            <form method="post" action="<?= base_url('barang_masuk/update'); ?>">
                                 <div class="row mb-3">
+                                    <div class="col-md-3" hidden>
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">ID</label>
+                                             <input type="text" class="form-control" name="id" value="<?= $barang_masuk['id']; ?>">
+                                        </div>
+                                    </div>
                                     <div class="col-md-3">
                                         <div class="form-group  mb-3">
                                             <label class="form-label" for="validationCustom01">Tanggal</label>
-                                             <input type="date" class="form-control" name="tanggal" onchange='if(this.value != 0) { this.form.submit(); }' value="<?= $barang_masuk['tanggal']; ?>">
+                                             <input type="date" class="form-control" name="tanggal" onchange='this.form.submit();' value="<?= $barang_masuk['tanggal']; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group  mb-3">
                                             <label class="form-label" for="validationCustom01">Pemasok</label>
-                                             <select name="pemasok" class="form-control">
+                                             <select name="pemasok" class="form-control" onchange='this.form.submit();'>
                                                 <?php  foreach ($pemasok as $key): ?>
                                                     <option value="<?= $key->id; ?>" <?php if($key->id == $barang_masuk['id_pemasok']){ echo "selected"; } ?> ><?= $key->nama; ?></option>
                                                 <?php endforeach; ?>
