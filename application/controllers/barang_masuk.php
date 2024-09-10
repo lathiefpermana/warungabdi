@@ -68,8 +68,10 @@ class barang_masuk extends CI_Controller {
         $barang_masuk = $this->model_main->data_result('view_barang_masuk',array('id'=>$id),'delete_by IS NULL');
         $satuan = $this->model_main->data_result('satuan',null,'delete_by IS NULL');
         $daftar_produk = $this->model_main->data_result('view_barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
+        $pemasok = $this->model_main->data_result('pemasok',null,'delete_by IS NULL');
         $data['barang_masuk'] = $barang_masuk->row_array();
         $data['satuan'] = $satuan->result();
+        $data['pemasok'] = $pemasok->result();
         $data['daftar_produk'] = $daftar_produk->result();
         $data['content'] = 'barang_masuk/tambah_item';
         $this->load->view('layout',$data);
@@ -107,8 +109,34 @@ class barang_masuk extends CI_Controller {
             'created_at'=> date('Y-m-d H:i:s')
         );
         $this->model_main->insert_data('barang_masuk_item',$array);
+
         $this->session->set_flashdata('success','Data disimpan!');
         redirect((base_url('barang_masuk/tambah_item/'.$barang_masuk)));
+    }
+
+    function update_item()
+    {   
+        $id_item = $this->input->post('id_item');
+        $id_barang_masuk = $this->input->post('id_barang_masuk');
+        $jumlah = $this->input->post('jumlah');
+        $jumlah_stok = $this->input->post('jumlah_stok');
+        $satuan = $this->input->post('satuan');
+        $satuan_stok = $this->input->post('satuan_stok');
+        $modal = $this->input->post('modal');
+        $kadaluarsa = $this->input->post('kadaluarsa');
+
+        $array = array(
+            'jumlah' => $jumlah,
+            'jumlah_stok' => $jumlah_stok,
+            'satuan' => $satuan,
+            'satuan_stok' => $satuan_stok,
+            'modal' => $modal,
+            'kadaluarsa' => $kadaluarsa,
+            'update_by' => $this->session->userdata('id_akun'),
+            'update_at' => date('Y-m-d H:i:s')
+        );
+        $this->model_main->update_data($id_item,'barang_masuk_item',$array);
+        redirect(base_url('barang_masuk/tambah_item/'.$id_barang_masuk));
     }
 
     function hapus_item()
@@ -123,39 +151,6 @@ class barang_masuk extends CI_Controller {
         $this->session->set_flashdata('success','Data dihapus!');
         redirect((base_url('barang_masuk/tambah_item/'.$barang_masuk)));
     }
-
-    // function sunting()
-    // {
-    //     $data = $this->session_data();
-    //     $id = $this->uri->segment(3);
-    //     $barang_masuk = $this->model_main->data_result('barang_masuk',array('id'=>$id),null);
-    //     $barang_masuk_item = $this->model_main->data_result('barang_masuk_item',array('barang_masuk'=>$id),'delete_by IS NULL');
-    //     $pemasok = $this->model_main->data_result('pemasok',null,'delete_by IS NULL');
-    //     $satuan = $this->model_main->data_result('satuan',null,'delete_by IS NULL');
-    //     $data['barang_masuk'] = $barang_masuk->row_array();
-    //     $data['daftar_produk'] = $barang_masuk_item->result();
-    //     $data['pemasok'] = $pemasok->result();
-    //     $data['satuan'] = $satuan->result();
-    //     $data['content'] = 'barang_masuk/sunting';
-    //     $this->load->view('layout',$data);
-    // }
-
-    // function pembaruan()
-    // {
-    //     $id = $this->input->post('id');
-    //     $tanggal = $this->input->post('tanggal');
-    //     $pemasok = $this->input->post('pemasok');
-    //     $nomor_faktur = $this->input->post('nomor_faktur');
-
-    //     $array = array(
-    //         'tanggal' => $tanggal,
-    //         'pemasok' => $pemasok,
-    //         'nomor_faktur' => $nomor_faktur
-    //     );
-    //     $this->model_main->update_data($id,'barang_masuk',$array);
-    //     $this->session->set_flashdata('success','Data diperbarui!');
-    //     redirect(base_url('barang_masuk/sunting/'.$id));
-    // }
 
     function hapus()
     {

@@ -58,7 +58,7 @@
                                                 <td><?= $key->nomor_faktur; ?></td>
                                                 <td><?= $key->log; ?></td>
                                                 <td class="text-center">
-                                                    <a href="<?= base_url('barang_masuk/sunting/'.$key->id); ?>" class="btn btn-secondary btn-sm"><i class="ti ti-pencil fs-3"></i></a>
+                                                    <a href="<?= base_url('barang_masuk/tambah_item/'.$key->id); ?>" class="btn btn-secondary btn-sm"><i class="ti ti-pencil fs-3"></i></a>
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="<?= base_url('barang_masuk/hapus/'.$key->id); ?>" class="btn btn-danger btn-sm confirm"><i class="ti ti-trash fs-3"></i></a>

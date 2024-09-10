@@ -39,126 +39,156 @@
                             <p class="card-subtitle mb-3">
                                 <mark>Step 2</mark>. Tambah item - item yang akan dimasukan sesuai dengan faktur yang sudah dibuat. Beras 1L = 0.753KG, Minyak 1L = 0.933KG
                             </p>
-                                                        
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group  mb-3">
-                                        <label class="form-label" for="validationCustom01">Tanggal</label>
-                                        <p class="form-control-static"><?= $barang_masuk['tanggal']; ?></p>
+                            <form method="post" action="<?= base_url('barang_masuk/update_barang_masuk'); ?>">
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Tanggal</label>
+                                             <input type="date" class="form-control" name="tanggal" onchange='if(this.value != 0) { this.form.submit(); }' value="<?= $barang_masuk['tanggal']; ?>">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group  mb-3">
-                                        <label class="form-label" for="validationCustom01">Pemasok</label>
-                                        <p class="form-control-static"><?= $barang_masuk['pemasok']; ?></p>
+                                    <div class="col-md-3">
+                                        <div class="form-group  mb-3">
+                                            <label class="form-label" for="validationCustom01">Pemasok</label>
+                                             <select name="pemasok" class="form-control">
+                                                <?php  foreach ($pemasok as $key): ?>
+                                                    <option value="<?= $key->id; ?>" <?php if($key->id == $barang_masuk['id_pemasok']){ echo "selected"; } ?> ><?= $key->nama; ?></option>
+                                                <?php endforeach; ?>
+                                             </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group mb-3">
-                                        <label class="form-label" for="validationCustom01">Nomor Faktur</label>
-                                        <p class="form-control-static"><?= $barang_masuk['nomor_faktur']; ?></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-2 mt-3">
-                                <h5 class="card-title">
-                                    Tambah Produk
-                                </h5>
-                            </div>
-                            <form class="was-validated" method="post" action="<?= base_url('barang_masuk/simpan_item'); ?>">
-                                <div class="row">
-                                    <div class="col-md-1" hidden>
-                                        <input type="text" class="form-control" name="barang_masuk" value="<?= $barang_masuk['id']; ?>">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="text" id="nama_produk" class="form-control" name="detail_produk" placeholder="Produk" autofocus required>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input type="number" class="form-control" name="jumlah" placeholder="Jumlah" required>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <select class="form-control select2" name="satuan" required>
-                                            <?php foreach($satuan as $key): ?>
-                                                <option value="<?= $key->id; ?>"><?= $key->nama; ?></option>
-                                            <?php endforeach ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="modal" placeholder="Modal / Harga Beli" required>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input type="text" class="form-control" name="jumlah_stok" placeholder="Jumlah Stok" required>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <select class="form-control select2" name="satuan_stok" required>
-                                            <?php foreach($satuan as $key): ?>
-                                                <option value="<?= $key->id; ?>"><?= $key->nama; ?></option>
-                                            <?php endforeach ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <p class="form-control-static mt-2"><span class="float-end">Kadaluarsa</span></p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="date" class="form-control" name="kadaluarsa" placeholder="Kadaluarsa">
-                                    </div>
-                                    <div class="col-md-1">
-                                        <button class="btn btn-success">Tambah</button>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-3">
+                                            <label class="form-label" for="validationCustom01">Nomor Faktur</label>
+                                             <input type="text" class="form-control" name="nomor_faktur" onchange='this.form.submit();' value="<?= $barang_masuk['nomor_faktur']; ?>">
+                                        </div>
                                     </div>
                                 </div>
                             </form>
 
-                            <div class="mb-2 mt-5">
+                            <div class="mb-3">
                                 <h5 class="card-title">
                                     Daftar Produk
                                 </h5>
                             </div>
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr class="text-center">
-                                        <td>No</td>
-                                        <td>Produk</td>
-                                        <td>Jumlah Beli</td>
-                                        <td>Modal / Harga Beli</td>
-                                        <td>Jumlah Stok</td>
-                                        <td>Modal Awal</td>
-                                        <td>Tanggal Kadaluarsa</td>
-                                        <td>Hapus</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no=1; $total = 0; ?>
-                                    <?php foreach ($daftar_produk as $key): ?>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <form class="was-validated" method="post" action="<?= base_url('barang_masuk/simpan_item'); ?>">
                                         <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $key->produk; ?></td>
-                                            <td class="text-center"><?= $key->jumlah.' '.$key->satuan; ?></td>
-                                            <td class="text-end"><?= number_format($key->modal); ?></td>
-                                            <td class="text-end"><?= $key->jumlah_stok.' PCS'; ?></td>
-                                            <td class="text-end"><mark><?= number_format(round($key->modal/$key->jumlah_stok)); ?></mark></td>
-                                            <td class="text-end"><?= $key->kadaluarsa; ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('barang_masuk/hapus_item/'.$key->id.'/'.$key->barang_masuk); ?>" class="btn btn-danger confirm"><i class="ti ti-trash"></i></a>
+                                                <i class="ti ti-plus-square"></i>
+                                                </span> <input type="text" class="form-control" name="barang_masuk" value="<?= $barang_masuk['id']; ?>" hidden>
+                                            </td>
+                                            <td width="25%">
+                                                <input type="text" id="nama_produk" class="form-control" name="detail_produk" placeholder="Produk" autofocus required>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" name="jumlah" placeholder="Jumlah" required>
+                                            </td>
+                                            <td>
+                                                <select class="form-control select2" name="satuan" required>
+                                                    <?php foreach($satuan as $key): ?>
+                                                        <option value="<?= $key->id; ?>"><?= $key->nama; ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" name="modal" placeholder="Modal / Harga Beli" required>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="jumlah_stok" placeholder="Jumlah Stok" required>
+                                            </td>
+                                            <td>
+                                                <select class="form-control select2" name="satuan_stok" required>
+                                                    <?php foreach($satuan as $key): ?>
+                                                        <option value="<?= $key->id; ?>"><?= $key->nama; ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <!-- <p class="form-control-static mt-2"><span class="float-end">Kadaluarsa</span></p> -->
+                                            </td>
+                                            <td>
+                                                <input type="date" class="form-control" name="kadaluarsa" placeholder="Kadaluarsa">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-success">Tambah</button>
                                             </td>
                                         </tr>
-                                        <?php $total = $total + $key->modal; ?>
-                                    <?php endforeach ?>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-end">Total</td>
-                                        <td class="text-end"><?= number_format($total); ?></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-
+                                        </form>
+                                        <tr class="text-center">
+                                            <td class="bg-light">No</td>
+                                            <td class="bg-light">Produk</td>
+                                            <td class="bg-light">Jumlah Beli</td>
+                                            <td class="bg-light">Satuan</td>
+                                            <td class="bg-light">Modal / Harga Beli</td>
+                                            <td class="bg-light">Jumlah Stok</td>
+                                            <td class="bg-light">Satuan</td>
+                                            <td class="bg-light">Modal Awal</td>
+                                            <td class="bg-light">Tanggal Kadaluarsa</td>
+                                            <td class="bg-light">Hapus</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <?php $no=1; $total = 0; ?>
+                                        <?php foreach ($daftar_produk as $key): ?>
+                                            <form method="post" action="<?= base_url('barang_masuk/update_item');?>">
+                                            <tr>
+                                                <td hidden><input type="text" class="form-control" name="id_barang_masuk" value="<?= $key->barang_masuk; ?>"></td>
+                                                <td hidden><input type="text" class="form-control" name="id_item" value="<?= $key->id; ?>"></td>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $key->produk; ?></td>
+                                                <td>
+                                                    <input type="number"  step="any" class="form-control" name="jumlah" onchange='if(this.value != 0) { this.form.submit(); }' value="<?= $key->jumlah; ?>">
+                                                </td>
+                                                <td>
+                                                    <select class="form-control" name="satuan" onchange='if(this.value != 0) { this.form.submit(); }'>
+                                                        <?php foreach($satuan as $key2): ?>
+                                                            <option value="<?= $key2->id; ?>" <?php if($key2->id == $key->id_satuan){ echo 'selected'; } ?>><?= $key2->nama; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="any" class="form-control" name="modal" onchange='if(this.value != 0) { this.form.submit(); }' value="<?= $key->modal; ?>">
+                                                </td>
+                                                <td class="text-end">
+                                                    <input type="number" step="any" class="form-control" name="jumlah_stok" onchange='if(this.value != 0) { this.form.submit(); }' value="<?= $key->jumlah_stok; ?>">
+                                                </td>
+                                                <td>
+                                                    <select class="form-control" name="satuan_stok" onchange='if(this.value != 0) { this.form.submit(); }'>
+                                                        <?php foreach($satuan as $key2): ?>
+                                                            <option value="<?= $key2->id; ?>" <?php if($key2->id == $key->id_satuan_stok){ echo 'selected'; } ?> ><?= $key2->nama; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </td>
+                                                <td class="text-end"><mark><?= number_format(round($key->modal/$key->jumlah_stok)); ?></mark></td>
+                                                <td>
+                                                    <input type="date" class="form-control" name="kadaluarsa" onchange='this.form.submit();' value="<?= $key->kadaluarsa; ?>">
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('barang_masuk/hapus_item/'.$key->id.'/'.$key->barang_masuk); ?>" class="btn btn-danger confirm"><i class="ti ti-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            </form>
+                                            <?php $total = $total + $key->modal; ?>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                                <td></td>
+                                            <td class="text-end">Total</td>
+                                            <td class="text-end"><?= number_format($total); ?></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                             <a href="<?= base_url('barang_masuk'); ?>" class="btn btn-primary rounded-pill px-4 mt-3 me-2">Selesai</a>
                         </div>
                     </div>
