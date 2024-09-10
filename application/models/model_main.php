@@ -28,15 +28,28 @@ class model_main extends CI_Model{
         return $this->db->get($table);
     }
 
+    function last_data_result($table, $where, $where_is){
+        if(!empty($where)){
+            $this->db->where($where);
+        }
+        if(!empty($where_is)){
+            $this->db->where($where_is);
+        }
+        $this->db->order_by(('id DESC'));
+        $this->db->limit(1);
+        return $this->db->get($table);
+    }
+
     function produk_autocomplete($nama){
         $this->db->like('produk',$nama,'both');
         $this->db->limit(10);
         return $this->db->get('view_produk')->result();
     }
 
-    // function stok_autocomplete($nama){
-    //     $this->db->like('produk', $nama, 'both');
-    //     $this->db->limit(10);
-    //     return $this->db->get('view_stok')->result();
-    // }
+    function daftar_harga_autocomplete($nama){
+        $this->db->like('nama',$nama,'both');
+        $this->db->limit(10);
+        return $this->db->get('view_daftar_harga')->result();
+    }
+
 }

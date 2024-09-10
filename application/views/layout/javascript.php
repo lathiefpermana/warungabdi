@@ -72,3 +72,12 @@
 
 	});
 </script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+			$( "#harga_produk" ).autocomplete({
+			autoFocus: true,
+			source: "<?php echo site_url('penjualan/get_autocomplete/?');?>"
+		});
+	});
+</script>
