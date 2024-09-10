@@ -32,7 +32,7 @@ class daftar_harga extends CI_Controller {
     function get_autocomplete()
     {
         if(isset($_GET['term'])){
-            $result = $this->model_main->stok_autocomplete($_GET['term']);
+            $result = $this->model_main->produk_autocomplete($_GET['term']);
             if(count($result) > 0){
                 foreach($result as $row)
                 $arr_result[] = $row->produk;
@@ -44,13 +44,13 @@ class daftar_harga extends CI_Controller {
     function getsatuanstok()
     {
         $produk = $this->input->post('produk');
-        $search = $this->model_main->data_result('view_stok',array('produk'=>$produk),null);
+        $search = $this->model_main->data_result('view_produk',array('produk'=>$produk),null);
         if($search->num_rows() > 0){
-            $stok = $search->row();
+            $item = $search->row();
             echo '<label class="form-label" for="validateCustom01">Satuan stok</label>';
-            echo '<input type="text" class="form-control" name="satuan_stok" id="validateCustom01" value="'.$stok->satuan.'" readonly>';
-            echo '<input type="text" class="form-control" name="id_produk" value="'.$stok->id_produk.'" hidden>';
-            echo '<input type="text" class="form-control" name="id_satuan" value="'.$stok->id_satuan.'" hidden>';
+            echo '<input type="text" class="form-control" name="satuan_stok" id="validateCustom01" value="'.$item->satuan.'" readonly>';
+            echo '<input type="text" class="form-control" name="id_produk" value="'.$item->id.'" hidden>';
+            echo '<input type="text" class="form-control" name="id_satuan" value="'.$item->id_satuan.'" hidden>';
         }else{
             echo '<label class="form-label" for="validateCustom01">Satuan stok</label>';
             echo '<input type="text" step="any" class="form-control" id="validateCustom01" placeholder="Not Found" required>';
