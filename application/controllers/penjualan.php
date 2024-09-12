@@ -12,6 +12,16 @@ class penjualan extends CI_Controller {
         }
     }
 
+    function ajax_list()
+    {
+        $query  = "SELECT * FROM view_penjualan";
+        $search = array('tanggal','jam','bulan','tahun','nomor_penjualan');
+        $where = array('bulan'=>date('m'),'tahun'=>date('Y'));
+        $isWhere = null;
+        header('Content-Type: application/json');
+        echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
+    }
+
     public function index()
     {
         $data = $this->session_data();
@@ -68,7 +78,7 @@ class penjualan extends CI_Controller {
         $data = $this->session_data();
         $id_penjualan = $this->uri->segment(3);
         $data['penjualan'] = $this->model_main->data_result('penjualan',array('id'=>$id_penjualan),'delete_by IS NULL')->row_array();
-        $data['item'] = $this->model_main->data_result('view_penjualan',array('penjualan'=>$id_penjualan),'delete_by IS NULL')->result();
+        $data['item'] = $this->model_main->data_result('view_penjualan_item',array('id_penjualan'=>$id_penjualan),null)->result();
         $data['content'] = 'penjualan/tambah_item';
         $this->load->view('layout',$data);
 
@@ -79,28 +89,111 @@ class penjualan extends CI_Controller {
     {
         $penjualan = $this->input->post('penjualan');
         $produk = $this->input->post('produk');
-        $jumlah = $this->input->post('jumlah');    
+        $jumlah = $this->input->post('jumlah');
 
-        $cek = $this->model_main->data_result('view_daftar_harga',array('nama'=>$produk),'delete_by IS NULL');
-        if($cek->num_rows() > 0)
+        $cek_item = $this->model_main->data_result('view_penjualan_item',array('produk'=>$produk),null);
+        if($cek_item->num_rows() > 0)
         {
-            $list = $cek->row();            
-
+            $item = $cek_item->row();
+            $newjumlah = $item->jumlah + $jumlah;
+            $total = $newjumlah * $item->harga;
+            $newjumlah_jual = $newjumlah * $item->jumlah_jual_stok;
+            $array = array(
+                'jumlah' => $newjumlah,
+                'jumlah_jual' => $newjumlah_jual,
+                'total' => $total,
+                'update_by' => $this->session->userdata('id_akun'),
+                'update_at' => date('Y-m-d H:i:s')
+            );
+            
+            $this->model_main->update_data($item->id,'penjualan_item',$array);
+        }else{
+            $list = $this->model_main->data_result('view_daftar_harga',array('nama'=>$produk),'delete_by IS NULL')->row();
             $array = array(
                 'penjualan'=> $penjualan,
                 'produk' => $list->id_produk,
                 'daftar_harga'=>$list->id,
                 'jumlah' => $jumlah,
-                'jumlah_jual' => $list->jumlah_jual,
+                'jumlah_jual' => $jumlah * $list->jumlah_jual,
                 'harga' => $list->harga_jual,
                 'total' => $jumlah * $list->harga_jual,
                 'created_by' => $this->session->userdata('id_akun'),
                 'created_at' => date('Y-m-d H:i:s')
             );
             
-            $this->model_main->insert_data('penjualan_item',$array);
-            $this->session->set_flashdata('success','Data disimpan!');
-            redirect(base_url('penjualan/tambah_item/'.$penjualan));
+            $this->model_main->insert_data('penjualan_item',$array);            
         }
+        
+        $this->session->set_flashdata('success','Data disimpan!');
+        redirect(base_url('penjualan/tambah_item/'.$penjualan));
+        
+    }
+
+    function update_item()
+    {
+        $id = $this->input->post('id');
+        $penjualan = $this->input->post('penjualan');
+        $jumlah = $this->input->post('jumlah');
+        $item = $this->model_main->data_result('view_penjualan_item',array('id'=>$id), null)->row();
+        $jumlah_jual_stok = $item->jumlah_jual_stok;
+        $harga = $item->harga;
+
+        $array = array(
+            'jumlah' => $jumlah,
+            'jumlah_jual' => $jumlah * $jumlah_jual_stok,
+            'total' => $jumlah * $harga,
+            'update_by' => $this->session->userdata('id_akun'),
+            'update_at' => date('Y-m-d H:i:s')
+        );
+        
+        $this->model_main->update_data($item->id,'penjualan_item',$array);
+        $this->session->set_flashdata('success','Data disimpan!');
+        redirect(base_url('penjualan/tambah_item/'.$penjualan));
+        
+    }
+
+    function update_diskon()
+    {
+        $id = $this->input->post('id_penjualan');
+        $diskon = $this->input->post('diskon');
+
+        $array = array(
+            'diskon' => $diskon,
+            'update_by' => $this->session->userdata('id_akun'),
+            'update_at' => date('Y-m-d H:i:s')
+        );
+        $this->model_main->update_data($id,'penjualan',$array);
+        $this->session->set_flashdata('success','Data diperbaharui!');
+        redirect(base_url('penjualan/tambah_item/'.$id));
+    }
+
+    function hapus_item()
+    {
+        $id = $this->uri->segment(3);
+        $array = array(
+            'delete_by' => $this->session->userdata('id_akun'),
+            'delete_at' => date('Y-m-d H:i:s')
+        );
+        $this->model_main->update_data($id,'penjualan_item',$array);
+        $this->session->set_flashdata('success','Data dihapus!');
+        redirect(base_url('penjualan/tambah_item/'.$id));
+    }
+
+    function hapus()
+    {
+        $id = $this->uri->segment(3);
+        $array = array(
+            'delete_by' => $this->session->userdata('id_akun'),
+            'delete_at' => date('Y-m-d H:i:s')
+        );
+
+        $this->model_main->update_data($id,'penjualan',$array);
+        $item = $this->model_main->data_result('penjualan_item',array('penjualan'=>$id),null)->result();
+        foreach ($item as $key):
+            $this->model_main->update_data($key->id,'penjualan_item',$array);
+        endforeach;
+
+        $this->session->set_flashdata('success','Data dihapus!');
+        redirect(base_url('penjualan'));
     }
 }

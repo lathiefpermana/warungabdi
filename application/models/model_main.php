@@ -22,6 +22,17 @@ class model_main extends CI_Model{
         return $this->db->get($table);
     }
 
+    function data_result_limit($table, $where, $where_is, $limit){
+        if(!empty($where)){
+            $this->db->where($where);
+        }
+        if(!empty($where_is)){
+            $this->db->where($where_is);
+        }
+        $this->db->limit($limit);
+        return $this->db->get($table);
+    }
+
     function last_data($table){
         $this->db->order_by(('id DESC'));
         $this->db->limit(1);

@@ -40,10 +40,17 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Waktu</th>
+                                            <th>Bulan</th>
+                                            <th>Tahun</th>
+                                            <th>Tanggal</th>
+                                            <th>Jam</th>
                                             <th>Nomor</th>
-                                            <th>Jumlah Produk</th>
-                                            <th>Total Belanja</th>
+                                            <th>Jumlah Item</th>
+                                            <th>Total</th>
+                                            <th>Diskon</th>
+                                            <th>Grand Total</th>
+                                            <th>Sunting</th>
+                                            <th>Hapus</th>
                                         </tr>
                                     </thead>
                                 </table>
