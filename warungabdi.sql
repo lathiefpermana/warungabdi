@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2024 at 11:29 AM
+-- Generation Time: Sep 13, 2024 at 11:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,6 +56,9 @@ INSERT INTO `akun` (`id`, `warung`, `akun_level`, `akun`, `sandi`, `lisensi`, `t
 CREATE TABLE `barang_masuk` (
   `id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
+  `jam` time DEFAULT NULL,
+  `bulan` int(11) DEFAULT NULL,
+  `tahun` int(11) DEFAULT NULL,
   `pemasok` int(11) NOT NULL,
   `nomor_faktur` varchar(255) NOT NULL,
   `created_by` int(11) NOT NULL,
@@ -71,12 +74,13 @@ CREATE TABLE `barang_masuk` (
 -- Dumping data for table `barang_masuk`
 --
 
-INSERT INTO `barang_masuk` (`id`, `tanggal`, `pemasok`, `nomor_faktur`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, '2024-09-05', 2, '2024/IX/WA0001', 1, '2024-09-05 07:57:05', NULL, NULL, 1, '2024-09-05 09:33:01', '2024-09-05 07:33:01'),
-(2, '2024-09-05', 2, '1', 1, '2024-09-05 09:33:18', NULL, NULL, 1, '2024-09-05 09:35:39', '2024-09-05 07:35:39'),
-(3, '2024-09-05', 2, '2', 1, '2024-09-05 09:33:42', NULL, NULL, 1, '2024-09-10 03:05:41', '2024-09-10 01:05:41'),
-(4, '2024-09-09', 2, '2024/09/0001', 1, '2024-09-10 03:06:02', NULL, NULL, 1, '2024-09-10 03:38:24', '2024-09-10 01:38:24'),
-(5, '2024-09-09', 2, '2024/09/0002', 1, '2024-09-10 03:37:37', 1, '2024-09-10 03:42:19', NULL, NULL, '2024-09-10 01:42:19');
+INSERT INTO `barang_masuk` (`id`, `tanggal`, `jam`, `bulan`, `tahun`, `pemasok`, `nomor_faktur`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
+(1, '2024-09-05', '10:33:06', 9, 2024, 2, '2024/IX/WA0001', 1, '2024-09-05 07:57:05', NULL, NULL, 1, '2024-09-05 09:33:01', '2024-09-13 03:33:46'),
+(2, '2024-09-05', '10:33:06', 9, 2024, 2, '1', 1, '2024-09-05 09:33:18', NULL, NULL, 1, '2024-09-05 09:35:39', '2024-09-13 03:33:49'),
+(3, '2024-09-05', '10:33:06', 9, 2024, 2, '2', 1, '2024-09-05 09:33:42', NULL, NULL, 1, '2024-09-10 03:05:41', '2024-09-13 03:33:52'),
+(4, '2024-09-09', '10:33:06', 9, 2024, 2, '2024/09/0001', 1, '2024-09-10 03:06:02', NULL, NULL, 1, '2024-09-10 03:38:24', '2024-09-13 03:33:55'),
+(5, '2024-09-09', '10:33:06', 9, 2024, 2, '2024/09/0002', 1, '2024-09-10 03:37:37', 1, '2024-09-10 03:42:19', NULL, NULL, '2024-09-13 03:33:57'),
+(6, '2024-09-13', '10:33:06', 9, 2024, 2, 'IND/09/2024/01-0010034', 1, '2024-09-13 04:31:15', NULL, NULL, NULL, NULL, '2024-09-13 03:34:00');
 
 -- --------------------------------------------------------
 
@@ -118,7 +122,8 @@ INSERT INTO `barang_masuk_item` (`id`, `barang_masuk`, `produk`, `jumlah`, `satu
 (8, 3, 4, 1, 4, 250000, 20, 2, '0000-00-00', 1, '2024-09-06 06:03:25', 1, '2024-09-06 09:25:58', 1, '2024-09-10 03:05:41', '2024-09-10 01:05:41'),
 (9, 3, 5, 1, 3, 300000, 10, 1, NULL, 1, '2024-09-06 06:39:03', NULL, NULL, 1, '2024-09-10 03:05:41', '2024-09-10 01:05:41'),
 (10, 4, 7, 1, 3, 300000, 120, 1, NULL, 1, '2024-09-10 03:30:41', NULL, NULL, 1, '2024-09-10 03:38:24', '2024-09-10 01:38:24'),
-(11, 5, 7, 1, 3, 280000, 120, 1, NULL, 1, '2024-09-10 03:38:08', NULL, NULL, NULL, NULL, '2024-09-10 01:38:08');
+(11, 5, 7, 1, 3, 280000, 120, 1, NULL, 1, '2024-09-10 03:38:08', NULL, NULL, NULL, NULL, '2024-09-10 01:38:08'),
+(12, 6, 10, 1, 3, 300000, 10, 1, NULL, 1, '2024-09-13 04:32:26', NULL, NULL, NULL, NULL, '2024-09-13 02:32:26');
 
 --
 -- Triggers `barang_masuk_item`
@@ -174,7 +179,13 @@ INSERT INTO `daftar_harga` (`id`, `produk`, `nama`, `harga_jual`, `jumlah_jual`,
 (2, 7, 'KAPAL API MIX 1 RNTG', 18000, 10, 1, 'aktif', 1, '2024-09-10 06:02:25', NULL, NULL, NULL, NULL, '2024-09-10 04:02:25'),
 (3, 7, 'KAPAL API MIX 3 PCS (PROMO)', 5000, 3, 1, 'aktif', 1, '2024-09-10 06:03:20', NULL, NULL, NULL, NULL, '2024-09-10 04:03:20'),
 (4, 1, 'ROJO LELE 5KG', 68000, 5, 2, 'aktif', 1, '2024-09-10 06:08:46', NULL, NULL, NULL, NULL, '2024-09-10 04:08:46'),
-(5, 8, 'SUNCO 2L', 32000, 1, 1, 'aktif', 1, '2024-09-10 06:09:45', NULL, NULL, NULL, NULL, '2024-09-10 04:09:45');
+(5, 8, 'SUNCO 2L', 32000, 1, 1, 'non aktif', 1, '2024-09-10 06:09:45', 1, '2024-09-12 09:12:23', NULL, NULL, '2024-09-12 07:12:23'),
+(6, 8, 'SUNCO 2L', 29000, 1, 1, 'aktif', 1, '2024-09-12 09:12:23', NULL, NULL, NULL, NULL, '2024-09-12 07:12:23'),
+(7, 10, 'PSM 1 KG', 32000, 1, 1, 'aktif', 1, '2024-09-13 04:33:05', NULL, NULL, NULL, NULL, '2024-09-13 02:33:05'),
+(8, 4, 'TELUR AYAM 1/4', 8000, 0.25, 2, 'aktif', 1, '2024-09-13 11:23:28', NULL, NULL, NULL, NULL, '2024-09-13 09:23:28'),
+(9, 4, 'TELUR AYAM 1/2 KG', 16000, 0.5, 2, 'aktif', 1, '2024-09-13 11:23:57', NULL, NULL, NULL, NULL, '2024-09-13 09:23:57'),
+(10, 4, 'TELUR AYAM 1 KG', 32000, 1, 2, 'aktif', 1, '2024-09-13 11:24:12', NULL, NULL, NULL, NULL, '2024-09-13 09:24:12'),
+(11, 2, 'SEGITIGA BIRU 1 KG', 25000, 1, 2, 'aktif', 1, '2024-09-13 11:24:32', NULL, NULL, NULL, NULL, '2024-09-13 09:24:32');
 
 -- --------------------------------------------------------
 
@@ -248,8 +259,11 @@ CREATE TABLE `penjualan` (
   `tahun` int(11) NOT NULL,
   `nomor` int(11) NOT NULL,
   `nomor_penjualan` varchar(20) NOT NULL,
+  `diskon` float NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `delete_by` int(11) DEFAULT NULL,
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -259,8 +273,13 @@ CREATE TABLE `penjualan` (
 -- Dumping data for table `penjualan`
 --
 
-INSERT INTO `penjualan` (`id`, `tanggal`, `jam`, `bulan`, `tahun`, `nomor`, `nomor_penjualan`, `created_by`, `created_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, '2024-09-10', '07:42:33', 9, 2024, 1, '2024/IX/0001', 1, '2024-09-10 07:42:33', NULL, NULL, '2024-09-10 05:53:16');
+INSERT INTO `penjualan` (`id`, `tanggal`, `jam`, `bulan`, `tahun`, `nomor`, `nomor_penjualan`, `diskon`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
+(1, '2024-09-10', '07:42:33', 9, 2024, 1, '2024/IX/0001', 2000, 1, '2024-09-10 07:42:33', 1, '2024-09-12 08:58:27', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
+(2, '2024-09-12', '09:14:50', 9, 2024, 2, '2024/IX/0002', 0, 1, '2024-09-12 09:14:50', NULL, NULL, NULL, NULL, '2024-09-12 07:14:50'),
+(3, '2024-09-13', '04:32:34', 9, 2024, 3, '2024/IX/0003', 0, 1, '2024-09-13 04:32:34', NULL, NULL, NULL, NULL, '2024-09-13 02:32:34'),
+(4, '2024-09-13', '04:33:23', 9, 2024, 4, '2024/IX/0004', 0, 1, '2024-09-13 04:33:23', NULL, NULL, NULL, NULL, '2024-09-13 02:33:23'),
+(5, '2024-09-13', '05:19:17', 9, 2024, 5, '2024/IX/0005', 0, 1, '2024-09-13 05:19:17', NULL, NULL, NULL, NULL, '2024-09-13 03:19:17'),
+(6, '2024-09-13', '11:22:49', 9, 2024, 6, '2024/IX/0006', 0, 1, '2024-09-13 11:22:49', NULL, NULL, NULL, NULL, '2024-09-13 09:22:49');
 
 -- --------------------------------------------------------
 
@@ -291,14 +310,32 @@ CREATE TABLE `penjualan_item` (
 --
 
 INSERT INTO `penjualan_item` (`id`, `penjualan`, `produk`, `daftar_harga`, `jumlah`, `jumlah_jual`, `harga`, `total`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 1, 7, 2, 1, 10, 18000, 18000, 1, '2024-09-10 11:02:20', NULL, NULL, NULL, NULL, '2024-09-10 09:02:20');
+(3, 1, 7, 2, 1, 10, 18000, 18000, 1, '2024-09-12 07:59:04', 1, '2024-09-12 08:51:37', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
+(4, 1, 7, 3, 2, 6, 5000, 10000, 1, '2024-09-12 07:59:34', NULL, NULL, 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
+(5, 1, 8, 5, 5, 5, 32000, 160000, 1, '2024-09-12 07:59:51', 1, '2024-09-12 08:21:45', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
+(7, 1, 7, 1, 10, 10, 2000, 20000, 1, '2024-09-12 08:58:12', 1, '2024-09-12 08:58:21', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
+(8, 2, 8, 6, 1, 1, 29000, 29000, 1, '2024-09-12 09:14:55', NULL, NULL, NULL, NULL, '2024-09-12 07:14:55'),
+(9, 4, 10, 7, 1, 1, 32000, 32000, 1, '2024-09-13 04:33:29', NULL, NULL, NULL, NULL, '2024-09-13 02:33:29'),
+(10, 4, 7, 3, 1, 3, 5000, 5000, 1, '2024-09-13 06:18:08', NULL, NULL, NULL, NULL, '2024-09-13 04:18:08');
 
 --
 -- Triggers `penjualan_item`
 --
 DELIMITER $$
+CREATE TRIGGER `delete_stok_keluar` BEFORE UPDATE ON `penjualan_item` FOR EACH ROW UPDATE stok
+SET stok_keluar = stok_keluar - new.jumlah_jual
+WHERE produk = new.produk AND bulan = MONTH(NOW()) AND tahun = YEAR(NOW()) AND new.delete_by IS NOT NULL
+$$
+DELIMITER ;
+DELIMITER $$
 CREATE TRIGGER `insert_stok_keluar` AFTER INSERT ON `penjualan_item` FOR EACH ROW UPDATE stok
 SET stok_keluar = stok_keluar + new.jumlah_jual
+WHERE bulan = MONTH(NOW()) AND tahun = YEAR(NOW()) AND produk = new.produk
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_stok_keluar` AFTER UPDATE ON `penjualan_item` FOR EACH ROW UPDATE stok
+SET stok_keluar = stok_keluar - old.jumlah_jual + new.jumlah_jual
 WHERE bulan = MONTH(NOW()) AND tahun = YEAR(NOW()) AND produk = new.produk
 $$
 DELIMITER ;
@@ -337,7 +374,8 @@ INSERT INTO `produk` (`id`, `kategori_produk`, `barcode`, `nama`, `satuan`, `cre
 (6, 6, '', 'BANGO 500ML', 1, 1, '2024-09-04 03:15:50', 1, '2024-09-04 04:02:48', NULL, NULL, '2024-09-04 02:02:48'),
 (7, 7, '', 'KAPAL API MIX 40GR', 1, 1, '2024-09-04 03:58:08', NULL, NULL, NULL, NULL, '2024-09-04 01:58:08'),
 (8, 5, '', 'SUNCO 2L', 1, 1, '2024-09-04 04:49:53', NULL, NULL, NULL, NULL, '2024-09-04 02:49:53'),
-(9, 3, '', 'GULAKU 1KG', 1, 1, '2024-09-05 05:47:42', NULL, NULL, NULL, NULL, '2024-09-05 03:47:42');
+(9, 3, '', 'GULAKU 1KG PREMIUM', 1, 1, '2024-09-05 05:47:42', 1, '2024-09-13 04:30:02', NULL, NULL, '2024-09-13 02:30:02'),
+(10, 3, '', 'PSM 1 KG', 1, 1, '2024-09-13 04:30:17', NULL, NULL, NULL, NULL, '2024-09-13 02:30:17');
 
 -- --------------------------------------------------------
 
@@ -402,15 +440,61 @@ INSERT INTO `stok` (`id`, `bulan`, `tahun`, `produk`, `satuan`, `stok_awal`, `st
 (7, 8, 2024, 7, 1, 2, 1, 0, 0, '2024-09-05 04:40:44'),
 (8, 8, 2024, 8, 1, 2, 1, 0, 0, '2024-09-05 04:40:45'),
 (9, 8, 2024, 9, 1, 2, 1, 0, 0, '2024-09-05 04:40:46'),
-(28, 9, 2024, 1, 2, 3, 0, 0, 0, '2024-09-05 06:03:20'),
+(28, 9, 2024, 1, 2, 3, 20, 15, 0, '2024-09-12 06:13:23'),
 (29, 9, 2024, 2, 2, 3, 0, 0, 0, '2024-09-10 01:05:41'),
 (30, 9, 2024, 3, 1, 3, 0, 0, 0, '2024-09-05 06:03:20'),
 (31, 9, 2024, 4, 2, 3, 0, 0, 0, '2024-09-10 01:05:41'),
 (32, 9, 2024, 5, 1, 3, 0, 0, 0, '2024-09-10 01:05:41'),
 (33, 9, 2024, 6, 1, 3, 0, 0, 0, '2024-09-05 06:03:20'),
-(34, 9, 2024, 7, 1, 3, 120, 10, 0, '2024-09-10 09:02:20'),
-(35, 9, 2024, 8, 1, 3, 0, 0, 0, '2024-09-05 07:33:01'),
-(36, 9, 2024, 9, 1, 3, 0, 0, 0, '2024-09-05 06:03:20');
+(34, 9, 2024, 7, 1, 3, 120, 84, -12, '2024-09-13 06:56:04'),
+(35, 9, 2024, 8, 1, 3, 24, 0, 0, '2024-09-12 07:14:55'),
+(36, 9, 2024, 9, 1, 3, 0, 0, -1, '2024-09-13 06:57:09'),
+(37, 9, 2024, 10, 1, 0, 10, 1, 0, '2024-09-13 02:33:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stok_opname`
+--
+
+CREATE TABLE `stok_opname` (
+  `id` int(11) NOT NULL,
+  `stok` int(11) NOT NULL,
+  `jumlah` float NOT NULL,
+  `keterangan` text NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `delete_by` int(11) DEFAULT NULL,
+  `delete_at` datetime DEFAULT NULL,
+  `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `stok_opname`
+--
+
+INSERT INTO `stok_opname` (`id`, `stok`, `jumlah`, `keterangan`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
+(1, 34, -12, '1 renteng hilang, 2 item bocor', 1, '2024-09-13 08:31:22', 1, '2024-09-13 08:56:04', NULL, NULL, '2024-09-13 06:56:04'),
+(2, 36, -1, 'lupa input', 1, '2024-09-13 08:57:09', NULL, NULL, NULL, NULL, '2024-09-13 06:57:09'),
+(3, 30, 0, 'sto', 1, '2024-09-13 08:58:10', NULL, NULL, NULL, NULL, '2024-09-13 06:58:10');
+
+--
+-- Triggers `stok_opname`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_stok_opname` AFTER INSERT ON `stok_opname` FOR EACH ROW UPDATE stok
+SET stok_opname = new.jumlah
+WHERE id = new.stok
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_stok_opname` AFTER UPDATE ON `stok_opname` FOR EACH ROW UPDATE stok
+SET stok_opname = new.jumlah
+WHERE id = new.stok
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -421,12 +505,17 @@ INSERT INTO `stok` (`id`, `bulan`, `tahun`, `produk`, `satuan`, `stok_awal`, `st
 CREATE TABLE `view_barang_masuk` (
 `id` int(11)
 ,`tanggal` date
+,`jam` time
+,`bulan` int(11)
+,`tahun` int(11)
 ,`id_pemasok` int(11)
 ,`pemasok` varchar(255)
 ,`nomor_faktur` varchar(255)
-,`log` timestamp
+,`jumlah_item` bigint(21)
+,`modal` decimal(32,0)
 ,`delete_by` int(11)
 ,`delete_at` datetime
+,`log` timestamp
 );
 
 -- --------------------------------------------------------
@@ -459,17 +548,37 @@ CREATE TABLE `view_barang_masuk_item` (
 --
 CREATE TABLE `view_daftar_harga` (
 `id` int(11)
-,`nama` varchar(255)
+,`kategori_produk` varchar(255)
 ,`id_produk` int(11)
 ,`produk` varchar(255)
+,`nama` varchar(255)
 ,`harga_jual` int(11)
 ,`jumlah_jual` float
-,`id_satuan` int(11)
 ,`satuan` varchar(255)
 ,`status_aktif` enum('aktif','non aktif')
 ,`delete_by` int(11)
 ,`delete_at` datetime
 ,`log` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_data_penjualan`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_data_penjualan` (
+`bulan` int(11)
+,`tahun` int(11)
+,`tanggal` date
+,`jam` time
+,`nomor_penjualan` varchar(20)
+,`kategori_produk` varchar(255)
+,`produk` varchar(255)
+,`nama_item` varchar(255)
+,`harga` int(11)
+,`jumlah` int(11)
+,`total` int(11)
 );
 
 -- --------------------------------------------------------
@@ -498,7 +607,35 @@ CREATE TABLE `view_pemasok` (
 -- (See below for the actual view)
 --
 CREATE TABLE `view_penjualan` (
-`penjualan` int(11)
+`id` int(11)
+,`tanggal` date
+,`jam` time
+,`bulan` int(11)
+,`tahun` int(11)
+,`nomor_penjualan` varchar(20)
+,`jumlah_item` bigint(21)
+,`total` decimal(32,0)
+,`diskon` float
+,`grand_total` double
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_penjualan_item`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_penjualan_item` (
+`id` int(11)
+,`id_penjualan` int(11)
+,`daftar_harga` int(11)
+,`id_produk` int(11)
+,`produk` varchar(255)
+,`jumlah` int(11)
+,`jumlah_jual_stok` float
+,`jumlah_jual` int(11)
+,`harga` int(11)
+,`total` int(11)
 );
 
 -- --------------------------------------------------------
@@ -548,11 +685,31 @@ CREATE TABLE `view_stok` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_stok_opname`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_stok_opname` (
+`id` int(11)
+,`kategori_produk` varchar(255)
+,`produk` varchar(255)
+,`bulan` int(11)
+,`tahun` int(11)
+,`satuan` varchar(255)
+,`balance_not_opname` double
+,`stok_opname` float
+,`jumlah` float
+,`keterangan` text
+,`balance` double
+);
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_barang_masuk`
 --
 DROP TABLE IF EXISTS `view_barang_masuk`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_barang_masuk`  AS SELECT `barang_masuk`.`id` AS `id`, `barang_masuk`.`tanggal` AS `tanggal`, `barang_masuk`.`pemasok` AS `id_pemasok`, `pemasok`.`nama` AS `pemasok`, `barang_masuk`.`nomor_faktur` AS `nomor_faktur`, `barang_masuk`.`log` AS `log`, `barang_masuk`.`delete_by` AS `delete_by`, `barang_masuk`.`delete_at` AS `delete_at` FROM (`barang_masuk` join `pemasok` on(`pemasok`.`id` = `barang_masuk`.`pemasok`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_barang_masuk`  AS SELECT `barang_masuk`.`id` AS `id`, `barang_masuk`.`tanggal` AS `tanggal`, `barang_masuk`.`jam` AS `jam`, `barang_masuk`.`bulan` AS `bulan`, `barang_masuk`.`tahun` AS `tahun`, `barang_masuk`.`pemasok` AS `id_pemasok`, `pemasok`.`nama` AS `pemasok`, `barang_masuk`.`nomor_faktur` AS `nomor_faktur`, count(`barang_masuk_item`.`id`) AS `jumlah_item`, sum(`barang_masuk_item`.`modal`) AS `modal`, `barang_masuk`.`delete_by` AS `delete_by`, `barang_masuk`.`delete_at` AS `delete_at`, `barang_masuk`.`log` AS `log` FROM ((`barang_masuk` join `pemasok` on(`pemasok`.`id` = `barang_masuk`.`pemasok`)) join `barang_masuk_item` on(`barang_masuk_item`.`barang_masuk` = `barang_masuk`.`id`)) WHERE `barang_masuk`.`delete_by` is null AND `barang_masuk_item`.`delete_by` is null GROUP BY `barang_masuk`.`id` ORDER BY `barang_masuk`.`log` DESC ;
 
 -- --------------------------------------------------------
 
@@ -570,7 +727,16 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_daftar_harga`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_daftar_harga`  AS SELECT `daftar_harga`.`id` AS `id`, `daftar_harga`.`nama` AS `nama`, `daftar_harga`.`produk` AS `id_produk`, `produk`.`nama` AS `produk`, `daftar_harga`.`harga_jual` AS `harga_jual`, `daftar_harga`.`jumlah_jual` AS `jumlah_jual`, `daftar_harga`.`satuan` AS `id_satuan`, `satuan`.`nama` AS `satuan`, `daftar_harga`.`status_aktif` AS `status_aktif`, `daftar_harga`.`delete_by` AS `delete_by`, `daftar_harga`.`delete_at` AS `delete_at`, `daftar_harga`.`log` AS `log` FROM ((`daftar_harga` join `produk` on(`produk`.`id` = `daftar_harga`.`produk`)) join `satuan` on(`satuan`.`id` = `daftar_harga`.`satuan`)) WHERE `daftar_harga`.`status_aktif` = 'aktif' ORDER BY `daftar_harga`.`log` DESC ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_daftar_harga`  AS SELECT `daftar_harga`.`id` AS `id`, `kategori_produk`.`nama` AS `kategori_produk`, `daftar_harga`.`produk` AS `id_produk`, `produk`.`nama` AS `produk`, `daftar_harga`.`nama` AS `nama`, `daftar_harga`.`harga_jual` AS `harga_jual`, `daftar_harga`.`jumlah_jual` AS `jumlah_jual`, `satuan`.`nama` AS `satuan`, `daftar_harga`.`status_aktif` AS `status_aktif`, `daftar_harga`.`delete_by` AS `delete_by`, `daftar_harga`.`delete_at` AS `delete_at`, `daftar_harga`.`log` AS `log` FROM (((`daftar_harga` join `produk` on(`produk`.`id` = `daftar_harga`.`produk`)) join `kategori_produk` on(`kategori_produk`.`id` = `produk`.`kategori_produk`)) join `satuan` on(`satuan`.`id` = `daftar_harga`.`satuan`)) WHERE `daftar_harga`.`status_aktif` = 'aktif' AND `daftar_harga`.`delete_by` is null ORDER BY `daftar_harga`.`log` DESC ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_data_penjualan`
+--
+DROP TABLE IF EXISTS `view_data_penjualan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_data_penjualan`  AS SELECT `penjualan`.`bulan` AS `bulan`, `penjualan`.`tahun` AS `tahun`, `penjualan`.`tanggal` AS `tanggal`, `penjualan`.`jam` AS `jam`, `penjualan`.`nomor_penjualan` AS `nomor_penjualan`, `kategori_produk`.`nama` AS `kategori_produk`, `produk`.`nama` AS `produk`, `daftar_harga`.`nama` AS `nama_item`, `daftar_harga`.`harga_jual` AS `harga`, `penjualan_item`.`jumlah` AS `jumlah`, `penjualan_item`.`total` AS `total` FROM ((((`penjualan` join `penjualan_item` on(`penjualan_item`.`penjualan` = `penjualan`.`id`)) join `daftar_harga` on(`daftar_harga`.`id` = `penjualan_item`.`daftar_harga`)) join `produk` on(`produk`.`id` = `daftar_harga`.`produk`)) join `kategori_produk` on(`kategori_produk`.`id` = `produk`.`kategori_produk`)) WHERE `penjualan`.`delete_by` is null AND `penjualan_item`.`delete_by` is null ORDER BY `penjualan`.`tanggal` ASC, `kategori_produk`.`nama` ASC, `daftar_harga`.`nama` ASC ;
 
 -- --------------------------------------------------------
 
@@ -588,7 +754,16 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_penjualan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_penjualan`  AS SELECT `penjualan_item`.`penjualan` AS `penjualan` FROM `penjualan_item` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_penjualan`  AS SELECT `penjualan`.`id` AS `id`, `penjualan`.`tanggal` AS `tanggal`, `penjualan`.`jam` AS `jam`, `penjualan`.`bulan` AS `bulan`, `penjualan`.`tahun` AS `tahun`, `penjualan`.`nomor_penjualan` AS `nomor_penjualan`, count(distinct `penjualan_item`.`daftar_harga`) AS `jumlah_item`, sum(`penjualan_item`.`total`) AS `total`, `penjualan`.`diskon` AS `diskon`, sum(`penjualan_item`.`total`) - `penjualan`.`diskon` AS `grand_total` FROM (`penjualan` join `penjualan_item` on(`penjualan_item`.`penjualan` = `penjualan`.`id`)) WHERE `penjualan`.`delete_by` is null AND `penjualan_item`.`delete_by` is null GROUP BY `penjualan`.`id` ORDER BY `penjualan`.`log` DESC ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_penjualan_item`
+--
+DROP TABLE IF EXISTS `view_penjualan_item`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_penjualan_item`  AS SELECT `penjualan_item`.`id` AS `id`, `penjualan`.`id` AS `id_penjualan`, `penjualan_item`.`daftar_harga` AS `daftar_harga`, `penjualan_item`.`produk` AS `id_produk`, `daftar_harga`.`nama` AS `produk`, `penjualan_item`.`jumlah` AS `jumlah`, `daftar_harga`.`jumlah_jual` AS `jumlah_jual_stok`, `penjualan_item`.`jumlah_jual` AS `jumlah_jual`, `penjualan_item`.`harga` AS `harga`, `penjualan_item`.`total` AS `total` FROM ((`penjualan_item` join `penjualan` on(`penjualan`.`id` = `penjualan_item`.`penjualan`)) join `daftar_harga` on(`daftar_harga`.`id` = `penjualan_item`.`daftar_harga`)) WHERE `penjualan_item`.`delete_by` is null ORDER BY `penjualan_item`.`log` ASC ;
 
 -- --------------------------------------------------------
 
@@ -607,6 +782,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `view_stok`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_stok`  AS SELECT `stok`.`id` AS `id`, `stok`.`produk` AS `id_produk`, `stok`.`bulan` AS `bulan`, `stok`.`tahun` AS `tahun`, `kategori_produk`.`nama` AS `kategori_produk`, `produk`.`nama` AS `produk`, `stok`.`satuan` AS `id_satuan`, `satuan`.`nama` AS `satuan`, `stok`.`stok_awal` AS `stok_awal`, `stok`.`stok_masuk` AS `stok_masuk`, `stok`.`stok_keluar` AS `stok_keluar`, `stok`.`stok_opname` AS `stok_opname`, `stok`.`stok_awal`+ `stok`.`stok_masuk` - `stok`.`stok_keluar` + `stok`.`stok_opname` AS `stok_balance`, `stok`.`log` AS `log` FROM (((`stok` join `produk` on(`produk`.`id` = `stok`.`produk`)) join `kategori_produk` on(`kategori_produk`.`id` = `produk`.`kategori_produk`)) join `satuan` on(`satuan`.`id` = `stok`.`satuan`)) ORDER BY `stok`.`log` DESC ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_stok_opname`
+--
+DROP TABLE IF EXISTS `view_stok_opname`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_stok_opname`  AS SELECT `stok`.`id` AS `id`, `kategori_produk`.`nama` AS `kategori_produk`, `produk`.`nama` AS `produk`, `stok`.`bulan` AS `bulan`, `stok`.`tahun` AS `tahun`, `satuan`.`nama` AS `satuan`, `stok`.`stok_awal`+ `stok`.`stok_masuk` - `stok`.`stok_keluar` AS `balance_not_opname`, `stok`.`stok_opname` AS `stok_opname`, `stok_opname`.`jumlah` AS `jumlah`, `stok_opname`.`keterangan` AS `keterangan`, `stok`.`stok_awal`+ `stok`.`stok_masuk` - `stok`.`stok_keluar` + `stok`.`stok_opname` AS `balance` FROM ((((`stok` join `produk` on(`stok`.`produk` = `produk`.`id`)) join `kategori_produk` on(`kategori_produk`.`id` = `produk`.`kategori_produk`)) join `satuan` on(`satuan`.`id` = `stok`.`satuan`)) left join `stok_opname` on(`stok_opname`.`stok` = `stok`.`id`)) ORDER BY `stok`.`tahun` DESC, `stok`.`bulan` DESC, `kategori_produk`.`nama` ASC, `produk`.`nama` ASC ;
 
 --
 -- Indexes for dumped tables
@@ -665,7 +849,10 @@ ALTER TABLE `penjualan`
 -- Indexes for table `penjualan_item`
 --
 ALTER TABLE `penjualan_item`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `penjualan` (`penjualan`),
+  ADD KEY `produk` (`produk`),
+  ADD KEY `daftar_harga` (`daftar_harga`);
 
 --
 -- Indexes for table `produk`
@@ -688,6 +875,12 @@ ALTER TABLE `stok`
   ADD KEY `produk` (`produk`);
 
 --
+-- Indexes for table `stok_opname`
+--
+ALTER TABLE `stok_opname`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -701,19 +894,19 @@ ALTER TABLE `akun`
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `barang_masuk_item`
 --
 ALTER TABLE `barang_masuk_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `daftar_harga`
 --
 ALTER TABLE `daftar_harga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `kategori_produk`
@@ -731,19 +924,19 @@ ALTER TABLE `pemasok`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `penjualan_item`
 --
 ALTER TABLE `penjualan_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `satuan`
@@ -755,7 +948,13 @@ ALTER TABLE `satuan`
 -- AUTO_INCREMENT for table `stok`
 --
 ALTER TABLE `stok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `stok_opname`
+--
+ALTER TABLE `stok_opname`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -782,6 +981,14 @@ ALTER TABLE `barang_masuk_item`
 ALTER TABLE `daftar_harga`
   ADD CONSTRAINT `daftar_harga_ibfk_1` FOREIGN KEY (`produk`) REFERENCES `produk` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `daftar_harga_ibfk_2` FOREIGN KEY (`satuan`) REFERENCES `satuan` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `penjualan_item`
+--
+ALTER TABLE `penjualan_item`
+  ADD CONSTRAINT `penjualan_item_ibfk_1` FOREIGN KEY (`penjualan`) REFERENCES `penjualan` (`id`),
+  ADD CONSTRAINT `penjualan_item_ibfk_2` FOREIGN KEY (`daftar_harga`) REFERENCES `daftar_harga` (`id`),
+  ADD CONSTRAINT `penjualan_item_ibfk_3` FOREIGN KEY (`produk`) REFERENCES `produk` (`id`);
 
 --
 -- Constraints for table `produk`
