@@ -15,9 +15,9 @@ class daftar_harga extends CI_Controller {
     function ajax_list()
     {
         $query  = "SELECT * FROM view_daftar_harga";
-        $search = array('produk','nama','harga_jual','jumlah_jual','satuan');
+        $search = array('kategori_produk','produk');
         $where = null;
-        $isWhere = 'delete_by IS NULL';
+        $isWhere = null;
         header('Content-Type: application/json');
         echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
     }
@@ -25,6 +25,10 @@ class daftar_harga extends CI_Controller {
     public function index()
     {
         $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
         $data['content'] = 'daftar_harga/index';
         $this->load->view('layout',$data);
     }

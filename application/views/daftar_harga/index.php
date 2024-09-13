@@ -40,11 +40,12 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Kategori Produk</th>
                                             <th>Produk</th>
                                             <th>Nama</th>
+                                            <th>Harga</th>
                                             <th>Jumlah Jual</th>
                                             <th>Satuan</th>
-                                            <th>Harga Jual</th>
                                             <th>Log</th>
                                             <th class="text-center">Sunting</th>
                                             <th class="text-center">Hapus</th>
@@ -53,9 +54,10 @@
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
+                                            <th>Kategori Produk</th>
                                             <th>Produk</th>
                                             <th>Nama</th>
-                                            <th>Harga Jual</th>
+                                            <th>Harga</th>
                                             <th>Jumlah Jual</th>
                                             <th>Satuan</th>
                                             <th>Log</th>

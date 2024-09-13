@@ -53,7 +53,7 @@ $(function(){
         "responsive": true,
         "serverSide": true,
         "ordering": true, // Set true agar bisa di sorting
-        "order": [[ 6, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
+        "order": [[ 0, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
         "pageLength": 5,
         "displayLength": 10,
         "pagingType": "full_numbers",
@@ -70,6 +70,7 @@ $(function(){
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }  
             },
+            { "data": "kategori_produk" },
             { "data": "produk" },
             { "data": "nama" },
             { "data": "harga_jual",  "sClass": "text-end"},

@@ -15,6 +15,10 @@ class produk extends CI_Controller {
     public function index()
     {
         $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
         $data['content'] = 'produk/index';
         $this->load->view('layout',$data);
     }
