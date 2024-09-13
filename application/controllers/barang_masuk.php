@@ -12,11 +12,25 @@ class barang_masuk extends CI_Controller {
         }
     }
 
+    function ajax_list()
+    {
+        $bulan = $this->uri->segment(3);
+        $tahun = $this->uri->segment(4);
+        $query  = "SELECT * FROM view_barang_masuk";
+        $search = array('tanggal','nomor_faktur','pemasok','modal');
+        $where = array('bulan'=>$bulan,'tahun'=>$tahun);
+        $isWhere = null;
+        header('Content-Type: application/json');
+        echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
+    }
+
     public function index()
     {
         $data = $this->session_data();
-        $barang_masuk = $this->model_main->data_result('view_barang_masuk',null,'delete_by IS NULL');
-        $data['barang_masuk'] = $barang_masuk->result();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
         $data['content'] = 'barang_masuk/index';
         $this->load->view('layout',$data);
     }

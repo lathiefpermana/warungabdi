@@ -93,6 +93,52 @@ $(function(){
 });
 
 $(function(){
+    $('#datatables-barang-masuk').DataTable({
+        "dom": '<"top"iflp<"clear">>',
+        "processing": true,
+        "responsive": true,
+        "serverSide": true,
+        "ordering": true, // Set true agar bisa di sorting
+        "order": [[ 6, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
+        "pageLength": 5,
+        "displayLength": 10,
+        "pagingType": "full_numbers",
+        "ajax":
+        {
+            "url": "<?= base_url('barang_masuk/ajax_list/'.$bulan.'/'.$tahun);?>", // URL file untuk proses select datanya
+            "type": "POST"
+        },
+        "deferRender": true,
+        "aLengthMenu": [[5, 10, 25, 50, 100],[ 5, 10, 25, 50, 100]], // Combobox Limit
+        "columns": [
+            {"data": 'id',"sortable": false, 
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }  
+            },
+            { "data": "tanggal" },
+            { "data": "pemasok" },
+            { "data": "nomor_faktur"},
+            { "data": "jumlah_item", "sClass": "text-center" },
+            { "data": "modal", "sClass": "text-end" },
+            { "data": "log" },
+            { "data": "id",  "sClass": "text-center",
+                "render": 
+                function( data, type, row, meta ) {
+                    return '<a href="<?= base_url("barang_masuk/tambah_item/'+data+'"); ?>" class="btn btn-secondary btn-sm"><i class="ti ti-pencil fs-3"></i></a>';
+                }
+            },
+            { "data": "id",  "sClass": "text-center",
+                "render": 
+                function( data, type, row, meta ) {
+                    return '<a href="<?= base_url("barang_masuk/hapus/'+data+'"); ?>" class="btn btn-danger btn-sm confirm"><i class="ti ti-trash fs-3"></i></a>';
+                }
+            },
+        ]
+    });
+});
+
+$(function(){
     $('#datatables-stok').DataTable({
         "dom": '<"top"iflp<"clear">>',
         "processing": true,
@@ -105,7 +151,7 @@ $(function(){
         "pagingType": "full_numbers",
         "ajax":
         {
-            "url": "<?= base_url('stok/ajax_list');?>", // URL file untuk proses select datanya
+            "url": "<?= base_url('stok/ajax_list/'.$bulan.'/'.$tahun);?>", // URL file untuk proses select datanya
             "type": "POST"
         },        
         "deferRender": true,
@@ -148,7 +194,7 @@ $(function(){
         "pagingType": "full_numbers",
         "ajax":
         {
-            "url": "<?= base_url('penjualan/ajax_list');?>", // URL file untuk proses select datanya
+            "url": "<?= base_url('penjualan/ajax_list/'.$bulan.'/'.$tahun);?>", // URL file untuk proses select datanya
             "type": "POST"
         },        
         "deferRender": true,
