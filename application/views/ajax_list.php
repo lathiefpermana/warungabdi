@@ -1,4 +1,14 @@
+<?php 
+$link = $_SERVER['REQUEST_URI']; 
+$url = explode('/',$link);
+
+if(!empty($url[2])){ $modul = $url[2]; }else{ $modul = null;}
+if(!empty($url[3])){ $function = $url[3]; }else{ $function = null;}
+?>
+
 <script type="text/javascript">
+
+<?php if($modul == 'produk' && $function == null){ ?>
 $(function(){
     $('#datatables-produk').DataTable({
         "dom": '<"top"iflp<"clear">>',
@@ -45,6 +55,9 @@ $(function(){
         ]
     });
 });
+<?php } ?>
+
+<?php if($modul == 'daftar_harga' && $function == null){ ?>
 
 $(function(){
     $('#datatables-daftar-harga').DataTable({
@@ -93,6 +106,10 @@ $(function(){
     });
 });
 
+<?php } ?>
+
+<?php if($modul == 'barang_masuk' && $function == null){ ?>
+
 $(function(){
     $('#datatables-barang-masuk').DataTable({
         "dom": '<"top"iflp<"clear">>',
@@ -139,6 +156,10 @@ $(function(){
     });
 });
 
+<?php } ?>
+
+<?php if($modul == 'stok' && $function == null){ ?>
+
 $(function(){
     $('#datatables-stok').DataTable({
         "dom": '<"top"iflp<"clear">>',
@@ -181,6 +202,10 @@ $(function(){
         ]
     });
 });
+
+<?php } ?>
+
+<?php if($modul == 'penjualan' && $function == null){ ?>
 
 $(function(){
     $('#datatables-penjualan').DataTable({
@@ -234,4 +259,55 @@ $(function(){
         ]
     });
 });
+
+<?php } ?>
+
+<?php if($modul == 'penjualan' && $function == 'data'){ ?>
+
+$(function(){
+    $('#datatables-data-penjualan').DataTable({
+        "dom": '<"top"iflp<"clear">>',
+        "processing": true,
+        "responsive": true,
+        "serverSide": true,
+        "ordering": true, // Set true agar bisa di sorting
+        "order": [[ 1, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
+        "pageLength": 10,
+        "displayLength": 10,
+        "pagingType": "full_numbers",
+        "ajax":
+        {
+            "url": "<?= base_url('penjualan/ajax_list_data/'.$bulan.'/'.$tahun);?>", // URL file untuk proses select datanya
+            "type": "POST"
+        },        
+        "deferRender": true,
+        "aLengthMenu": [[5, 10, 25, 50, 100],[ 5, 10, 25, 50, 100]], // Combobox Limit
+        "columns": [
+            {"data": 'id',"sortable": false, 
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }  
+            },
+            { "data": 'bulan',
+                render: function (data) {
+                    return '<?= namabulan('+data+'); ?>';
+                }  
+            },
+            { "data": "tahun" },
+            { "data": "tanggal" },
+            { "data": "jam" },
+            { "data": "nomor_penjualan" },
+            { "data": "kategori_produk" },
+            { "data": "produk" },
+            { "data": "nama_item" },
+            { "data": "harga", "sClass": "text-end" },
+            { "data": "jumlah",  "sClass": "text-center" },
+            { "data": "total",  "sClass": "text-end" },
+            
+        ]
+    });
+});
+
+<?php } ?>
+
 </script>

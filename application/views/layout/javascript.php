@@ -16,8 +16,6 @@
 <script src="<?= base_url('assets/js/datatable/datatable-advanced.init.js'); ?>"></script>
 <script src="<?= base_url('assets/js/datatable/datatable-api.init.js'); ?>"></script>
 
-<?php $this->load->view('ajax_list'); ?>
-
 <script src="<?= base_url('assets/libs/select2/dist/js/select2.full.min.js'); ?>"></script>
 <script src="<?= base_url('assets/libs/select2/dist/js/select2.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/forms/select2.init.js'); ?>"></script>
@@ -81,3 +79,5 @@
 		});
 	});
 </script>
+
+<?php $this->load->view('ajax_list'); ?>

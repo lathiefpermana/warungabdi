@@ -202,4 +202,27 @@ class penjualan extends CI_Controller {
         $this->session->set_flashdata('success','Data dihapus!');
         redirect(base_url('penjualan'));
     }
+
+    function ajax_list_data()
+    {
+        $bulan = $this->uri->segment(3);
+        $tahun = $this->uri->segment(4);
+        $query  = "SELECT * FROM view_data_penjualan";
+        $search = array('bulan','tahun','tanggal','jam','nomor_penjualan','kategori_produk','produk','nama_item','harga','jumlah','total');
+        $where = array('bulan'=>$bulan,'tahun'=>$tahun);
+        $isWhere = null;
+        header('Content-Type: application/json');
+        echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
+    }
+
+    function data()
+    {
+        $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
+        $data['content'] = 'penjualan/data';
+        $this->load->view('layout',$data);
+    }
 }

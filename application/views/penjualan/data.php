@@ -4,13 +4,13 @@
             <div class="card-body px-4 py-3">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h4 class="fw-semibold mb-8">Produk</h4>
+                        <h4 class="fw-semibold mb-8">Data Penjualan</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a class="text-muted text-decoration-none" href="<?= base_url(); ?>">Dasbor</a>
                                 </li>
-                                <li class="breadcrumb-item" aria-current="page">Produk</li>
+                                <li class="breadcrumb-item" aria-current="page">Data Penjualan</li>
                             </ol>
                         </nav>
                     </div>
@@ -29,40 +29,41 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
-                                <h5 class="mb-0">Data Produk</h5>
+                                <h5 class="mb-0">Data Penjualan</h5>
                             </div>
-                            <p class="card-subtitle mb-3">Data produk <i>available</i>, jika produk belum ada, pengguna dapat menambahkan di tombol <mark><code>+ Produk</code></mark>.</p>
-                            <div class="mb-3">
-                                <a href="<?= base_url('produk/tambah'); ?>" class="btn btn-primary"><i class="ti ti-plus"></i> Produk</a>
-                            </div>
+                            <p class="card-subtitle mb-3">Data semua transaksi penjualan berdasarkan periode.</p>
                             <div class="table-responsive">
-                                <table id="datatables-produk" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
+                                <table id="datatables-data-penjualan" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Bulan</th>
+                                            <th>Tahun</th>
+                                            <th>Tanggal</th>
+                                            <th>Jam</th>
+                                            <th>Nomor</th>
                                             <th>Kategori</th>
-                                            <th>Barcode</th>
                                             <th>Produk</th>
-                                            <th>Satuan Jual</th>
-                                            <th>Dibuat oleh</th>
-                                            <th>Waktu dibuat</th>
-                                            <th>Log</th>
-                                            <th>Sunting</th>
-                                            <th>Hapus</th>
+                                            <th>Nama Item</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
+                                            <th>Bulan</th>
+                                            <th>Tahun</th>
+                                            <th>Tanggal</th>
+                                            <th>Jam</th>
+                                            <th>Nomor</th>
                                             <th>Kategori</th>
-                                            <th>Barcode</th>
                                             <th>Produk</th>
-                                            <th>Satuan Jual</th>
-                                            <th>Dibuat oleh</th>
-                                            <th>Waktu dibuat</th>
-                                            <th>Log</th>
-                                            <th>Sunting</th>
-                                            <th>Hapus</th>
+                                            <th>Nama Item</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Total</th>
                                         </tr>
                                     </tfoot>
                                 </table>
