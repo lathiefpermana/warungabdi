@@ -14,7 +14,6 @@ class stok extends CI_Controller {
 
     function ajax_list()
     {
-        // $test = $this->model_main->data_result('view_stok',null,null)->result();
         $query  = "SELECT * FROM view_stok";
         $search = array('kategori_produk','produk');
         $where = array('bulan'=>date('m'),'tahun'=>date('Y'));

@@ -99,7 +99,7 @@ $(function(){
         "responsive": true,
         "serverSide": true,
         "ordering": true, // Set true agar bisa di sorting
-        "order": [[ 1, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
+        "order": [[ 11, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
         "pageLength": 10,
         "displayLength": 10,
         "pagingType": "full_numbers",
