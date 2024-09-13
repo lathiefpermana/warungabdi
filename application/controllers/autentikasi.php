@@ -38,9 +38,10 @@ class autentikasi extends CI_Controller {
         if($this->upload->do_upload('lisensi')){
             $data = array('upload_data' => $this->upload->data());
             $file_lisensi = $data['upload_data']['file_name'];
-            $lisensi_text = file_get_contents(base_url()."assets/lisensi/".$file_lisensi);            
+            $lisensi_text = file_get_contents(base_url()."assets/lisensi/".$file_lisensi);
+            $lisensi_text_valid = str_replace(array("\r","\n"),"",$lisensi_text);
         
-            $cek_lisensi = $this->model_main->data_result('akun',array('lisensi'=>$lisensi_text),null);
+            $cek_lisensi = $this->model_main->data_result('akun',array('lisensi'=>$lisensi_text_valid),null);
             if($cek_lisensi->num_rows() > 0){
                 $akun_lisensi = $cek_lisensi->row();
                 $id = $akun_lisensi->id;
