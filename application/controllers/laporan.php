@@ -23,7 +23,7 @@ class laporan extends CI_Controller {
         $data = $this->session_data();
         $bulan = date('m');
         $tahun = date('Y');
-        $cash_flow = $this->model_main->data_result('cash_flow',array('month(tanggal)'=>$bulan, 'year(tanggal)'=>$tahun),'delete_by IS NULL');
+        $cash_flow = $this->model_main->data_result('view_cash_flow',array('month(tanggal)'=>$bulan, 'year(tanggal)'=>$tahun),'delete_by IS NULL');
         $data['cashflow'] = $cash_flow->result();
         $data['content'] = 'laporan/cash_flow';
         $this->load->view('layout',$data);

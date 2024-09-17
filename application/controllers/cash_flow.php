@@ -35,6 +35,14 @@ class cash_flow extends CI_Controller {
         $tipe = $this->input->post('tipe');
         $deskripsi = $this->input->post('deskripsi');
         $nominal = $this->input->post('nominal');
+        $bulan = date('m');
+        $tahun = date('Y');
+
+        $cek = $this->model_main->data_result('cash_flow',array('month(tanggal)' => $bulan, 'year(tanggal)'=>$tahun,'tipe'=>1),'delete_by IS NULL'); //jika bulan ini sudah input saldo
+        if($cek->num_rows() > 0){
+            $this->session->set_flashdata('error','Data saldo bulan ini sudah diinput, silahkan di perbarui!');
+            redirect(base_url('cash_flow'));
+        }
 
         $array = array(
             'tanggal' => $tanggal,

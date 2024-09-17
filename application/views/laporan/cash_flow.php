@@ -41,21 +41,40 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no=1; $tanggal = ""; ?>
                                         <?php foreach($cashflow as $key): ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?php if($tanggal != $key->tanggal){ echo $key->tanggal;} ?></td>
+                                                <td><?= $key->deskripsi; ?></td>
+                                                <?php 
+                                                if($key->id == 1){
+                                                    echo '<td></td><td></td><td class="text-end">'.number_format($key->nominal).'</td>';
+                                                }elseif($key->id == 2){ //
+                                                    echo '<td class="text-end">'.number_format($key->nominal).'</td><td></td><td></td>';
+                                                }elseif($key->id == 3){
+                                                    echo '<td></td><td class="text-end">'.number_format($key->nominal).'</td><td></td>';
+                                                }else{
+                                                    echo '<td></td><td></td><td></td>';
+                                                }
+                                                ?>
+                                            </tr>
+                                        <?php $tanggal = $key->tanggal; ?>
                                         <?php endforeach; ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Tanggal</th>
-                                            <th>Deskripsi</th>
-                                            <th>Pemasukan</th>
-                                            <th>Pengeluaran</th>
-                                            <th>Saldo</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th class="text-end">Total</th>
+                                            <th>-</th>
+                                            <th>-</th>
+                                            <th>-</th>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
+                            <p><mark>*Untuk pengelompokan tipe secara manual.</mark></p>
                         </div>
                     </div>
                 </div>
