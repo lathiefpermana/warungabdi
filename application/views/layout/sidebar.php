@@ -98,6 +98,14 @@
                                 <span class="hide-menu">Satuan</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('tipe_cash_flow') ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Tipe <i>Cash Flow</i></span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -148,6 +156,14 @@
                                     <i class="ti ti-circle"></i>
                                 </div>
                                 <span class="hide-menu">Laporan Barang Masuk</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('laporan/cash_flow'); ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Laporan <i>Cash FLow</i></span>
                             </a>
                         </li>
                     </ul>
