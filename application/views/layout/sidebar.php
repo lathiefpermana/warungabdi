@@ -133,7 +133,15 @@
                             </a>
                         </li>
                     </ul>
+                </li>                
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="<?= base_url('cash_flow'); ?>" aria-expanded="false">
+                        <span><i class="ti ti-package-import"></i></span>
+                        <span class="hide-menu"><i>Cash Flow</i></span>
+                    </a>
                 </li>
+
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="d-flex">
@@ -167,13 +175,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?= base_url('cash_flow'); ?>" aria-expanded="false">
-                        <span><i class="ti ti-package-import"></i></span>
-                        <span class="hide-menu"><i>Cash Flow</i></span>
-                    </a>
                 </li>
                 
 
