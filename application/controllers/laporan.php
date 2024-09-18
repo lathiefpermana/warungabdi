@@ -5,10 +5,9 @@ class laporan extends CI_Controller {
 
     public function session_data()
     {
-        $lisensi = $this->input->cookie('lisensi-warung-abdi');
         $status_login = $this->session->userdata('status_login');
         if(empty($status_login)){
-            redirect(base_url('autentikasi/login'));
+            redirect(base_url('autentikasi'));
         }
     }
     
@@ -26,6 +25,19 @@ class laporan extends CI_Controller {
         $cash_flow = $this->model_main->data_result('view_cash_flow',array('month(tanggal)'=>$bulan, 'year(tanggal)'=>$tahun),'delete_by IS NULL');
         $data['cashflow'] = $cash_flow->result();
         $data['content'] = 'laporan/cash_flow';
+        $this->load->view('layout',$data);
+    }
+
+    //laporan keuangan
+
+    function labarugi()
+    {
+        $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
+        $data['content'] = 'laporan/labarugi';
         $this->load->view('layout',$data);
     }
 

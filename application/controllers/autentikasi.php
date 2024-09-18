@@ -23,7 +23,12 @@ class autentikasi extends CI_Controller {
                 $this->load->view('autentikasi/login_lisensi',$data);
             }
         }else{
-            $this->load->view('autentikasi/login');
+            $status = $this->session->userdata('status_login');
+            if(!empty($status)){
+                redirect(base_url('dasbor'));
+            }else{
+                $this->load->view('autentikasi/login');
+            }
         }        
     }
 
@@ -70,11 +75,10 @@ class autentikasi extends CI_Controller {
                         'name'=> 'lisensi-warung-abdi',
                         'value'=> $akun->lisensi,
                         'expire'=> time() + (10 * 365 * 24 * 60 * 60),
-                        'path'=> '/',
-                        'secure'=> false,
-                        'domain'=>  '.localhost'
+                        'path'=> '/'
                     );
                     $this->input->set_cookie($array_cookie);
+                    
                     redirect(base_url('dasbor'));
 
                 }else{
@@ -133,6 +137,7 @@ class autentikasi extends CI_Controller {
 
     function delete_cookie(){
         delete_cookie('lisensi-warung-abdi');
+        delete_cookie('user');
         redirect(base_url('autentikasi'));
     }
 

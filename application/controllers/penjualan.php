@@ -5,10 +5,9 @@ class penjualan extends CI_Controller {
 
     public function session_data()
     {
-        $lisensi = $this->input->cookie('lisensi-warung-abdi');
         $status_login = $this->session->userdata('status_login');
         if(empty($status_login)){
-            redirect(base_url('autentikasi/login'));
+            redirect(base_url('autentikasi'));
         }
     }
 
