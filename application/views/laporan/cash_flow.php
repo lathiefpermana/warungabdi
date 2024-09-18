@@ -41,19 +41,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no=1; $tanggal = ""; ?>
+                                        <?php $no=1; $tanggal = ""; $total_pemasukan = 0; $total_pengeluaran = 0; $total_saldo = 0; ?>
                                         <?php foreach($cashflow as $key): ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
                                                 <td><?php if($tanggal != $key->tanggal){ echo $key->tanggal;} ?></td>
                                                 <td><?= $key->deskripsi; ?></td>
                                                 <?php 
-                                                if($key->id == 1){
+                                                if($key->id_tipe == 1){
                                                     echo '<td></td><td></td><td class="text-end">'.number_format($key->nominal).'</td>';
-                                                }elseif($key->id == 2){ //
+                                                    $total_saldo = $total_saldo + $key->nominal;
+                                                }elseif($key->id_tipe == 2){ //
                                                     echo '<td class="text-end">'.number_format($key->nominal).'</td><td></td><td></td>';
-                                                }elseif($key->id == 3){
+                                                    $total_saldo = $total_saldo + $key->nominal;
+                                                    $total_pemasukan = $total_pemasukan + $key->nominal;
+                                                }elseif($key->id_tipe == 3){
                                                     echo '<td></td><td class="text-end">'.number_format($key->nominal).'</td><td></td>';
+                                                    $total_saldo = $total_saldo - $key->nominal;
+                                                    $total_pengeluaran = $total_pengeluaran + $key->nominal;
                                                 }else{
                                                     echo '<td></td><td></td><td></td>';
                                                 }
@@ -67,9 +72,9 @@
                                             <th></th>
                                             <th></th>
                                             <th class="text-end">Total</th>
-                                            <th>-</th>
-                                            <th>-</th>
-                                            <th>-</th>
+                                            <th class="text-end"><?= number_format($total_pemasukan); ?></th>
+                                            <th class="text-end"><?= number_format($total_pengeluaran); ?></th>
+                                            <th class="text-end"><?= number_format($total_saldo); ?></th>
                                         </tr>
                                     </tfoot>
                                 </table>
