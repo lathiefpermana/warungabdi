@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2024 at 11:28 AM
+-- Generation Time: Sep 18, 2024 at 02:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -146,6 +146,38 @@ SET stok_masuk = stok_masuk - old.jumlah_stok + new.jumlah_stok
 WHERE produk = old.produk AND bulan = MONTH(NOW()) AND tahun = YEAR(NOW()) AND new.delete_by IS NULL
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cash_flow`
+--
+
+CREATE TABLE `cash_flow` (
+  `id` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam` time NOT NULL,
+  `tipe` int(11) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `nominal` float NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `delete_by` int(11) DEFAULT NULL,
+  `delete_at` datetime DEFAULT NULL,
+  `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cash_flow`
+--
+
+INSERT INTO `cash_flow` (`id`, `tanggal`, `jam`, `tipe`, `deskripsi`, `nominal`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
+(1, '2024-09-01', '10:54:27', 1, 'Saldo awal September', 0, 1, '2024-09-17 10:55:27', NULL, NULL, NULL, NULL, '2024-09-17 03:58:16'),
+(2, '2024-09-17', '10:56:13', 2, 'Uang receh untuk kembalian', 100000, 1, '2024-09-17 10:56:13', NULL, NULL, NULL, NULL, '2024-09-17 09:25:40'),
+(3, '2024-09-17', '08:05:48', 3, 'Belanja', 30000, 1, '2024-09-17 10:57:22', 1, '2024-09-17 00:00:00', NULL, NULL, '2024-09-17 09:25:18'),
+(4, '2024-09-17', '10:56:10', 2, 'Penambahan receh', 62000, 1, '2024-09-17 05:00:00', NULL, NULL, 1, '2024-09-17 00:00:00', '2024-09-17 09:24:40');
 
 -- --------------------------------------------------------
 
@@ -499,6 +531,33 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tipe_cash_flow`
+--
+
+CREATE TABLE `tipe_cash_flow` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `delete_by` int(11) DEFAULT NULL,
+  `delete_at` datetime DEFAULT NULL,
+  `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tipe_cash_flow`
+--
+
+INSERT INTO `tipe_cash_flow` (`id`, `nama`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
+(1, 'Saldo Awal', 1, '2024-09-17 08:22:43', 1, '2024-09-17 08:30:30', NULL, NULL, '2024-09-17 06:31:14'),
+(2, 'Kas masuk', 1, '2024-09-17 08:33:58', NULL, NULL, NULL, NULL, '2024-09-17 06:33:58'),
+(3, 'Kas Keluar', 1, '2024-09-17 08:34:05', NULL, NULL, NULL, NULL, '2024-09-17 06:34:05');
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_barang_masuk`
 -- (See below for the actual view)
 --
@@ -536,6 +595,23 @@ CREATE TABLE `view_barang_masuk_item` (
 ,`id_satuan_stok` int(11)
 ,`satuan_stok` varchar(255)
 ,`kadaluarsa` date
+,`delete_by` int(11)
+,`delete_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_cash_flow`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_cash_flow` (
+`id` int(11)
+,`tipe` varchar(30)
+,`tanggal` date
+,`jam` time
+,`deskripsi` text
+,`nominal` float
 ,`delete_by` int(11)
 ,`delete_at` datetime
 );
@@ -723,6 +799,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `view_cash_flow`
+--
+DROP TABLE IF EXISTS `view_cash_flow`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_cash_flow`  AS SELECT `cash_flow`.`id` AS `id`, `tipe_cash_flow`.`nama` AS `tipe`, `cash_flow`.`tanggal` AS `tanggal`, `cash_flow`.`jam` AS `jam`, `cash_flow`.`deskripsi` AS `deskripsi`, `cash_flow`.`nominal` AS `nominal`, `cash_flow`.`delete_by` AS `delete_by`, `cash_flow`.`delete_at` AS `delete_at` FROM (`cash_flow` join `tipe_cash_flow` on(`tipe_cash_flow`.`id` = `cash_flow`.`tipe`)) ORDER BY `cash_flow`.`tanggal` ASC, `cash_flow`.`jam` ASC ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_daftar_harga`
 --
 DROP TABLE IF EXISTS `view_daftar_harga`;
@@ -820,6 +905,12 @@ ALTER TABLE `barang_masuk_item`
   ADD KEY `satuan_stok` (`satuan_stok`);
 
 --
+-- Indexes for table `cash_flow`
+--
+ALTER TABLE `cash_flow`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `daftar_harga`
 --
 ALTER TABLE `daftar_harga`
@@ -881,6 +972,12 @@ ALTER TABLE `stok_opname`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tipe_cash_flow`
+--
+ALTER TABLE `tipe_cash_flow`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -901,6 +998,12 @@ ALTER TABLE `barang_masuk`
 --
 ALTER TABLE `barang_masuk_item`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `cash_flow`
+--
+ALTER TABLE `cash_flow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `daftar_harga`
@@ -954,6 +1057,12 @@ ALTER TABLE `stok`
 -- AUTO_INCREMENT for table `stok_opname`
 --
 ALTER TABLE `stok_opname`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tipe_cash_flow`
+--
+ALTER TABLE `tipe_cash_flow`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
