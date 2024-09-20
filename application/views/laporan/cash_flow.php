@@ -41,7 +41,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no=1; $total_saldo = 0; $begin = new DateTime(date('Y-m-01')); $end   = new DateTime(date('Y-m-t')); ?>
+                                        <?php 
+                                        $no=1; $total_saldo = 0; $total_pemasukan = 0; $total_pengeluaran = 0;
+                                        $begin = new DateTime(date('Y-m-01')); $end  = new DateTime(date('Y-m-t')); $tgl = ""; ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td></td>
@@ -49,14 +51,76 @@
                                             <td></td>
                                             <td></td>
                                             <td class="text-end"><?= number_format($saldo['nominal']); ?></td>
-                                            <?php $total_saldo = $saldo + $saldo['nominal']; ?>
+                                            <?php $total_saldo = $total_saldo + $saldo['nominal']; ?>
                                         </tr>
-                                        <?php 
-                                        for ($i=$begin; $i <= $end ; $i->modify('+1 day')) {  ?>
-                                        $
-                                        <?php }
-                                        ?>
+                                        <?php for ($i=$begin; $i <= $end ; $i->modify('+1 day')) { ?>
+                                            <?php $tanggal = $i->format('Y-m-d'); ?>
+                                            <!-- kas Masuk -->
+                                            <?php 
+                                            $kas_masuk = $this->model_main->data_result('view_cash_flow',array('tanggal'=>$tanggal,'id_tipe'=>2),'delete_by IS NULL'); 
+                                            if($kas_masuk->num_rows() > 0){ 
+                                                foreach($kas_masuk->result() as $key1){ ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?php if($tgl != $key1->tanggal){ echo $key1->tanggal; } $tgl = $key1->tanggal; ?></td>
+                                                        <td><?= $key1->deskripsi; ?></td>
+                                                        <td class="text-end"><?= number_format($key1->nominal,2,',','.'); ?></td>
+                                                        <td></td>
+                                                        <td class="text-end"><?php $total_saldo = $total_saldo + $key1->nominal; echo number_format($total_saldo,0,',','.') ?></td>
+                                                        <?php $total_pemasukan = $total_pemasukan + $key1->nominal;  ?>
+                                                    </tr>
+                                                <?php }
+                                            }
+                                            ?>
+                                            <!-- kas Masuk -->
+                                            <!-- Kas Keluar -->
+                                            <?php 
+                                            $kas_keluar = $this->model_main->data_result('view_cash_flow',array('tanggal'=>$tanggal,'id_tipe'=>3),'delete_by IS NULL');
+                                            if($kas_keluar->num_rows() > 0){
+                                                foreach($kas_keluar->result() as $key2){ ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?php if($tgl != $key2->tanggal){ echo $key2->tanggal; } $tgl = $key2->tanggal; ?></td>
+                                                        <td><?= $key2->deskripsi; ?></td>
+                                                        <td></td>
+                                                        <td class="text-end"><?= number_format($key2->nominal,0,',','.'); ?></td>
+                                                        <td class="text-end"><?php $total_saldo = $total_saldo - $key2->nominal; echo number_format($total_saldo,0,',','.') ?></td>
+                                                        <?php $total_pengeluaran = $total_pengeluaran + $key2->nominal;  ?>
+                                                    </tr>
+                                                <?php }
+                                            }
+                                            ?>
+                                            <!-- Kas Keluar -->
+                                            <!-- Penjualan -->
+                                            <?php
+                                            $penjualan = $this->model_main->data_result('view_data_penjualan',array('tanggal'=>$tanggal),null);
+                                            if($penjualan->num_rows() > 0){
+                                                foreach($penjualan->result() as $key3){ ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?php if($tgl != $key3->tanggal){ echo $key3->tanggal; } $tgl = $key3->tanggal; ?></td>
+                                                        <td><?= 'Penjualan '.$key3->nama_item; ?></td>
+                                                        <td class="text-end"><?= number_format($key3->total,2,',','.') ?></td>
+                                                        <td></td>
+                                                        <td class="text-end"><?php $total_saldo = $total_saldo + $key3->total; echo number_format($total_saldo,0,',','.') ?></td>
+                                                        <?php $total_pemasukan = $total_pemasukan + $key3->total; ?>
+                                                    </tr>
+                                                <?php }
+                                            }
+                                            ?>
+                                            <!-- Penjualan -->
+                                        <?php } ?>
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>                                            
+                                            <td class="text-end"><?= number_format($total_pemasukan,2,',','.'); ?></td>
+                                            <td class="text-end"><?= number_format($total_pengeluaran,2,',','.'); ?></td>
+                                            <td class="text-end"><?= number_format($total_saldo,2,',','.'); ?></td>
+                                        </tr>
+                                    </tfoot>
                                     
                                 </table>
                             </div>

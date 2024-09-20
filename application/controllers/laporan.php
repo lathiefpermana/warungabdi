@@ -13,6 +13,18 @@ class laporan extends CI_Controller {
     
     //Laporan Penjualan
 
+    function penjualan()
+    {
+        $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
+        $data['penjualan'] = $this->model_main->data_result('view_data_penjualan',array('bulan'=>$bulan,'tahun'=>$tahun),null)->result();
+        $data['content'] = 'laporan/penjualan';
+        $this->load->view('layout',$data);
+    }
+
     //Laporan Barang Masuk
 
     //Laporan cash Flow
@@ -24,9 +36,7 @@ class laporan extends CI_Controller {
         $tahun = date('Y');
         $data['bulan'] = $bulan;
         $data['tahun'] = $tahun;
-        $cash_flow = $this->model_main->data_result('view_cash_flow',array('month(tanggal)'=>$bulan, 'year(tanggal)'=>$tahun),'delete_by IS NULL');
         $saldo = $this->model_main->data_result('view_cash_flow',array('month(tanggal)'=>$bulan, 'year(tanggal)'=>$tahun, 'id_tipe'=>1),'delete_by IS NULL');
-        $data['cashflow'] = $cash_flow->result();
         $data['saldo'] = $saldo->row_array();
         $data['content'] = 'laporan/cash_flow';
         $this->load->view('layout',$data);
