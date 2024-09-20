@@ -63,4 +63,19 @@ class model_main extends CI_Model{
         return $this->db->get('view_daftar_harga')->result();
     }
 
+    function penjualan_perday($tanggal){
+        $this->db->select('sum(total) as penjualan_day');
+        $this->db->join('penjualan','penjualan.id = penjualan_item.penjualan');
+        $this->db->where('tanggal',$tanggal);
+        return $this->db->get('penjualan_item');
+    }
+    
+    function penjualan_permonth($bulan,$tahun){
+        $this->db->select('sum(total) as penjualan_month');
+        $this->db->join('penjualan','penjualan.id = penjualan_item.penjualan');
+        $this->db->where('month(tanggal)',$bulan);
+        $this->db->where('year(tanggal)',$tahun);
+        return $this->db->get('penjualan_item');
+    }
+
 }

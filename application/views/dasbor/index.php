@@ -1,7 +1,7 @@
 <div class="body-wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-7 d-flex align-items-stretch">
+                <div class="col-lg-6 d-flex align-items-stretch">
                     <div class="card w-100 bg-primary-subtle overflow-hidden shadow-none">
                         <div class="card-body position-relative">
                             <div class="row">
@@ -14,11 +14,11 @@
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div class="border-end pe-4 border-muted border-opacity-10">
-                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center">52,500<i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
+                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center"><?= number_format($day['penjualan_day'],0,',','.'); ?><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
                                             <p class="mb-0 text-dark">Penjualan hari ini</p>
                                         </div>
                                         <div class="ps-4">
-                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center">1,575,000<i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
+                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center"><?= number_format($month['penjualan_month'],0,',','.') ?><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
                                             <p class="mb-0 text-dark">Penjualan bulan ini</p>
                                         </div>
                                     </div>
@@ -26,6 +26,34 @@
                                 <div class="col-sm-5">
                                     <div class="welcome-bg-img mb-n7 text-end">
                                         <img src="<?= base_url('assets/images/backgrounds/welcome-bg2.png'); ?>" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 align-items-stretch">
+                    <div class="card text-bg-success border-0 w-100">
+                        <div class="card-body pb-0">
+                            <h5 class="fw-semibold mb-1 text-white card-title">
+                                <i>Cash Flow</i>
+                            </h5>
+                            <p class="fs-3 mb-3 text-white"><?= namabulan($bulan).' '.$tahun ?></p>
+                        </div>
+                        <div class="card mx-2 mb-2 mt-n2">
+                            <div class="card-body">
+                                <div class="pb-1">
+                                    <div class="d-flex justify-content-between align-items-center mb-6">
+                                        <div>
+                                            <h6 class="mb-1 fs-4 fw-semibold">Total Saldo</h6>
+                                            <p class="fs-3 mb-0 fw-semibold"><?= number_format($cash_flow['saldo'] + $cash_flow['pemasukan'] - $cash_flow['pengeluaran']); ?></p>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-primary-subtle text-primary fw-semibold fs-3"></span>
+                                        </div>
+                                    </div>
+                                    <div class="progress bg-primary-subtle" style="height: 4px">
+                                        <div class="progress-bar text-bg-success w-50" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>

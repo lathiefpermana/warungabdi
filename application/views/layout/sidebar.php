@@ -175,11 +175,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= base_url('laporan/labarugi'); ?>" class="sidebar-link">
+                            <a href="<?= base_url('laporan/laba_rugi'); ?>" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
-                                <span class="hide-menu">Laporan keuangan</span>
+                                <span class="hide-menu">Laporan Laba Rugi</span>
                             </a>
                         </li>
                     </ul>

@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="" class="table border table-striped table-bordered display text-nowrap" style="width: 100%">
+                                <table id="" class="table border table-bordered display text-nowrap" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -39,7 +39,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Total Penjualan</td>
+                                            <td class="text-end"><?=  number_format($penjualan['total_penjualan']); ?></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Total Pembelian</td>
+                                            <td class="text-end"><?=  number_format($pembelian['total_pembelian']); ?></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Total Laba Rugi</td>
+                                            <td></td>
+                                            <td class="text-end"><?=  number_format($penjualan['total_penjualan'] - $pembelian['total_pembelian']); ?></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
