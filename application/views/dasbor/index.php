@@ -14,11 +14,11 @@
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div class="border-end pe-4 border-muted border-opacity-10">
-                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center"><?= number_format($day['penjualan_day'],0,',','.'); ?><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
+                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center"><?php if(!empty($day['penjualan_day'])){ echo number_format($day['penjualan_day'],0,',','.');}else{  echo 0;} ?><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
                                             <p class="mb-0 text-dark">Penjualan hari ini</p>
                                         </div>
                                         <div class="ps-4">
-                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center"><?= number_format($month['penjualan_month'],0,',','.') ?><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
+                                            <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center"><?php if(!empty($month['penjualan_month'])){ echo number_format($month['penjualan_month'],0,',','.');}else{ echo 0; } ?><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
                                             <p class="mb-0 text-dark">Penjualan bulan ini</p>
                                         </div>
                                     </div>
