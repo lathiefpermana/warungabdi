@@ -301,8 +301,56 @@ $(function(){
             { "data": "produk" },
             { "data": "nama_item" },
             { "data": "harga", "sClass": "text-end" },
-            { "data": "jumlah",  "sClass": "text-center" },
+            { "data": "jumlah",  "sClass": "text-end" },
             { "data": "total",  "sClass": "text-end" },
+            
+        ]
+    });
+});
+
+<?php } ?>
+
+<?php if($modul == 'barang_masuk' && $function == 'data'){ ?>
+
+$(function(){
+    $('#datatables-data-barang-masuk').DataTable({
+        "dom": '<"top"iflp<"clear">>',
+        "processing": true,
+        "responsive": true,
+        "serverSide": true,
+        "ordering": true, // Set true agar bisa di sorting
+        "order": [[ 1, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
+        "pageLength": 10,
+        "displayLength": 10,
+        "pagingType": "full_numbers",
+        "ajax":
+        {
+            "url": "<?= base_url('barang_masuk/ajax_list_data/'.$bulan.'/'.$tahun);?>", // URL file untuk proses select datanya
+            "type": "POST"
+        },        
+        "deferRender": true,
+        "aLengthMenu": [[5, 10, 25, 50, 100],[ 5, 10, 25, 50, 100]], // Combobox Limit
+        "columns": [
+            {"data": 'id',"sortable": false, 
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }  
+            },
+            { "data": 'bulan',
+                render: function (data) {
+                    return '<?= namabulan('+data+'); ?>';
+                }  
+            },
+            { "data": "tahun" },
+            { "data": "tanggal" },
+            { "data": "jam" },
+            { "data": "nomor_faktur" },
+            { "data": "pemasok" },
+            { "data": "kategori_produk" },
+            { "data": "produk" },
+            { "data": "jumlah",  "sClass": "text-end" },
+            { "data": "satuan" },
+            { "data": "modal", "sClass":"text-end" },
             
         ]
     });

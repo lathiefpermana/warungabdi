@@ -208,4 +208,27 @@ class barang_masuk extends CI_Controller {
         redirect(base_url('barang_masuk'));
     }
 
+    function data()
+    {
+        $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
+        $data['content'] = 'barang_masuk/data';
+        $this->load->view('layout',$data);
+    }
+
+    function ajax_list_data()
+    {
+        $bulan = $this->uri->segment(3);
+        $tahun = $this->uri->segment(4);
+        $query  = "SELECT * FROM view_data_barang_masuk";
+        $search = array('bulan','tahun','tanggal','nomor_faktur','pemasok','kategori_produk','produk','modal');
+        $where = array('bulan'=>$bulan,'tahun'=>$tahun);
+        $isWhere = null;
+        header('Content-Type: application/json');
+        echo $this->model_datatables->get_tables_query($query,$search,$where,$isWhere);
+    }
+
 }
