@@ -62,8 +62,6 @@ class stok_opname extends CI_Controller {
         }
         $this->session->set_flashdata('success','Data disimpan!');
         redirect(base_url('stok_opname'));
-            
-
     }
 
 }

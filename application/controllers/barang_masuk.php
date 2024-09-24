@@ -62,6 +62,9 @@ class barang_masuk extends CI_Controller {
         $nomor_faktur = $this->input->post('nomor_faktur');
         $array = array(
             'tanggal' => $tanggal,
+            'jam' => date('H:i:s'),
+            'bulan' => date('m'),
+            'tahun' => date('Y'),
             'pemasok' => $pemasok,
             'nomor_faktur' => $nomor_faktur,
             'created_by' => $this->session->userdata('id_akun'),

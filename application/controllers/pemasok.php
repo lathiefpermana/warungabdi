@@ -36,7 +36,7 @@ class pemasok extends CI_Controller {
         if($check->num_rows() > 0)
         {
             $this->session->set_flashdata('error','data duplicate!');
-            redirect(base_url('pemasok'));
+            redirect(base_url('pemasok/tambah'));
         }
         $array = array(
             'nama' => $nama,

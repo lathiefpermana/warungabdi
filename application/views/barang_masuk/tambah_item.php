@@ -86,7 +86,7 @@
                                                 <i class="ti ti-plus-square"></i>
                                                 </span> <input type="text" class="form-control" name="barang_masuk" value="<?= $barang_masuk['id']; ?>" hidden>
                                             </td>
-                                            <td width="25%">
+                                            <td width="20%">
                                                 <input type="text" id="nama_produk" class="form-control" name="detail_produk" placeholder="Produk" autofocus required>
                                             </td>
                                             <td>
@@ -131,8 +131,10 @@
                                             <td class="bg-light">Modal / Harga Beli</td>
                                             <td class="bg-light">Jumlah Stok</td>
                                             <td class="bg-light">Satuan</td>
-                                            <td class="bg-light">Modal Awal</td>
                                             <td class="bg-light">Tanggal Kadaluarsa</td>
+                                            <td class="bg-light">Modal Awal</td>
+                                            <td class="bg-light">Margin 20%</td>
+                                            <td class="bg-light">Daftar Harga</td>
                                             <td class="bg-light">Hapus</td>
                                         </tr>
                                     </thead>
@@ -157,6 +159,9 @@
                                                     </select>
                                                 </td>
                                                 <td>
+                                                    <input type="date" class="form-control" name="kadaluarsa" onchange='this.form.submit();' value="<?= $key->kadaluarsa; ?>">
+                                                </td>
+                                                <td>
                                                     <input type="number" step="any" class="form-control" name="modal" onchange='if(this.value != 0) { this.form.submit(); }' value="<?= $key->modal; ?>">
                                                 </td>
                                                 <td class="text-end">
@@ -169,10 +174,23 @@
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </td>
-                                                <td class="text-end"><mark><?= number_format(round($key->modal/$key->jumlah_stok)); ?></mark></td>
-                                                <td>
-                                                    <input type="date" class="form-control" name="kadaluarsa" onchange='this.form.submit();' value="<?= $key->kadaluarsa; ?>">
-                                                </td>
+                                                <?php $modal_awal = $key->modal/$key->jumlah_stok; $margin = $modal_awal * 0.2; $jual = $modal_awal + $margin;  ?>
+                                                <td class="text-end"><mark><?= number_format(round($modal_awal)); ?></mark></td>
+                                                <td class="text-end"><mark><?= number_format(round($jual)); ?></mark></td>
+
+                                                <?php 
+                                                $daftar_harga = $this->model_main->data_result('view_daftar_harga',array('id_produk'=>$key->id_produk),'delete_by IS NULL');
+                                                if($daftar_harga->num_rows() > 0){
+                                                    $harga = "";
+                                                    foreach($daftar_harga->result() as $key2){
+                                                        $harga .= $key2->nama.' - '.$key2->harga_jual.'<br>';
+                                                    }
+                                                }else{
+                                                    $harga = 'belum ada';
+                                                }
+                                                ?>
+
+                                                <td><mark><?= $harga; ?></mark></td>
                                                 <td class="text-center">
                                                     <a href="<?= base_url('barang_masuk/hapus_item/'.$key->id.'/'.$key->barang_masuk); ?>" class="btn btn-danger confirm"><i class="ti ti-trash"></i></a>
                                                 </td>
@@ -185,9 +203,11 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                                <td></td>
+                                            <td></td>
                                             <td class="text-end">Total</td>
                                             <td class="text-end"><?= number_format($total); ?></td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

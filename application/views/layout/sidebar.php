@@ -83,6 +83,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a href="<?= base_url('kategori_produk') ?>" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Kategori Produk</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="<?= base_url('pemasok') ?>" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>

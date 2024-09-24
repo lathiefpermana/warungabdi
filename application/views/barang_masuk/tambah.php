@@ -63,7 +63,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="validationCustom01">Nomor Faktur</label>
-                                            <input type="text" class="form-control" id="validationCustom01" name="nomor_faktur">
+                                            <input type="text" class="form-control" id="validationCustom01" name="nomor_faktur" required>
+                                            <div class="invalid-feedback">Harus diisi</div>
                                         </div>
                                     </div>
                                 </div>

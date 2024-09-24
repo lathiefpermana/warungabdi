@@ -54,7 +54,7 @@ class produk extends CI_Controller {
         if($check->num_rows() > 0)
         {
             $this->session->set_flashdata('error','data duplicate!');
-            redirect(base_url('produk'));
+            redirect(base_url('produk/tambah'));
         }
         $array = array(
             'kategori_produk' => $kategori_produk,
