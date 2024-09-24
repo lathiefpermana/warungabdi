@@ -112,13 +112,13 @@
                                                     <?php endforeach ?>
                                                 </select>
                                             </td>
-                                            <td>
-                                                <!-- <p class="form-control-static mt-2"><span class="float-end">Kadaluarsa</span></p> -->
-                                            </td>
+                                            <!-- <td>
+                                                <p class="form-control-static mt-2"><span class="float-end">Kadaluarsa</span></p>
+                                            </td> -->
                                             <td>
                                                 <input type="date" class="form-control" name="kadaluarsa" placeholder="Kadaluarsa">
                                             </td>
-                                            <td>
+                                            <td colspan="4">
                                                 <button class="btn btn-success">Tambah</button>
                                             </td>
                                         </tr>
@@ -159,9 +159,6 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="form-control" name="kadaluarsa" onchange='this.form.submit();' value="<?= $key->kadaluarsa; ?>">
-                                                </td>
-                                                <td>
                                                     <input type="number" step="any" class="form-control" name="modal" onchange='if(this.value != 0) { this.form.submit(); }' value="<?= $key->modal; ?>">
                                                 </td>
                                                 <td class="text-end">
@@ -174,6 +171,9 @@
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </td>
+                                                <td>
+                                                    <input type="date" class="form-control" name="kadaluarsa" onchange='this.form.submit();' value="<?= $key->kadaluarsa; ?>">
+                                                </td>
                                                 <?php $modal_awal = $key->modal/$key->jumlah_stok; $margin = $modal_awal * 0.2; $jual = $modal_awal + $margin;  ?>
                                                 <td class="text-end"><mark><?= number_format(round($modal_awal)); ?></mark></td>
                                                 <td class="text-end"><mark><?= number_format(round($jual)); ?></mark></td>
@@ -183,7 +183,7 @@
                                                 if($daftar_harga->num_rows() > 0){
                                                     $harga = "";
                                                     foreach($daftar_harga->result() as $key2){
-                                                        $harga .= $key2->nama.' - '.$key2->harga_jual.'<br>';
+                                                        $harga .= '<li>'.$key2->nama.' - '.$key2->harga_jual.'</li><br>';
                                                     }
                                                 }else{
                                                     $harga = 'belum ada';
