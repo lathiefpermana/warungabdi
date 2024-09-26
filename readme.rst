@@ -1,3 +1,28 @@
 ###################
-App for retail
+App for retail market / Warung
+
+Last update : 2024-09-26
+
+Modul
+- Daftar - Belum
+- Masuk / Login dengan lisensi (txt) - Sudah
+- Dasbor - Sudah
+- Data induk kategori produk - Sudah
+- Data induk produk - Sudah
+- Data induk satuan - Sudah
+- Data induk pemasok / supplier -  Sudah
+- Data induk tipe <i>cash flow</i> - Sudah
+- Daftar harga / list harga - Sudah
+- Barang Masuk - Sudah
+- Penjualan - Sudah
+- Hutang - piutang - Belum
+- Data barang masuk - Sudah
+- Data penjualan - Sudah
+- Gudang stok - Sudah
+- Gudang stok opname - Sudah
+- Cash flow / kas keluar masuk - Sudah
+- Laporan barang masuk - Sudah
+- Laporan penjualan - Sudah
+- Laporan cash flow - Sudah
+- Laporan laba - rugi - Sudah 
 ###################
