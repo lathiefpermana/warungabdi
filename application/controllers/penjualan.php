@@ -96,7 +96,7 @@ class penjualan extends CI_Controller {
         $produk = $this->input->post('produk');
         $jumlah = $this->input->post('jumlah');
 
-        $cek_item = $this->model_main->data_result('view_penjualan_item',array('produk'=>$produk),null);
+        $cek_item = $this->model_main->data_result('view_penjualan_item',array('id_penjualan'=>$penjualan, 'produk'=>$produk),null);
         if($cek_item->num_rows() > 0)
         {
             $item = $cek_item->row();

@@ -24,6 +24,8 @@ class dasbor extends CI_Controller {
         $data['day'] = $day->row_array();
         $data['month'] = $month->row_array();
         $data['cash_flow'] = $this->model_main->data_result('view_laporan_cash_flow',array('bulan'=>$bulan,'tahun'=>$tahun),null)->row_array();
+        $data['recent'] = $this->model_main->data_result('view_transaksi_terakhir',null,null)->result();
+        $data['terbanyak'] = $this->model_main->data_result('view_penjualan_terbanyak',array('bulan'=>$bulan,'tahun'=>$tahun),null)->result();
         $data['content'] = 'dasbor/index';
         $this->load->view('layout',$data);
     }
