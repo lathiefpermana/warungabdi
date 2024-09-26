@@ -27,6 +27,18 @@ class laporan extends CI_Controller {
 
     //Laporan Barang Masuk
 
+    function barang_masuk()
+    {
+        $data = $this->session_data();
+        $bulan = date('m');
+        $tahun = date('Y');
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
+        $data['barang_masuk'] = $this->model_main->data_result('view_data_barang_masuk',array('bulan'=>$bulan,'tahun'=>$tahun),null)->result();
+        $data['content'] = 'laporan/barang_masuk';
+        $this->load->view('layout',$data);
+    }
+
     //Laporan cash Flow
 
     function cash_flow()
