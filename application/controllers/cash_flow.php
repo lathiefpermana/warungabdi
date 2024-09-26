@@ -14,7 +14,9 @@ class cash_flow extends CI_Controller {
     public function  index()
     {
         $data = $this->session_data();
-        $cash_flow = $this->model_main->data_result('view_cash_flow',null,'delete_by IS NULL');
+        $bulan = date('m');
+        $tahun = date('Y');
+        $cash_flow = $this->model_main->data_result('view_cash_flow',array('MONTH(tanggal)'=>$bulan,'YEAR(tanggal)'=>$tahun),'delete_by IS NULL');
         $data['cash_flow'] = $cash_flow->result();
         $data['content'] = 'cash_flow/index';
         $this->load->view('layout',$data);

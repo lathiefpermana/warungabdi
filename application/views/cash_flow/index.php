@@ -58,7 +58,7 @@
                                                 <td><?= $key->jam ?></td>
                                                 <td><?= $key->tipe ?></td>
                                                 <td><?= $key->deskripsi ?></td>
-                                                <td><?= $key->nominal ?></td>
+                                                <td class="text-end"><?= number_format($key->nominal) ?></td>
                                                 <td class="text-center">
                                                     <a href="<?= base_url('cash_flow/sunting/'.$key->id); ?>" class="btn btn-secondary btn-sm"><i class="ti ti-pencil fs-3"></i></a>
                                                 </td>
