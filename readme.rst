@@ -11,7 +11,7 @@ Modul
 - Data induk produk - Sudah
 - Data induk satuan - Sudah
 - Data induk pemasok / supplier -  Sudah
-- Data induk tipe <i>cash flow</i> - Sudah
+- Data induk tipe cash flow - Sudah
 - Daftar harga / list harga - Sudah
 - Barang Masuk - Sudah
 - Penjualan - Sudah
