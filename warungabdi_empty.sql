@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2024 at 10:53 AM
+-- Generation Time: Sep 26, 2024 at 10:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -70,25 +70,6 @@ CREATE TABLE `barang_masuk` (
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `barang_masuk`
---
-
-INSERT INTO `barang_masuk` (`id`, `tanggal`, `jam`, `bulan`, `tahun`, `pemasok`, `nomor_faktur`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, '2024-09-05', '10:33:06', 9, 2024, 2, '2024/IX/WA0001', 1, '2024-09-05 07:57:05', NULL, NULL, 1, '2024-09-05 09:33:01', '2024-09-13 03:33:46'),
-(2, '2024-09-05', '10:33:06', 9, 2024, 2, '1', 1, '2024-09-05 09:33:18', NULL, NULL, 1, '2024-09-05 09:35:39', '2024-09-13 03:33:49'),
-(3, '2024-09-05', '10:33:06', 9, 2024, 2, '2', 1, '2024-09-05 09:33:42', NULL, NULL, 1, '2024-09-10 03:05:41', '2024-09-13 03:33:52'),
-(4, '2024-09-09', '10:33:06', 9, 2024, 2, '2024/09/0001', 1, '2024-09-10 03:06:02', NULL, NULL, 1, '2024-09-10 03:38:24', '2024-09-13 03:33:55'),
-(5, '2024-09-09', '10:33:06', 9, 2024, 2, '2024/09/0002', 1, '2024-09-10 03:37:37', 1, '2024-09-10 03:42:19', NULL, NULL, '2024-09-13 03:33:57'),
-(6, '2024-09-13', '10:33:06', 9, 2024, 2, 'IND/09/2024/01-0010034', 1, '2024-09-13 04:31:15', NULL, NULL, NULL, NULL, '2024-09-13 03:34:00'),
-(7, '2024-09-24', NULL, NULL, NULL, 3, '4', 1, '2024-09-24 05:31:07', NULL, NULL, NULL, NULL, '2024-09-24 03:31:30'),
-(8, '2024-09-24', NULL, NULL, NULL, 3, '1234', 1, '2024-09-24 05:32:50', NULL, NULL, NULL, NULL, '2024-09-24 03:32:50'),
-(9, '2024-09-24', '05:37:53', 9, 2024, 3, '1111111', 1, '2024-09-24 05:37:53', NULL, NULL, NULL, NULL, '2024-09-24 03:37:53'),
-(10, '2024-09-26', '08:45:46', 9, 2024, 3, '2024/iX/ID/001', 1, '2024-09-26 08:45:46', NULL, NULL, NULL, NULL, '2024-09-26 06:45:46'),
-(11, '2024-09-26', '08:46:50', 9, 2024, 3, '2024/09/0001', 1, '2024-09-26 08:46:50', NULL, NULL, NULL, NULL, '2024-09-26 06:46:50'),
-(12, '2024-09-26', '08:58:24', 9, 2024, 1, 'Extra', 1, '2024-09-26 08:58:24', NULL, NULL, 1, '2024-09-26 09:02:26', '2024-09-26 07:02:26'),
-(13, '2024-09-26', '08:59:21', 9, 2024, 1, 'Extra', 1, '2024-09-26 08:59:21', NULL, NULL, NULL, NULL, '2024-09-26 06:59:21');
-
 -- --------------------------------------------------------
 
 --
@@ -113,29 +94,6 @@ CREATE TABLE `barang_masuk_item` (
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `barang_masuk_item`
---
-
-INSERT INTO `barang_masuk_item` (`id`, `barang_masuk`, `produk`, `jumlah`, `satuan`, `modal`, `jumlah_stok`, `satuan_stok`, `kadaluarsa`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 1, 7, 1, 3, 255000, 120, 1, '2024-12-31', 1, '2024-09-05 08:26:20', NULL, NULL, 1, '2024-09-05 09:20:44', '2024-09-05 07:20:44'),
-(2, 1, 7, 1, 3, 250000, 120, 1, NULL, 1, '2024-09-05 09:21:11', NULL, NULL, 1, '2024-09-05 09:33:01', '2024-09-05 07:33:01'),
-(3, 1, 8, 1, 3, 250000, 12, 1, NULL, 1, '2024-09-05 09:32:50', NULL, NULL, 1, '2024-09-05 09:33:01', '2024-09-05 07:33:01'),
-(4, 2, 7, 1, 6, 18000, 10, 1, NULL, 1, '2024-09-05 09:33:36', NULL, NULL, 1, '2024-09-05 09:35:39', '2024-09-05 07:35:39'),
-(5, 3, 7, 2, 6, 36000, 40, 1, NULL, 1, '2024-09-05 09:35:25', 1, '2024-09-06 04:51:37', 1, '2024-09-06 04:52:19', '2024-09-06 02:52:20'),
-(6, 3, 7, 1, 3, 250000, 120, 1, '0000-00-00', 1, '2024-09-06 04:52:10', 1, '2024-09-06 06:07:31', 1, '2024-09-10 03:05:41', '2024-09-10 01:05:41'),
-(7, 3, 2, 50, 2, 480000, 50, 2, '2024-09-06', 1, '2024-09-06 05:35:17', 1, '2024-09-06 09:26:27', 1, '2024-09-10 03:05:41', '2024-09-10 01:05:41'),
-(8, 3, 4, 1, 4, 250000, 20, 2, '0000-00-00', 1, '2024-09-06 06:03:25', 1, '2024-09-06 09:25:58', 1, '2024-09-10 03:05:41', '2024-09-10 01:05:41'),
-(9, 3, 5, 1, 3, 300000, 10, 1, NULL, 1, '2024-09-06 06:39:03', NULL, NULL, 1, '2024-09-10 03:05:41', '2024-09-10 01:05:41'),
-(10, 4, 7, 1, 3, 300000, 120, 1, NULL, 1, '2024-09-10 03:30:41', NULL, NULL, 1, '2024-09-10 03:38:24', '2024-09-10 01:38:24'),
-(11, 5, 7, 1, 3, 280000, 120, 1, NULL, 1, '2024-09-10 03:38:08', NULL, NULL, NULL, NULL, '2024-09-10 01:38:08'),
-(12, 6, 10, 1, 3, 300000, 10, 1, NULL, 1, '2024-09-13 04:32:26', NULL, NULL, NULL, NULL, '2024-09-13 02:32:26'),
-(13, 9, 11, 1, 3, 113250, 40, 1, '2024-09-24', 1, '2024-09-24 05:38:33', NULL, NULL, NULL, NULL, '2024-09-24 03:38:33'),
-(14, 9, 7, 1, 3, 199000, 120, 1, '2024-10-01', 1, '2024-09-24 06:08:58', 1, '2024-09-24 06:09:49', NULL, NULL, '2024-09-24 04:09:49'),
-(15, 11, 13, 1, 3, 7500, 6, 1, NULL, 1, '2024-09-26 08:47:10', NULL, NULL, NULL, NULL, '2024-09-26 06:47:10'),
-(16, 11, 14, 1, 3, 119500, 24, 1, NULL, 1, '2024-09-26 08:48:02', NULL, NULL, NULL, NULL, '2024-09-26 06:48:02'),
-(17, 13, 15, 999, 1, 0, 999, 1, NULL, 1, '2024-09-26 09:03:06', NULL, NULL, NULL, NULL, '2024-09-26 07:03:06');
 
 --
 -- Triggers `barang_masuk_item`
@@ -181,21 +139,6 @@ CREATE TABLE `cash_flow` (
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cash_flow`
---
-
-INSERT INTO `cash_flow` (`id`, `tanggal`, `jam`, `tipe`, `deskripsi`, `nominal`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, '2024-09-01', '09:41:17', 1, 'Saldo awal September', 1000000, 1, '2024-09-17 10:55:27', 1, '2024-09-26 00:00:00', NULL, NULL, '2024-09-26 07:41:17'),
-(2, '2024-09-17', '10:56:13', 2, 'Uang receh untuk kembalian', 100000, 1, '2024-09-17 10:56:13', NULL, NULL, NULL, NULL, '2024-09-17 09:25:40'),
-(3, '2024-09-17', '04:41:24', 3, 'Belanja lauk', 30000, 1, '2024-09-17 10:57:22', 1, '2024-09-18 00:00:00', NULL, NULL, '2024-09-18 02:41:24'),
-(4, '2024-09-17', '10:56:10', 2, 'Penambahan receh', 62000, 1, '2024-09-17 05:00:00', NULL, NULL, NULL, NULL, '2024-09-20 07:28:29'),
-(5, '2024-09-18', '03:02:18', 3, 'Belanja sayur', 45000, 1, '2024-09-18 00:00:00', NULL, NULL, NULL, NULL, '2024-09-18 01:02:18'),
-(6, '2024-09-18', '03:04:58', 3, 'Iuran RT', 55000, 1, '2024-09-18 00:00:00', NULL, NULL, NULL, NULL, '2024-09-18 01:04:58'),
-(7, '2023-09-01', '10:54:27', 1, 'Saldo awal September', 900000, 1, '2024-09-17 10:55:27', NULL, NULL, NULL, NULL, '2024-09-17 03:58:16'),
-(8, '2023-09-18', '03:04:58', 3, 'Iuran RT', 40000, 1, '2024-09-18 00:00:00', NULL, NULL, NULL, NULL, '2024-09-18 01:04:58'),
-(9, '2024-09-18', '04:50:33', 2, 'Tambahan', 80000, 1, '2024-09-18 00:00:00', NULL, NULL, NULL, NULL, '2024-09-18 02:50:33');
-
 -- --------------------------------------------------------
 
 --
@@ -219,28 +162,6 @@ CREATE TABLE `daftar_harga` (
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `daftar_harga`
---
-
-INSERT INTO `daftar_harga` (`id`, `produk`, `nama`, `harga_jual`, `jumlah_jual`, `satuan`, `status_aktif`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 7, 'KAPAL API MIX 1 PCS', 2000, 1, 1, 'aktif', 1, '2024-09-10 05:57:43', 1, '2024-09-10 06:02:37', NULL, NULL, '2024-09-10 04:02:37'),
-(2, 7, 'KAPAL API MIX 1 RTG', 18000, 10, 1, 'aktif', 1, '2024-09-10 06:02:25', 1, '2024-09-24 06:11:07', NULL, NULL, '2024-09-24 04:11:07'),
-(3, 7, 'KAPAL API MIX 3 PCS (PROMO)', 5000, 3, 1, 'aktif', 1, '2024-09-10 06:03:20', NULL, NULL, NULL, NULL, '2024-09-10 04:03:20'),
-(4, 1, 'ROJO LELE 5KG', 68000, 5, 2, 'aktif', 1, '2024-09-10 06:08:46', NULL, NULL, NULL, NULL, '2024-09-10 04:08:46'),
-(5, 8, 'SUNCO 2L', 32000, 1, 1, 'non aktif', 1, '2024-09-10 06:09:45', 1, '2024-09-12 09:12:23', NULL, NULL, '2024-09-12 07:12:23'),
-(6, 8, 'SUNCO 2L', 29000, 1, 1, 'aktif', 1, '2024-09-12 09:12:23', NULL, NULL, NULL, NULL, '2024-09-12 07:12:23'),
-(7, 10, 'PSM 1 KG', 32000, 1, 1, 'aktif', 1, '2024-09-13 04:33:05', NULL, NULL, NULL, NULL, '2024-09-13 02:33:05'),
-(8, 4, 'TELUR AYAM 1/4', 8000, 0.25, 2, 'aktif', 1, '2024-09-13 11:23:28', NULL, NULL, NULL, NULL, '2024-09-13 09:23:28'),
-(9, 4, 'TELUR AYAM 1/2 KG', 16000, 0.5, 2, 'aktif', 1, '2024-09-13 11:23:57', NULL, NULL, NULL, NULL, '2024-09-13 09:23:57'),
-(10, 4, 'TELUR AYAM 1 KG', 32000, 1, 2, 'aktif', 1, '2024-09-13 11:24:12', NULL, NULL, NULL, NULL, '2024-09-13 09:24:12'),
-(11, 2, 'SEGITIGA BIRU 1 KG', 25000, 1, 2, 'aktif', 1, '2024-09-13 11:24:32', NULL, NULL, NULL, NULL, '2024-09-13 09:24:32'),
-(12, 11, 'INDOMIE GORENG 80GG 1 PCS', 3500, 1, 1, 'aktif', 1, '2024-09-24 06:12:05', NULL, NULL, NULL, NULL, '2024-09-24 04:12:05'),
-(13, 12, 'TEA JUS GULA BATU 1PCS', 1000, 1, 1, 'aktif', 1, '2024-09-26 08:40:08', 1, '2024-09-26 09:23:18', NULL, NULL, '2024-09-26 07:23:18'),
-(14, 14, 'ZODA BOTOL 250ML 1PCS', 6000, 1, 1, 'aktif', 1, '2024-09-26 08:40:36', 1, '2024-09-26 08:48:20', NULL, NULL, '2024-09-26 06:48:20'),
-(15, 13, 'KUKU BIMA ANGGUR 1 PCS', 2000, 1, 1, 'aktif', 1, '2024-09-26 08:41:17', NULL, NULL, NULL, NULL, '2024-09-26 06:41:17'),
-(16, 15, 'ES BATU PLASTIK (1000)', 1000, 1, 1, 'aktif', 1, '2024-09-26 09:06:29', NULL, NULL, NULL, NULL, '2024-09-26 07:06:29');
-
 -- --------------------------------------------------------
 
 --
@@ -258,23 +179,6 @@ CREATE TABLE `kategori_produk` (
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `kategori_produk`
---
-
-INSERT INTO `kategori_produk` (`id`, `nama`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 'BERAS', 1, '2024-08-16 05:26:12', NULL, NULL, NULL, NULL, '2024-08-16 03:27:44'),
-(2, 'TEPUNG', 1, '2024-08-16 05:26:12', NULL, NULL, NULL, NULL, '2024-08-16 03:27:44'),
-(3, 'GULA', 1, '2024-08-16 05:26:12', NULL, NULL, NULL, NULL, '2024-08-16 03:27:44'),
-(4, 'TELUR', 1, '2024-08-16 05:26:12', NULL, NULL, NULL, NULL, '2024-08-16 03:27:44'),
-(5, 'MINYAK', 1, '2024-08-16 05:26:12', NULL, NULL, NULL, NULL, '2024-08-16 03:27:44'),
-(6, 'KECAP', 1, '2024-08-16 05:26:12', NULL, NULL, NULL, NULL, '2024-08-16 03:27:44'),
-(7, 'KOPI', 1, '2024-08-21 05:35:06', NULL, NULL, NULL, NULL, '2024-08-21 05:50:17'),
-(8, 'MIE INSTAN', 1, '2024-09-24 05:22:44', NULL, NULL, NULL, NULL, '2024-09-24 03:29:14'),
-(9, 'MINUMAN SACHET', 1, '2024-09-26 08:37:01', NULL, NULL, NULL, NULL, '2024-09-26 06:37:01'),
-(10, 'MINUMAN BOTOL', 1, '2024-09-26 08:37:11', NULL, NULL, NULL, NULL, '2024-09-26 06:37:11'),
-(11, 'EXTRA', 1, '2024-09-26 08:57:41', 1, '2024-09-26 09:01:40', NULL, NULL, '2024-09-26 07:01:40');
 
 -- --------------------------------------------------------
 
@@ -296,15 +200,6 @@ CREATE TABLE `pemasok` (
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `pemasok`
---
-
-INSERT INTO `pemasok` (`id`, `nama`, `kontak`, `nomor_telepon`, `alamat`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 'Jajanan Abdi', 'Diyashita', '081385863839', 'Perum Grand Mutiara ', 1, '2024-08-20 08:07:39', 1, '2024-08-20 09:21:39', NULL, NULL, '2024-08-20 07:39:32'),
-(2, 'Toko Achong', 'Hendi', '082240227865', 'Perum Griya Blok A-12', 1, '2024-08-23 06:28:42', NULL, NULL, NULL, NULL, '2024-08-23 04:28:42'),
-(3, 'Indogrosir', 'klikindogrosir.com', '08115500280', 'Jalan baru', 1, '2024-09-24 04:02:05', NULL, NULL, NULL, NULL, '2024-09-24 02:02:05');
 
 -- --------------------------------------------------------
 
@@ -330,30 +225,6 @@ CREATE TABLE `penjualan` (
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `penjualan`
---
-
-INSERT INTO `penjualan` (`id`, `tanggal`, `jam`, `bulan`, `tahun`, `nomor`, `nomor_penjualan`, `diskon`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, '2024-09-10', '07:42:33', 9, 2024, 1, '2024/IX/0001', 2000, 1, '2024-09-10 07:42:33', 1, '2024-09-12 08:58:27', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
-(2, '2024-09-12', '09:14:50', 9, 2024, 2, '2024/IX/0002', 0, 1, '2024-09-12 09:14:50', NULL, NULL, NULL, NULL, '2024-09-12 07:14:50'),
-(3, '2024-09-13', '04:32:34', 9, 2024, 3, '2024/IX/0003', 0, 1, '2024-09-13 04:32:34', NULL, NULL, NULL, NULL, '2024-09-13 02:32:34'),
-(4, '2024-09-13', '04:33:23', 9, 2024, 4, '2024/IX/0004', 0, 1, '2024-09-13 04:33:23', NULL, NULL, NULL, NULL, '2024-09-13 02:33:23'),
-(5, '2024-09-13', '05:19:17', 9, 2024, 5, '2024/IX/0005', 0, 1, '2024-09-13 05:19:17', NULL, NULL, NULL, NULL, '2024-09-13 03:19:17'),
-(6, '2024-09-13', '11:22:49', 9, 2024, 6, '2024/IX/0006', 0, 1, '2024-09-13 11:22:49', NULL, NULL, NULL, NULL, '2024-09-13 09:22:49'),
-(7, '2024-09-18', '04:51:08', 9, 2024, 7, '2024/IX/0007', 0, 1, '2024-09-18 04:51:08', NULL, NULL, NULL, NULL, '2024-09-18 02:51:08'),
-(8, '2024-09-18', '08:13:21', 9, 2024, 8, '2024/IX/0008', 0, 1, '2024-09-19 08:13:21', NULL, NULL, NULL, NULL, '2024-09-18 06:26:00'),
-(9, '2024-09-26', '03:33:51', 9, 2024, 9, '2024/IX/0009', 0, 1, '2024-09-26 03:33:51', NULL, NULL, NULL, NULL, '2024-09-26 01:33:51'),
-(10, '2024-09-26', '08:33:15', 9, 2024, 10, '2024/IX/0010', 0, 1, '2024-09-26 08:33:15', NULL, NULL, NULL, NULL, '2024-09-26 06:33:15'),
-(11, '2024-09-26', '08:36:09', 9, 2024, 11, '2024/IX/0011', 0, 1, '2024-09-26 08:36:09', NULL, NULL, NULL, NULL, '2024-09-26 06:36:09'),
-(12, '2024-09-26', '08:45:20', 9, 2024, 12, '2024/IX/0012', 0, 1, '2024-09-26 08:45:20', NULL, NULL, NULL, NULL, '2024-09-26 06:45:20'),
-(13, '2024-09-26', '08:48:24', 9, 2024, 13, '2024/IX/0013', 0, 1, '2024-09-26 08:48:24', NULL, NULL, NULL, NULL, '2024-09-26 06:48:24'),
-(14, '2024-09-26', '09:06:34', 9, 2024, 14, '2024/IX/0014', 0, 1, '2024-09-26 09:06:34', NULL, NULL, NULL, NULL, '2024-09-26 07:06:34'),
-(15, '2024-09-26', '09:09:40', 9, 2024, 15, '2024/IX/0015', 0, 1, '2024-09-26 09:09:40', NULL, NULL, NULL, NULL, '2024-09-26 07:09:40'),
-(16, '2024-09-26', '09:22:38', 9, 2024, 16, '2024/IX/0016', 0, 1, '2024-09-26 09:22:38', NULL, NULL, NULL, NULL, '2024-09-26 07:22:38'),
-(17, '2024-09-26', '09:23:27', 9, 2024, 17, '2024/IX/0017', 0, 1, '2024-09-26 09:23:27', NULL, NULL, NULL, NULL, '2024-09-26 07:23:27'),
-(18, '2024-09-26', '09:24:01', 9, 2024, 18, '2024/IX/0018', 0, 1, '2024-09-26 09:24:01', NULL, NULL, NULL, NULL, '2024-09-26 07:24:01');
-
 -- --------------------------------------------------------
 
 --
@@ -377,30 +248,6 @@ CREATE TABLE `penjualan_item` (
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `penjualan_item`
---
-
-INSERT INTO `penjualan_item` (`id`, `penjualan`, `produk`, `daftar_harga`, `jumlah`, `jumlah_jual`, `harga`, `total`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(3, 1, 7, 2, 1, 10, 18000, 18000, 1, '2024-09-12 07:59:04', 1, '2024-09-12 08:51:37', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
-(4, 1, 7, 3, 2, 6, 5000, 10000, 1, '2024-09-12 07:59:34', NULL, NULL, 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
-(5, 1, 8, 5, 5, 5, 32000, 160000, 1, '2024-09-12 07:59:51', 1, '2024-09-12 08:21:45', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
-(7, 1, 7, 1, 10, 10, 2000, 20000, 1, '2024-09-12 08:58:12', 1, '2024-09-12 08:58:21', 1, '2024-09-12 09:04:58', '2024-09-12 07:04:58'),
-(8, 2, 8, 6, 1, 1, 29000, 29000, 1, '2024-09-12 09:14:55', NULL, NULL, NULL, NULL, '2024-09-12 07:14:55'),
-(9, 4, 10, 7, 1, 1, 32000, 32000, 1, '2024-09-13 04:33:29', NULL, NULL, NULL, NULL, '2024-09-13 02:33:29'),
-(10, 4, 7, 3, 3, 9, 5000, 15000, 1, '2024-09-13 06:18:08', 1, '2024-09-26 09:24:29', NULL, NULL, '2024-09-26 07:24:29'),
-(11, 7, 7, 1, 2, 2, 2000, 4000, 1, '2024-09-18 04:51:17', NULL, NULL, NULL, NULL, '2024-09-18 02:51:17'),
-(12, 7, 4, 8, 1, 0, 8000, 8000, 1, '2024-09-18 04:51:23', NULL, NULL, NULL, NULL, '2024-09-18 02:51:23'),
-(13, 8, 2, 11, 2, 2, 25000, 50000, 1, '2024-09-18 08:13:29', 1, '2024-09-26 08:33:31', NULL, NULL, '2024-09-26 06:33:31'),
-(14, 9, 11, 12, 2, 2, 3500, 7000, 1, '2024-09-26 03:33:59', NULL, NULL, NULL, NULL, '2024-09-26 01:33:59'),
-(15, 10, 4, 10, 1, 1, 32000, 32000, 1, '2024-09-26 08:33:20', NULL, NULL, NULL, NULL, '2024-09-26 06:33:20'),
-(16, 13, 14, 14, 1, 1, 6000, 6000, 1, '2024-09-26 08:48:30', NULL, NULL, NULL, NULL, '2024-09-26 06:48:30'),
-(17, 13, 13, 15, 1, 1, 2000, 2000, 1, '2024-09-26 08:48:34', NULL, NULL, NULL, NULL, '2024-09-26 06:48:34'),
-(18, 14, 12, 13, 3, 3, 1000, 3000, 1, '2024-09-26 09:06:38', 1, '2024-09-26 09:23:30', NULL, NULL, '2024-09-26 07:23:30'),
-(19, 14, 15, 16, 3, 3, 1000, 3000, 1, '2024-09-26 09:06:40', 1, '2024-09-26 09:23:33', NULL, NULL, '2024-09-26 07:23:33'),
-(20, 18, 12, 13, 1, 1, 1000, 1000, 1, '2024-09-26 09:27:39', NULL, NULL, NULL, NULL, '2024-09-26 07:27:39'),
-(21, 18, 15, 16, 1, 1, 1000, 1000, 1, '2024-09-26 09:27:45', NULL, NULL, NULL, NULL, '2024-09-26 07:27:45');
 
 --
 -- Triggers `penjualan_item`
@@ -445,27 +292,6 @@ CREATE TABLE `produk` (
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `produk`
---
-
-INSERT INTO `produk` (`id`, `kategori_produk`, `barcode`, `nama`, `satuan`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 1, '', 'ROJOLELE SUPER', 2, 1, '2024-09-04 03:08:45', 1, '2024-09-04 04:47:51', NULL, NULL, '2024-09-04 02:47:51'),
-(2, 2, '', 'SEGITIGA BIRU', 2, 1, '2024-09-04 03:09:31', 1, '2024-09-04 04:49:03', NULL, NULL, '2024-09-04 02:49:03'),
-(3, 3, '', 'PSM', 1, 1, '2024-09-04 03:09:42', 1, '2024-09-04 04:48:51', NULL, NULL, '2024-09-04 02:48:51'),
-(4, 4, '', 'TELUR AYAM', 2, 1, '2024-09-04 03:09:53', 1, '2024-09-04 04:49:12', NULL, NULL, '2024-09-04 02:49:12'),
-(5, 5, '', 'SUNCO 1L', 1, 1, '2024-09-04 03:10:03', 1, '2024-09-04 04:49:43', NULL, NULL, '2024-09-04 02:49:43'),
-(6, 6, '', 'BANGO 500ML', 1, 1, '2024-09-04 03:15:50', 1, '2024-09-04 04:02:48', NULL, NULL, '2024-09-04 02:02:48'),
-(7, 7, '', 'KAPAL API MIX 40GR', 1, 1, '2024-09-04 03:58:08', NULL, NULL, NULL, NULL, '2024-09-04 01:58:08'),
-(8, 5, '', 'SUNCO 2L', 1, 1, '2024-09-04 04:49:53', NULL, NULL, NULL, NULL, '2024-09-04 02:49:53'),
-(9, 3, '', 'GULAKU 1KG PREMIUM', 1, 1, '2024-09-05 05:47:42', 1, '2024-09-13 04:30:02', NULL, NULL, '2024-09-13 02:30:02'),
-(10, 3, '', 'PSM 1 KG', 1, 1, '2024-09-13 04:30:17', NULL, NULL, NULL, NULL, '2024-09-13 02:30:17'),
-(11, 8, '', 'INDOMIE GORENG 80GG', 1, 1, '2024-09-24 05:30:49', NULL, NULL, NULL, NULL, '2024-09-24 03:30:49'),
-(12, 9, '', 'TEA JUS GULA BATU', 1, 1, '2024-09-26 08:38:02', 1, '2024-09-26 09:22:23', NULL, NULL, '2024-09-26 07:22:23'),
-(13, 9, '', 'KUKU BIMA ANGGUR', 1, 1, '2024-09-26 08:38:33', NULL, NULL, NULL, NULL, '2024-09-26 06:38:33'),
-(14, 10, '', 'ZODA BOTOL 250ML', 1, 1, '2024-09-26 08:39:21', NULL, NULL, NULL, NULL, '2024-09-26 06:39:21'),
-(15, 11, '', 'ES BATU PLASTIK', 1, 1, '2024-09-26 08:58:08', 1, '2024-09-26 09:05:43', NULL, NULL, '2024-09-26 07:05:43');
-
 -- --------------------------------------------------------
 
 --
@@ -483,18 +309,6 @@ CREATE TABLE `satuan` (
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `satuan`
---
-
-INSERT INTO `satuan` (`id`, `nama`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 'PCS', 1, '2024-09-04 03:37:46', NULL, NULL, NULL, NULL, '2024-09-04 01:37:46'),
-(2, 'KG', 1, '2024-09-04 03:37:51', NULL, NULL, NULL, NULL, '2024-09-04 01:37:51'),
-(3, 'KARTON', 1, '2024-09-04 03:37:57', NULL, NULL, NULL, NULL, '2024-09-05 05:57:29'),
-(4, 'SAK', 1, '2024-09-04 03:38:02', NULL, NULL, NULL, NULL, '2024-09-04 01:38:02'),
-(5, 'LITER', 1, '2024-09-04 03:38:09', NULL, NULL, NULL, NULL, '2024-09-04 01:38:09'),
-(6, 'RENTENG', 1, '2024-09-05 02:54:04', NULL, NULL, NULL, NULL, '2024-09-05 00:54:04');
 
 -- --------------------------------------------------------
 
@@ -515,36 +329,6 @@ CREATE TABLE `stok` (
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `stok`
---
-
-INSERT INTO `stok` (`id`, `bulan`, `tahun`, `produk`, `satuan`, `stok_awal`, `stok_masuk`, `stok_keluar`, `stok_opname`, `log`) VALUES
-(1, 8, 2024, 1, 2, 2, 1, 0, 0, '2024-09-05 04:40:36'),
-(2, 8, 2024, 2, 2, 2, 1, 0, 0, '2024-09-05 04:40:38'),
-(3, 8, 2024, 3, 1, 2, 1, 0, 0, '2024-09-05 04:40:39'),
-(4, 8, 2024, 4, 2, 2, 1, 0, 0, '2024-09-05 04:40:41'),
-(5, 8, 2024, 5, 1, 2, 1, 0, 0, '2024-09-05 04:40:42'),
-(6, 8, 2024, 6, 1, 2, 1, 0, 0, '2024-09-05 04:40:43'),
-(7, 8, 2024, 7, 1, 2, 1, 0, 0, '2024-09-05 04:40:44'),
-(8, 8, 2024, 8, 1, 2, 1, 0, 0, '2024-09-05 04:40:45'),
-(9, 8, 2024, 9, 1, 2, 1, 0, 0, '2024-09-05 04:40:46'),
-(28, 9, 2024, 1, 2, 3, 20, 15, 0, '2024-09-12 06:13:23'),
-(29, 9, 2024, 2, 2, 3, 0, 2, 0, '2024-09-26 06:33:31'),
-(30, 9, 2024, 3, 1, 3, 0, 0, 0, '2024-09-05 06:03:20'),
-(31, 9, 2024, 4, 2, 3, 0, 1, 0, '2024-09-26 06:33:20'),
-(32, 9, 2024, 5, 1, 3, 0, 0, -1, '2024-09-20 06:14:12'),
-(33, 9, 2024, 6, 1, 3, 0, 0, 0, '2024-09-05 06:03:20'),
-(34, 9, 2024, 7, 1, 3, 240, 92, -12, '2024-09-26 07:24:29'),
-(35, 9, 2024, 8, 1, 3, 24, 0, 0, '2024-09-12 07:14:55'),
-(36, 9, 2024, 9, 1, 3, 0, 0, -1, '2024-09-13 06:57:09'),
-(37, 9, 2024, 10, 1, 0, 10, 1, 0, '2024-09-13 02:33:29'),
-(38, 9, 2024, 11, 1, 0, 40, 2, 0, '2024-09-26 01:33:59'),
-(39, 9, 2024, 12, 1, 0, 0, 4, 0, '2024-09-26 07:27:39'),
-(40, 9, 2024, 13, 1, 0, 6, 1, 0, '2024-09-26 06:48:34'),
-(41, 9, 2024, 14, 1, 0, 24, 1, 0, '2024-09-26 06:48:30'),
-(42, 9, 2024, 15, 1, 0, 999, 4, 0, '2024-09-26 07:27:45');
-
 -- --------------------------------------------------------
 
 --
@@ -564,16 +348,6 @@ CREATE TABLE `stok_opname` (
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `stok_opname`
---
-
-INSERT INTO `stok_opname` (`id`, `stok`, `jumlah`, `keterangan`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 34, -12, '1 renteng hilang, 2 item bocor', 1, '2024-09-13 08:31:22', 1, '2024-09-13 08:56:04', NULL, NULL, '2024-09-13 06:56:04'),
-(2, 36, -1, 'lupa input', 1, '2024-09-13 08:57:09', NULL, NULL, NULL, NULL, '2024-09-13 06:57:09'),
-(3, 30, 0, 'sto', 1, '2024-09-13 08:58:10', NULL, NULL, NULL, NULL, '2024-09-13 06:58:10'),
-(4, 32, -1, '1 bolong', 1, '2024-09-20 08:14:12', NULL, NULL, NULL, NULL, '2024-09-20 06:14:12');
 
 --
 -- Triggers `stok_opname`
@@ -608,15 +382,6 @@ CREATE TABLE `tipe_cash_flow` (
   `delete_at` datetime DEFAULT NULL,
   `log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tipe_cash_flow`
---
-
-INSERT INTO `tipe_cash_flow` (`id`, `nama`, `created_by`, `created_at`, `update_by`, `update_at`, `delete_by`, `delete_at`, `log`) VALUES
-(1, 'Saldo Awal', 1, '2024-09-17 08:22:43', 1, '2024-09-17 08:30:30', NULL, NULL, '2024-09-17 06:31:14'),
-(2, 'Kas masuk', 1, '2024-09-17 08:33:58', NULL, NULL, NULL, NULL, '2024-09-17 06:33:58'),
-(3, 'Kas Keluar', 1, '2024-09-17 08:34:05', NULL, NULL, NULL, NULL, '2024-09-17 06:34:05');
 
 -- --------------------------------------------------------
 
@@ -1198,79 +963,79 @@ ALTER TABLE `akun`
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `barang_masuk_item`
 --
 ALTER TABLE `barang_masuk_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cash_flow`
 --
 ALTER TABLE `cash_flow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `daftar_harga`
 --
 ALTER TABLE `daftar_harga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kategori_produk`
 --
 ALTER TABLE `kategori_produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pemasok`
 --
 ALTER TABLE `pemasok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `penjualan_item`
 --
 ALTER TABLE `penjualan_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `satuan`
 --
 ALTER TABLE `satuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `stok`
 --
 ALTER TABLE `stok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `stok_opname`
 --
 ALTER TABLE `stok_opname`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tipe_cash_flow`
 --
 ALTER TABLE `tipe_cash_flow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
