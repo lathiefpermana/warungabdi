@@ -51,8 +51,12 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
                                             <a class="text-primary fw-medium" href="<?= base_url('autentikasi/lupa_sandi'); ?>">Lupa Sandi ?</a>
+                                            <a class="text-primary fw-medium" href="<?= base_url('autentikasi/lisensi hilang'); ?>">Lisensi Hilang ?</a>
                                         </div>
-                                        <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</button>
+                                        <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Masuk</button>
+                                        <div class="text-center">
+                                            <a class="text-primary fw-medium" href="<?= base_url('autentikasi/daftar'); ?>">Daftar ?</a>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

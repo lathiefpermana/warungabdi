@@ -61,7 +61,7 @@
                                             <label class="form-label">Lisensi</label>
                                             <p><?= 'Status '.$akun['status_aktif']; ?></p>
                                         </div>
-                                        <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</button>
+                                        <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Masuk</button>
                                         <div class="mb3 text-center">
                                             <a href="<?= base_url('autentikasi/delete_cookie'); ?>">bukan kamu?</a>
                                         </div>
