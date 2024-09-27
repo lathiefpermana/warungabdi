@@ -12,11 +12,11 @@ class autentikasi extends CI_Controller {
                 redirect(base_url('dasbor'));
             }else{
                 $lisensi = $this->input->cookie('lisensi-warung-abdi');
-                $akun = $this->model_main->data_result('akun',array('lisensi'=>$lisensi),null);
+                $akun = $this->model_main->data_result('view_akun_lisensi',array('lisensi'=>$lisensi),null);
                 $akuns  = $akun->row();
                 $tanggal_kadaluarsa = $akuns->tanggal_kadaluarsa;
                 if(date('Y-m-d') > $tanggal_kadaluarsa){
-                    $this->model_main->update_data($akuns->id, 'akun', array('status_aktif'=>'non aktif'));
+                    $this->model_main->update_data($akuns->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
                 }
                 $data['akun'] = $akun->row_array();
                 $this->session->set_flashdata('error','Silahkan login kembali');
@@ -46,16 +46,16 @@ class autentikasi extends CI_Controller {
             $lisensi_text = file_get_contents(base_url()."assets/lisensi/".$file_lisensi);
             $lisensi_text_valid = str_replace(array("\r","\n"),"",$lisensi_text);
         
-            $cek_lisensi = $this->model_main->data_result('akun',array('lisensi'=>$lisensi_text_valid),null);
+            $cek_lisensi = $this->model_main->data_result('view_akun_lisensi',array('lisensi'=>$lisensi_text_valid),null);
             if($cek_lisensi->num_rows() > 0){
                 $akun_lisensi = $cek_lisensi->row();
                 $id = $akun_lisensi->id;
-                $cek_akun = $this->model_main->data_result('akun',array('id'=>$id,'akun'=>$akun,'sandi'=>sha1($sandi)),null);
+                $cek_akun = $this->model_main->data_result('view_akun_lisensi',array('id'=>$id,'akun'=>$akun,'sandi'=>sha1($sandi)),null);
                 if($cek_akun->num_rows() > 0){
                     $akun = $cek_akun->row();
 
                     if(date('Y-m-d') > $akun->tanggal_kadaluarsa){
-                        $this->model_main->update_data($akun->id, 'akun', array('status_aktif'=>'non aktif'));
+                        $this->model_main->update_data($akun->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
                     }
 
                     $array_sess = array(
@@ -82,17 +82,17 @@ class autentikasi extends CI_Controller {
                     redirect(base_url('dasbor'));
 
                 }else{
-                    $this->session->set_flashdata('error','Lisensi ok, tapi akun dan sandi tidak sesuai.');
+                    $this->session->set_flashdata('error','Lisensi benar, namun akun dan sandi tidak sesuai.');
                     redirect(base_url());
                 }
             }else{
-                $this->session->set_flashdata('error','lisensi tidak valid');
+                $this->session->set_flashdata('error','lisensi tidak benar');
                 redirect(base_url());    
             }
             
 
         }else{
-            $this->session->set_flashdata('error','lisensi tidak valid');
+            $this->session->set_flashdata('error','lisensi tidak benar');
             redirect(base_url());
         }
 
@@ -103,9 +103,14 @@ class autentikasi extends CI_Controller {
         $sandi = $this->input->post('sandi');
         $lisensi = $this->input->post('lisensi');
 
-        $cek = $this->model_main->data_result('akun',array('akun'=>$akun,'sandi'=>sha1($sandi), 'lisensi'=>$lisensi),null);
+        $cek = $this->model_main->data_result('view_akun_lisensi',array('akun'=>$akun,'sandi'=>sha1($sandi), 'lisensi'=>$lisensi),null);
         if($cek->num_rows() > 0){
             $akun = $cek->row();
+
+            if(date('Y-m-d') > $akun->tanggal_kadaluarsa){
+                $this->model_main->update_data($akun->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
+            }
+
             $array_sess = array(
                 'warung' => $akun->warung,
                 'id_akun'=> $akun->id,
@@ -125,7 +130,7 @@ class autentikasi extends CI_Controller {
             $akuns  = $akun->row();
             $tanggal_kadaluarsa = $akuns->tanggal_kadaluarsa;
             if(date('Y-m-d') > $tanggal_kadaluarsa){
-                $this->model_main->update_data($akuns->id, 'akun', array('status_aktif'=>'non aktif'));
+                $this->model_main->update_data($akuns->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
             }
 
             $data['akun'] = $akun->row_array();
@@ -145,6 +150,39 @@ class autentikasi extends CI_Controller {
     {   
         $this->session->sess_destroy();
         redirect(base_url());
+    }
+
+    function lupa_sandi()
+    {
+        $this->load->view('autentikasi/lupa_sandi');
+    }
+
+    function permintaan_sandi()
+    {
+        $akun = $this->input->post('akun');
+        $cek = $this->model_main->data_result('akun',array('akun'=>$akun),null);
+        if($cek->num_rows() > 0){
+            $data_akun = $cek->row();
+            $status = $data_akun->status_aktif;
+            $tanggal_kadaluarsa = $data_akun->tanggal_kadaluarsa;
+            if($status != 'aktif'){
+                redirect(base_url('autentikasi/pembelian_lisensi'));
+            }else{
+                if($tanggal_kadaluarsa < date('Y-m-d')){
+                    echo "akun sudah tidak aktif";
+                    echo "update akun jadi non aktif";
+                }else{
+                    echo "kirim permintaan sandi";
+                }
+            }
+        }else{
+            echo "tidak ada";
+        }
+    }
+
+    function pembelian_lisensi()
+    {
+        $this->load->view('pembelian_lisensi');
     }
 
 }

@@ -46,7 +46,8 @@
                                 <div class="d-flex justify-content-between align-items-center mb-6">
                                     <div>
                                         <h6 class="mb-1 fs-4 fw-semibold">Pemasukan</h6>
-                                        <p class="fs-3 mb-0 fw-semibold"><?= number_format($cash_flow['saldo'] + $cash_flow['pemasukan']); ?></p>
+                                         <?php  if(!empty($cash_flow['saldo'])){ $pemasukan = $cash_flow['saldo'] + $cash_flow['pemasukan']; }else{ $pemasukan = 0;} ?>
+                                        <p class="fs-3 mb-0 fw-semibold"><?php echo number_format($pemasukan); ?></p>
                                     </div>
                                     <div>
                                         <span class="badge bg-primary-subtle text-primary fw-semibold fs-3"></span>
@@ -74,7 +75,8 @@
                                 <div class="d-flex justify-content-between align-items-center mb-6">
                                     <div>
                                         <h6 class="mb-1 fs-4 fw-semibold">Pengeluaran</h6>
-                                        <p class="fs-3 mb-0 fw-semibold"><?= number_format($cash_flow['pengeluaran']); ?></p>
+                                        <?php if(!empty($cash_flow['pengeluaran'])){ $pengeluaran = $cash_flow['pengeluaran'];}else{ $pengeluaran = 0;} ?>
+                                        <p class="fs-3 mb-0 fw-semibold"><?= number_format($pengeluaran); ?></p>
                                     </div>
                                     <div>
                                         <span class="badge bg-primary-subtle text-primary fw-semibold fs-3"></span>
@@ -102,7 +104,8 @@
                                 <div class="d-flex justify-content-between align-items-center mb-6">
                                     <div>
                                         <h6 class="mb-1 fs-4 fw-semibold">Total Saldo</h6>
-                                        <p class="fs-3 mb-0 fw-semibold"><?= number_format($cash_flow['saldo'] + $cash_flow['pemasukan'] - $cash_flow['pengeluaran']); ?></p>
+                                        <?php if(!empty($cash_flow['saldo'])){ $total_saldo = $cash_flow['saldo'] + $cash_flow['pemasukan'] - $cash_flow['pengeluaran']; }else{ $total_saldo = 0;} ?>
+                                        <p class="fs-3 mb-0 fw-semibold"><?= number_format($total_saldo); ?></p>
                                     </div>
                                     <div>
                                         <span class="badge bg-primary-subtle text-primary fw-semibold fs-3"></span>

@@ -7,9 +7,11 @@ Modul
 - Daftar - Belum
 - Lupa sandi - Belum
 - Lisensi hilang - Belum
+- Permintaan lisensi - Belum
+- Pembelian lisensi - Belum
 - Masuk / Login dengan lisensi (txt) - Sudah
 - Dasbor - Sudah
-- Data induk gitakun - Belum
+- Data induk akun - Belum
 - Data induk kategori produk - Sudah
 - Data induk produk - Sudah
 - Data induk satuan - Sudah
@@ -28,4 +30,6 @@ Modul
 - Laporan penjualan - Sudah
 - Laporan cash flow - Sudah
 - Laporan laba - rugi - Sudah 
+- Akun profil - Belum
+- Akun inbox - Belum
 ###################
