@@ -9,7 +9,7 @@ Modul
 - Lisensi hilang - Belum
 - Masuk / Login dengan lisensi (txt) - Sudah
 - Dasbor - Sudah
-- Data induk akun - Belum
+- Data induk gitakun - Belum
 - Data induk kategori produk - Sudah
 - Data induk produk - Sudah
 - Data induk satuan - Sudah
