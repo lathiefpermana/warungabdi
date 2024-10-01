@@ -13,14 +13,23 @@ class autentikasi extends CI_Controller {
             }else{
                 $lisensi = $this->input->cookie('lisensi-warung-abdi');
                 $akun = $this->model_main->data_result('view_akun_lisensi',array('lisensi'=>$lisensi),null);
-                $akuns  = $akun->row();
-                $tanggal_kadaluarsa = $akuns->tanggal_kadaluarsa;
-                if(date('Y-m-d') > $tanggal_kadaluarsa){
-                    $this->model_main->update_data($akuns->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
+                if($akun->num_rows() > 0)
+                {
+
+                    $akuns  = $akun->row();
+                    $tanggal_kadaluarsa = $akuns->tanggal_kadaluarsa;
+                    if(date('Y-m-d') > $tanggal_kadaluarsa){
+                        $this->model_main->update_data($akuns->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
+                    }
+                    $data['akun'] = $akun->row_array();
+                    $this->session->set_flashdata('error','Silahkan login kembali');
+                    $this->load->view('autentikasi/login_lisensi',$data);
+                }else{
+                    delete_cookie('lisensi-warung-abdi');
+                    delete_cookie('user');
+                    $this->session->set_flashdata('error','Akun tidak ditemukan');
+                    redirect((base_url('authentikasi')));
                 }
-                $data['akun'] = $akun->row_array();
-                $this->session->set_flashdata('error','Silahkan login kembali');
-                $this->load->view('autentikasi/login_lisensi',$data);
             }
         }else{
             $status = $this->session->userdata('status_login');
@@ -30,6 +39,11 @@ class autentikasi extends CI_Controller {
                 $this->load->view('autentikasi/login');
             }
         }        
+    }
+
+    function daftar()
+    {
+        $this->load->view('autentikasi/daftar');
     }
 
     function login(){
@@ -126,16 +140,23 @@ class autentikasi extends CI_Controller {
             redirect(base_url('dasbor'));
         }else{
             $lisensi = $this->input->cookie('lisensi-warung-abdi');
-            $akun = $this->model_main->data_result('akun',array('lisensi'=>$lisensi),null);
-            $akuns  = $akun->row();
-            $tanggal_kadaluarsa = $akuns->tanggal_kadaluarsa;
-            if(date('Y-m-d') > $tanggal_kadaluarsa){
-                $this->model_main->update_data($akuns->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
+            $akun = $this->model_main->data_result('view_akun_lisensi',array('lisensi'=>$lisensi),null);
+            if($akun->num_rows() > 0){
+                $akuns  = $akun->row();
+                $tanggal_kadaluarsa = $akuns->tanggal_kadaluarsa;
+                if(date('Y-m-d') > $tanggal_kadaluarsa){
+                    $this->model_main->update_data($akuns->id_lisensi, 'akun_lisensi', array('status_aktif'=>'non aktif'));
+                }
+                
+                $data['akun'] = $akun->row_array();
+                $this->session->set_flashdata('error','Sandi salah!');
+                $this->load->view('autentikasi/login_lisensi',$data);
+            }else{
+                delete_cookie('lisensi-warung-abdi');
+                delete_cookie('user');
+                $this->session->set_flashdata('error','Akun tidak ditemukan!');
+                redirect(base_url('autentikasi'));
             }
-
-            $data['akun'] = $akun->row_array();
-            $this->session->set_flashdata('error','Sandi salah!');
-            $this->load->view('autentikasi/login_lisensi',$data);
         }
 
     }
