@@ -16,17 +16,70 @@
             <img src="<?= base_url('assets/images/logos/favicon.png'); ?>" alt="loader" class="lds-ripple img-fluid" />
         </div>
         <div id="main-wrapper">
-            <div class="position-relative overflow-hidden min-vh-100 w-100 d-flex align-items-center justify-content-center">
+            <div class="position-relative overflow-hidden radial-gradient min-vh-100 w-100 d-flex align-items-center justify-content-center">
                 <div class="d-flex align-items-center justify-content-center w-100">
                     <div class="row justify-content-center w-100">
-                        <div class="col-lg-4">
-                            <div class="text-center">
-                                <img src="/assets/images/backgrounds/maintenance.svg" alt="" class="img-fluid" width="500">
-                                <h1 class="fw-semibold my-7 fs-9">Maintenance Mode!!!</h1>
-                                <h4 class="fw-semibold mb-7">Website is Under Construction. Check back later!</h4>
-                                <a class="btn btn-primary" href="../main/index.html" role="button">Go Back to Home</a>
+                        <div class="col-md-8 col-lg-6 col-xxl-3 auth-card">
+                            <div class="card mb-0">
+                                <div class="card-body pt-5">
+                                    <a href="<?= base_url(); ?>" class="text-nowrap logo-img text-center d-block mb-4 w-100">
+                                        <img src="<?= base_url('assets/images/logos/dark-logo.svg'); ?>" class="dark-logo" alt="Logo-Dark" />
+                                        <img src="<?= base_url('assets/images/logos/light-logo.svg'); ?>" class="light-logo" alt="Logo-light" />
+                                    </a>
+                                    <form method="post" action="<?= base_url('autentikasi/registrasi'); ?>" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <label class="form-label">Nama Warung</label>
+                                            <input type="text" name="warung" class="form-control" placeholder="Nama Warung" autofocus>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label">Provinsi</label>
+                                            <select class="form-control" name="provinsi" id="provinsi" onchange="getkabupaten()">
+                                                <?php foreach ($provinsi as $key): ?>
+                                                    <option value="<?= $key->id; ?>"><?= $key->nama; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Kabupaten</label>
+                                            <input type="text" name="kabupaten" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Kecamatan</label>
+                                            <input type="text" name="kecamatan" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Alamat</label>
+                                            <input type="text" name="alamat" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">No Handphone</label>
+                                            <input type="text" name="nomor_handphone" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="text" name="akun" class="form-control" placeholder="email">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Sandi</label>
+                                            <input type="password" name="sandi" class="form-control" placeholder="Sandi Akun">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Tipe</label>
+                                            <select class="form-control">
+                                                <option value="trial">Trial 7-Hari</option>
+                                                <option value="premium">Premium</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Daftar</button>
+                                        <div class="text-center">
+                                            <a class="text-primary fw-medium" href="<?= base_url('autentikasi/login'); ?>">Masuk ?</a>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>

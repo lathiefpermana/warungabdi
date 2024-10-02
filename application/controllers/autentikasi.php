@@ -43,7 +43,8 @@ class autentikasi extends CI_Controller {
 
     function daftar()
     {
-        $this->load->view('autentikasi/daftar');
+        $data['provinsi'] = $this->model_main->data_result('provinsi',null,null)->result();
+        $this->load->view('autentikasi/daftar',$data);
     }
 
     function login(){
